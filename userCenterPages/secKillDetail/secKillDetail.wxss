@@ -1,0 +1,438 @@
+/* userCenterPages/secKillDetail/secKillDetail.wxss */
+.main-wrap{
+  margin-bottom: 100rpx;
+}
+.line{
+  height: 2rpx;
+  background: gainsboro;
+}
+.line-s{
+  height: 20rpx;
+  background: gainsboro;
+}
+.goods-pic{
+  position:relative;
+}
+.red-label{
+  position:absolute;
+  bottom: 0;
+}
+.red-label .r-title{
+  display: inline-flex;
+  padding: 0 20rpx;
+  text-align: center;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-top-right-radius: 10rpx;
+  background:#c4a867;
+  color: white;
+}
+.red-label .r-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background:#c4a867;
+  padding: 10rpx 20rpx;
+  height: 100rpx;
+  width: 750rpx;
+}
+.r-info .r-left{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+.r-info .r-left .sec-price{
+  font-size: 40rpx;
+  color: white;
+}
+.r-info .r-left .actual-price{
+  text-decoration: line-through;
+  font-size: 25rpx;
+  color: grey;
+  margin-top:10rpx;
+}
+.r-info .r-right{
+  display: flex;
+  flex-direction: column;
+}
+.r-info .r-right .desc{
+  display: flex;
+  justify-content: flex-start;
+
+}
+.r-info .r-right .remain-time{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.r-info .r-right .desc{
+  color: white;
+}
+.remain-time{
+  margin-top:10rpx;
+}
+.remain-time .r-num{
+ width: 40rpx;
+ height: 40rpx;
+ text-align: center;
+ line-height: 40rpx;
+ color: #c4a867;
+ background: white;
+ border-radius: 10rpx;
+}
+.remain-time .r-sign{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:0 5rpx;
+}
+
+.active-title{
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.remain-count{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: grey;
+  padding: 0 30rpx;
+  height: 60rpx;
+}
+.main-desc{
+  display: flex;
+  flex-direction: row;
+  padding: 0 30rpx;
+  height: 100rpx;
+  align-items: center;
+}
+.main-desc .m-label{
+  background: lightgreen;
+  color:white;
+}
+.main-desc .m-desc{
+  margin-left: 20rpx;
+}
+
+
+.attr-pop-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 8;
+  bottom: 0;
+  /* display: none; */
+}
+
+.attr-pop {
+  width: 100%;
+  height: auto;
+  max-height: 780rpx;
+  padding: 31.25rpx;
+  background: #fff;
+  position: fixed;
+  z-index: 9;
+  bottom: 100rpx;
+}
+
+.attr-pop .close {
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  right: 31.25rpx;
+  overflow: hidden;
+  top: 31.25rpx;
+  z-index: 30;
+}
+
+.attr-pop .close .icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.attr-pop .img-info {
+  width: 687.5rpx;
+  height: 137rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #c4a867;
+  position: relative;
+}
+
+.attr-pop .img {
+  height: 177rpx;
+  width: 177rpx;
+  background: #f4f4f4;
+  margin-right: 31.25rpx;
+  position: fixed;
+  bottom: 400rpx;
+  z-index: 20;
+  border-radius: 10rpx;
+}
+
+.attr-pop .info {
+  float: left;
+  height: 137rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 200rpx;
+  top: -10rpx;
+}
+
+.attr-pop .p {
+  font-size: 40rpx;
+  color: #c2a875;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.attr-pop .a {
+  font-size: 25rpx;
+  color: #333;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.spec-con {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.spec-con .name {
+  height: 32rpx;
+  margin-bottom: 22rpx;
+  font-size: 29rpx;
+  color: #333;
+  overflow: hidden;
+}
+
+.spec-con .values {
+  height: auto;
+  margin-bottom: 31.25rpx;
+  font-size: 0;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.spec-con .value {
+  display: inline-block;
+  height: 62rpx;
+  padding: 0 35rpx;
+  line-height: 56rpx;
+  text-align: center;
+  margin-right: 25rpx;
+  margin-bottom: 16.5rpx;
+  border: 1px solid #333;
+  font-size: 25rpx;
+  color: #333;
+}
+
+.spec-con .value.disable {
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+
+.spec-con .value.selected {
+  border: 1px solid #b4282d;
+  color: #b4282d;
+}
+
+.number-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.number-item .left {
+  display: flex;
+  flex-direction: column;
+  height: 71rpx;
+}
+
+.number-item .name {
+  height: 25rpx;
+  line-height: 25rpx;
+}
+
+.number-item .count {
+  height: 25rpx;
+  line-height: 25rpx;
+  color: gray;
+}
+
+.number-item .selnum {
+  width: 322rpx;
+  height: 71rpx;
+  border: 1px solid #ccc;
+  display: flex;
+}
+
+.number-item .cut {
+  width: 93.75rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 65rpx;
+}
+
+.number-item .number {
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  line-height: 68.75rpx;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  float: left;
+}
+
+.number-item .add {
+  width: 93.75rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 65rpx;
+}
+.btn-wrap{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  z-index: 9;
+  bottom: 0;
+}
+.btn-wrap .btn-left{
+ width: 50%;
+ text-align: center;
+ z-index: 10;
+ height: 100rpx;
+ line-height: 100rpx;
+ background: #f5efe3;
+ color: #c8aa6e;
+}
+.btn-wrap .btn-right{
+  width: 50%;
+ text-align: center;
+ z-index: 10;
+ height: 100rpx;
+ line-height: 100rpx;
+ background: #c8aa6e;
+ color:white;
+}
+
+.btn{
+  position: fixed;
+  bottom:0;
+  width: 100%;
+}
+.btn::after{
+  border:none;
+}
+
+
+
+.detail {
+  width: 750rpx;
+  height: auto;
+  overflow: hidden;
+  background: white;
+}
+
+.detail .title {
+  font-size: 40rpx;
+  margin-left: 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: white;
+}
+
+.detail image {
+  width: 750rpx;
+  display: block;
+}
+
+.common-problem {
+  width: 750rpx;
+  height: auto;
+  overflow: hidden;
+}
+
+.common-problem .h {
+  position: relative;
+  height: 145.5rpx;
+  width: 750rpx;
+  padding: 56.25rpx 0;
+  background: #fff;
+  text-align: center;
+}
+
+.common-problem .h .line {
+  display: inline-block;
+  position: absolute;
+  top: 72rpx;
+  left: 0;
+  /* z-index: 2; */
+  height: 1px;
+  margin-left: 225rpx;
+  width: 300rpx;
+  background: #ccc;
+}
+
+.common-problem .h .title {
+  display: inline-block;
+  position: absolute;
+  top: 56.125rpx;
+  left: 0;
+  /* z-index: 3; */
+  height: 33rpx;
+  margin-left: 285rpx;
+  width: 180rpx;
+  background: #fff;
+}
+
+.common-problem .b {
+  width: 750rpx;
+  height: auto;
+  overflow: hidden;
+  padding: 0rpx 30rpx;
+  background: #fff;
+}
+
+.common-problem .item {
+  height: auto;
+  overflow: hidden;
+  padding-bottom: 25rpx;
+}
+
+.common-problem .question-box .spot {
+  float: left;
+  display: block;
+  height: 8rpx;
+  width: 8rpx;
+  background: #b4282d;
+  border-radius: 50%;
+  margin-top: 11rpx;
+}
+
+.common-problem .question-box .question {
+  float: left;
+  line-height: 30rpx;
+  padding-left: 8rpx;
+  display: block;
+  font-size: 26rpx;
+  padding-bottom: 15rpx;
+  color: #303030;
+}
+
+.common-problem .answer {
+  line-height: 36rpx;
+  padding-left: 16rpx;
+  font-size: 26rpx;
+  color: #787878;
+}
+

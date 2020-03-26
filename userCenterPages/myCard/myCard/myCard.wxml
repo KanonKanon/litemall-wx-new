@@ -1,0 +1,22 @@
+<!-- pages/myCard/myCard.wxml -->
+<view class="top">
+  <text>我的会员卡</text>
+</view>
+<view style="margin-bottom: 40rpx;">
+  <view class="background">
+    <view>{{centerUserInfo.prepaidCard}}</view>
+  </view>
+
+  <view class="reward">
+    <view>预付奖励积分：{{canSeeNum?wallet.prepayPoint/100:"****"}}分</view>
+    <view>消费奖励积分：{{canSeeNum?wallet.consumePoint/100:"****"}}分</view>
+  </view>
+</view>
+
+<view class="listView">
+  <block wx:for-items="{{listService}}" wx:key="id">
+      <navigator class="listRow" url="../{{item.id}}/{{item.id}}?index={{index}}">
+        <view>{{item.name}}</view>
+      </navigator>
+  </block>
+</view>

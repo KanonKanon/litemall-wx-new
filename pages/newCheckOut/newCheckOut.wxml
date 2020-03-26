@@ -1,0 +1,87 @@
+<!--pages/newCheckOut/newCheckOut.wxml-->
+<view class="main-warp">
+  <view class="time-box">
+    <van-cell>
+      <view slot="title">
+        <view wx:if="{{getGoodType===''}}" bindtap='showPopup2'>
+          请选择提货方式
+        </view>
+        <view wx:else bindtap="showPopup2">
+          提货方式：{{getGoodType}}
+        </view>
+      </view>
+    </van-cell>
+    <view class="time-icon">
+      <image src="../../static/images/address_right.png"></image>
+    </view>
+  </view>
+  <view class="address-box" wx:if="{{getGoodType!==''}}">
+    <view class="address-item" wx:if="{{getGoodType==='到店自提'}}">
+      <view class="l">
+        <text class="name">{{checkedAddress.shopName}}</text>
+        <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>
+      </view>
+      <view class="m">
+        <view class="mobile">{{checkedAddress.mobile}}</view>
+        <view class="mobile">{{checkedAddress.name}}</view>
+        <view class="address">{{checkedAddress.address}}</view>
+      </view>
+      <!-- <view class="r">
+        <image src="/static/images/address_right.png"></image>
+      </view> -->
+    </view>
+
+    <view class="address-item" wx:if="{{getGoodType==='邮寄快递'}}" bindtap="goAddress">
+      <view wx:if="{{isSelectAddress}}" class="sub-item">
+        <view class="l">
+          <text class="name">{{fastAddress.name}}</text>
+          <text class="default" wx:if="{{fastAddress.isDefault}}">默认</text>
+        </view>
+        <view class="m">
+          <view class="mobile">{{fastAddress.mobile}}</view>
+          <view class="address">{{fastAddress.provinceName+fastAddress.cityName+fastAddress.areaName+fastAddress.address}}</view>
+        </view>
+        <view class="r">
+          <image src="/static/images/address_right.png"></image>
+        </view>
+      </view>
+      <view wx:else class='sub-item'>
+        <view class="l">
+          <text class='name'>请选择地址</text>
+        </view>
+        <view class="r">
+          <image src="/static/images/address_right.png"></image>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+
+
+  <view class="time-box"  wx:if="{{getGoodType==='到店自提'}}">
+    <van-cell>
+      <view slot="title">
+        <view wx:if="{{getGoodDate==''}}" bindtap='showPopup'>
+          请选择提货时间
+          <view class="time-tips">提货日期只可以选择在付款后的7天内</view>
+        </view>
+        <view wx:else bindtap="showPopup">
+          提货日期：{{getGoodDate}}
+        </view>
+      </view>
+    </van-cell>
+    <view class="time-icon">
+      <image src="../../static/images/address_right.png"></image>
+    </view>
+  </view>
+
+  <view class="message-box">
+    <input class="message-item" bindinput="bindMessageInput" placeholder="如需要，请输入留言" value="{{message}}" />
+  </view>
+
+  <view class="order-total">
+    <view class="l">实付：￥{{checkedProduct.price}}</view>
+    <view class="r" bindtap="submitOrder">去付款</view>
+  </view>
+</view>

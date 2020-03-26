@@ -1,0 +1,23 @@
+<view class="wx-popup" hidden="{{flag}}" catchtap="hideInput">
+  <view class='popup-container' catchtap="tapContainer">
+    <view class="wx-popup-title">{{title}}</view>
+    <view bindtap="showNum" class="eye-image"><image src="../../static/images/{{isShowNum?'eye_open':'eye_close'}}.png"></image> </view>
+    <view class="wx-popup-con">
+      <view class="input-area">
+        <view class='box-list'>
+          <view wx:for="length" wx:key="index" class="box"></view>
+        </view>
+        <view class="dot-list" wx:if="{{isShowNum==false}}">
+          <view wx:for="{{dot_len}}" class="dot" wx:key="index"></view>
+        </view>
+        <view class="text" wx:else>
+          <text>{{pwd}}</text>
+        </view>
+        <input value="{{pwd}}"  placeholder-class="p-style" cursor-spacing="50" focus="{{isFocus}}" bindinput='pwdInput' maxlength="6" type="number" password='true' class="input-box"></input>
+      </view>
+    </view>
+    <!-- <view class="wx-popup-btn">
+      <button type="primary" size='large' bindtap='bindtap' class="btn-ok">{{btn_name}}</button>
+    </view> -->
+  </view>
+</view>

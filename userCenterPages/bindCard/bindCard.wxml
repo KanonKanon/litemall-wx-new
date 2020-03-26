@@ -1,0 +1,27 @@
+<!--userCenterPages/bindCard/bindCard.wxml-->
+<view>
+  <view class="radio">
+    <radio-group bindchange="radioChange">
+      <label>
+        <radio checked value="pwd"></radio>使用卡密码绑定 </label>
+      <label>
+        <radio value="code"></radio>使用验证码绑定</label>
+    </radio-group>
+  </view>
+  <view>
+    <van-field maxlength="19" bind:input="cardInput" type="number" required clearable="true" label="预付卡号" placeholder="请输入预付卡号" bind:click-icon="onClickIcon" />
+    <view hidden="{{bindType=='code'}}">
+      <van-field maxlength="6" bind:input="pwdInput"  clearable="true" type="password" label="卡密码" placeholder="请输入卡密码" required />
+    </view>
+    <view hidden="{{bindType=='pwd'}}">
+      <van-field bind:input="codeInput" type="number"  center required clearable="true" label="短信验证码" placeholder="请输入短信验证码"  use-button-slot>
+        <van-button slot="button" size="small" type="primary" bind:click="getCode" disabled='{{sendDisable}}'>{{sendDisable?count+'s':'发送验证码'}}</van-button>
+      </van-field>
+    </view>
+    <view>
+    <button type="primary" bindtap="bindConfirm">绑 定</button>
+    </view>
+  </view>
+</view>
+
+<!-- <input value='12345' password='true' class="pwd"></input> -->

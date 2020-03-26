@@ -1,0 +1,115 @@
+/* userCenterPages/sellerCenter/invitationCard/invitationCard.wxss */
+.main-wrap{
+  overflow: hidden;
+  background: gainsboro;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  
+}
+
+.card{
+  width: 600rpx;
+  height: 863rpx;
+  position: relative;
+  overflow: hidden;
+  margin-left: 74rpx;
+  margin-top: -80rpx;
+  
+}
+.card .pic{
+  width: 600rpx;
+  height: 863rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card .pic image{
+  width: 600rpx;
+  height: 863rpx;
+}
+
+.card .avatar{
+  position: absolute;
+  top: 160rpx;
+  left: 220rpx;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+.avatar .name{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+}
+
+.card .avatar image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+
+.card .name{
+  height: 80rpx;
+}
+
+
+.logo{
+  overflow: hidden;
+}
+
+.logo .tips{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  align-items: center;
+  justify-content: center;
+}
+.logo .tips .icon image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.logo .logo-pic{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo .logo-pic image{
+  width: 300rpx;
+  height: 100rpx;
+}
+
+.logo .desc{
+  color:grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+  font-size: 35rpx;
+}
+
+.cover{
+  width: 100%;
+  height: 1334rpx;
+  background: gainsboro;
+}
+.testCanvas{
+  background: gainsboro;
+  width: 575rpx;
+  height: 771rpx;
+  position: absolute;
+  top:100%;
+}
+
+.canvas-wrap{
+  display: flex;
+  justify-content: center;
+}
+
+

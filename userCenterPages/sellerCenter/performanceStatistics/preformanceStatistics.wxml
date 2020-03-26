@@ -1,0 +1,99 @@
+<!--userCenterPages/sellerCenter/performanceStatistics/preformanceStatistics.wxml-->
+<view class='main-wrap'>
+  <view class="top">
+    <view class="yesterday {{index==1?'active':''}}" bindtap='showData' data-index="1">昨天</view>
+    <view class="sevendays {{index==2?'active':''}}" bindtap='showData' data-index="2">近七天</view>
+    <view class="all {{index==3?'active':''}}" bindtap='showData' data-index="3">全部</view>
+  </view>
+  <view class="line-s"></view>
+  <view class='client' catchtap='goToMyclient'>
+    <view>新增客户（人）</view>
+    <view>{{achievementsData.offline}}</view>
+  </view>
+  <view class="line"></view>
+  <view class="invitation" catchtap="goToMyinvitation">
+    <view>新增邀请（人）</view>
+    <view>{{achievementsData.invitation}}</view>
+  </view>
+  <view class="line-s"></view>
+  <view class="commission" catchtap='goToPromoteOrder'>
+    <view>商品佣金（元）</view>
+    <view class="c-right">
+      <view class="c-r-left">
+        <view>{{achievementsData.commission}}</view>
+        <view>含待结算{{achievementsData.commissionYet}}</view>
+      </view>
+      <view>
+        <image src="/static/images/address_right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="line-b"></view>
+
+  <view class="commission" catchtap='goToRewardOrder'>
+    <view>邀请奖励（元）</view>
+    <view class="c-right">
+      <view class="c-r-left">
+        <view>{{achievementsData.bonuses}}</view>
+        <view>含待结算{{achievementsData.bonusesYet}}</view>
+      </view>
+      <view>
+        <image src="/static/images/address_right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="line-s"></view>
+
+  <view class="ask" catchtap='showPop'>
+    <view>指标名词相关解释</view>
+    <view>
+      <image src="/static/images/ask.png"></image>
+    </view>
+  </view>
+  <view class="logo">
+    <view>
+      <image src="/static/images/xingfangzhilian.png"></image>
+    </view>
+    <view class="desc">综合管理部技术支持</view>
+  </view>
+
+</view>
+
+<view class="btn-list">
+  <view class="btn-l" catchtap='goToIndex'>
+    首页
+  </view>
+  <view class="btn-c" catchtap='goToPromotionGoods'>
+    推广商品
+  </view>
+  <view class="btn-r" catchtap='goToSetllementCenter'>
+    结算中心
+  </view>
+</view>
+
+<view class="pop-panel" hidden='{{isHidePop}}'>
+  <view class="pop-wrap">
+    <view class='item'>
+      <view class="title">客户</view>
+      <view class="desc">和分销员绑定了客户关系的买家或分销员</view>
+    </view>
+    <view class='line'></view>
+    <view class='item'>
+      <view class="title">邀请</view>
+      <view class="desc">分销员成功邀请的下级分销员</view>
+    </view>
+    <view class='line-b'></view>
+    <view class='item'>
+      <view class="title">商品佣金</view>
+      <view class="desc">分销员推荐客户购买后，分销员商品获得的佣金</view>
+    </view>
+    <view class='line-b'></view>
+    <view class='item'>
+      <view class="title">邀请奖励</view>
+      <view class="desc">下级分销员推广商品后，上级获得的奖励</view>
+    </view>
+    <view class="btn" bindtap="hidePop">我知道了</view>
+  </view>
+</view>

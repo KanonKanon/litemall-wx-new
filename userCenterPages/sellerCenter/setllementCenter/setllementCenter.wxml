@@ -1,0 +1,37 @@
+<!--userCenterPages/sellerCenter/setllementCenter/setllementCenter.wxml-->
+<view class="main-wrap">
+  <view class="can-get-money">
+    <view class="img">
+      <image src="/static/images/pull_money.png"></image>
+    </view>
+    <view class="txt">可提现金额</view>
+    <view class="money">￥ {{centerInfo.balance}}</view>
+    <button type="primary" class="btn" catchtap='goToGetMoney'>提现</button>
+  </view>
+
+  <view class="problems" catchtap='goToPaymentDetail'>
+    <view>收支明细</view>
+    <view>
+      <image src="/static/images/address_right.png"></image>
+    </view>
+  </view>
+  <view class='line-b'></view>
+  <view class="problems" catchtap='goToGetMoneyRecord'>
+    <view>提现记录</view>
+    <view>
+      <image src="/static/images/address_right.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class="btn-list">
+  <view class="btn-l" catchtap='goToIndex'>
+    首页
+  </view>
+  <view class="btn-c" catchtap='shareGoods'>
+    推广商品
+  </view>
+  <view class="btn-r" catchtap='payCenter'>
+    结算中心
+  </view>
+</view>

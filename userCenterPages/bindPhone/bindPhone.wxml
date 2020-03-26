@@ -1,0 +1,3 @@
+<!--userCenterPages/bindPhone/bindPhone.wxml-->
+<popup id="pop" title="信息提示" content="商城还没有绑定手机号，会员中心的功能将不能使用!" open_type="getPhoneNumber" bind:bindgetphonenumber="bindPhoneNumber" btn_ok="绑定手机" />
+

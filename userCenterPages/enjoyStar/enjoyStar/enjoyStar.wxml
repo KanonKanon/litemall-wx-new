@@ -1,0 +1,21 @@
+<!-- pages/enjoyStar/enjoyStar.wxml -->
+<view class="top">
+  <text class="top-text">星享金</text>
+    <view class="top-view" bindtap="orderQuery">下单记录</view>
+  
+</view>
+<view>
+  <block wx:for="{{enjoyInfoList}}" wx:key="id">
+    <view class="listRow" id="{{index}}" bindtap="submit" hover-class='hover-tap'>
+      <image class="image" src="../../../static/images/gold.jpg"></image>
+      <view class="word">
+        <view class="topWord">{{item.enjoyTitle}}</view>
+        <view class="center">¥{{(item.enjoyWeight*item.enjoyGold)|int}}元</view>
+        <view class="button">
+          <view class="button-left">重量：{{item.enjoyWeight}}克</view>
+          <view class="button-right">佣金比例：{{item.xxjComm}}%</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

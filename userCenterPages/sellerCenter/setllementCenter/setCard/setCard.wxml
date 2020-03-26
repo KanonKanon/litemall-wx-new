@@ -1,0 +1,25 @@
+<!--userCenterPages/sellerCenter/setllementCenter/setCard/setCard.wxml-->
+<view class='main-wrap'>
+  <view class='line-s'></view>
+  <view class="item">
+    <view class='i-left'>银行</view>
+    <view class="i-right">
+      <picker mode = 'selector' range='{{bankList}}' bindchange="selectBank">{{bankName}}</picker>
+    </view>
+  </view>
+  <view class='item'>
+    <view class='i-left'>银行卡号</view>
+    <view class="i-right">
+      <input placeholder='请填入银行卡卡号' value="{{bankCardNum}}" bindinput='bankCardNumChange' type="idcard" maxlength='19'></input>
+    </view>
+  </view>
+   <view class='item'>
+    <view class='i-left'>姓名</view>
+    <view class="i-right">
+     <input placeholder='请填入姓名' bindinput='nameChange' type="text" value='{{name}}'></input>
+    </view>
+  </view>
+
+  <view class="btn" catchtap='finish'>完成</view>
+
+</view>

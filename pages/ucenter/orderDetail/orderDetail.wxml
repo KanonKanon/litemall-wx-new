@@ -1,0 +1,275 @@
+<view class="main-wrap">
+  <view class="order-status">
+    <block wx:if="{{handleOption.delete}}">
+      <view class='steps'>
+        <view class="o-left">
+          <image src="/static/images/closeDetail.png"></image>
+        </view>
+        <view class="o-right">
+          <view class="title">交易关闭</view>
+          <view class="desc">订单全额退款</view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{handleOption.confirm}}">
+    <view class="steps">
+     <view class="o-left">
+        <image src="/static/images/waitpos.png"></image>
+      </view>
+      <view class="o-right">
+        <view class="title">等待商家发货</view>
+      </view>
+    </view>
+      <van-steps steps="{{ steps }}" active="{{ active }}" />
+    </block>
+  </view>
+  <view class="line-seperate"></view>
+
+ 
+  <view class="vouter" wx:if="{{orderInfo.offlineAddress}}">
+    <view class='title'>收货地址</view>
+    <view class='addr' >{{orderInfo.offlineAddress}}</view>
+    <view class="name">
+      <view class="n-left">收货人：</view>
+      <view class="n-right">{{orderInfo.consignee}}</view>
+    </view>
+  </view>
+   <view class="vouter" wx:else>
+    <view class='title'>提货凭证</view>
+    <view class='addr' wx:if="{{orderInfo.offlineAddress}}">{{orderInfo.offlineAddress}}</view>
+     <view class="addr" wx:else>{{orderInfo.address}}</view>
+    <view class="name">
+      <view class="n-left">提货人：</view>
+      <view class="n-right">{{orderInfo.consignee}}</view>
+    </view>
+    <view class="name" wx:if="{{orderInfo.deliveryTime}}">
+      <view class="n-left">预约时间：</view>
+      <view class="n-right">{{orderInfo.deliveryTime}}</view>
+    </view>
+    <view class="call-shop">
+      <view class="call-icon-shop">
+        <image class="call-image" src="/static/images/phone.png"></image>
+      </view>
+      <view class="c-txt" bindtap="callCusPhone" data-phone="{{orderInfo.telephone}}">联系提货点</view>
+    </view>
+  </view>
+  <view class="line-seperate"></view>
+
+  <view class="show-goods">
+    <view class="title">
+      <image src="/static/images/shop.png"></image>
+      <view class="txt">星商城+</view>
+    </view>
+    <view class="goods-item" wx:for="{{orderGoods}}" wx:key="index">
+      <view class="g-left">
+        <image src="{{item.picUrl}}"></image>
+      </view>
+      <view class="g-right">
+        <view class="title">{{item.goodsName}}</view>
+        <view class="desc"></view>
+        <view class="price">
+          <view class="l-price">￥{{item.price}}.00</view>
+          <view class="count">X {{item.number}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="sign">
+      <view class="s-item">
+        {{orderInfo.orderStatusText}}
+      </view>
+    </view>
+    <view class="m-price">
+      <view class="m-left">商品小计：</view>
+      <view class="m-right">￥{{orderInfo.actualPrice}}.00</view>
+    </view>
+  </view>
+  <view class="line-seperate"></view>
+
+  <view class="buyer-desc">
+    <view class="delivery">
+      <view>配送方式</view>
+      <view>
+        <!-- <view wx:if="{{!orderInfo.freightPrice}}">免运费</view> -->
+        <view wx:if="{{orderInfo.offlineAddress}}">邮寄快递</view>
+        <view wx:else>到店自提</view>
+      </view>
+    </view>
+    <view class="line-whitesmoke"></view>
+    <view class="msg">
+      <view class="left">买家留言:</view>
+      <view class="right">{{orderInfo.message?orderInfo.message:'无'}}</view>
+    </view>
+  </view>
+  <view class="line-seperate"></view>
+
+  <view class="goods-price">
+    <view class="g-price">
+      <view class="g-left">商品金额</view>
+      <view class="g-right">￥{{orderInfo.goodsPrice}}.00</view>
+    </view>
+    <view wx:if="{{orderInfo.freightPrice}}" class="d-price">
+      <view class="d-left">运费</view>
+      <view class="d-right">+￥{{orderInfo.freightPrice}}</view>
+    </view>
+    <view wx:if="{{orderInfo.couponPrice}}" class="d-price">
+      <view class="d-left">优惠券</view>
+      <view class="d-right">-￥{{orderInfo.couponPrice}}</view>
+    </view>
+    <view class="line-whitesmoke"></view>
+    <view class="pay-style">
+      <view class="p-left">付款方式</view>
+      <view class="p-right">{{orderInfo.payType}}</view>
+    </view>
+    <view class="line-whitesmoke"></view>
+    <view class="actual-pay">
+      <view class="a-left">实付款:</view>
+      <view class="a-price">￥{{orderInfo.actualPrice}}.00</view>
+    </view>
+    <view class="line-whitesmoke"></view>
+    <button open-type='contact' class="help" session-from="weapp">
+      <view>
+        <image src="/static/images/customer.png"></image>
+      </view>
+      <view class="h-right">在线客服</view>
+    </button>
+  </view>
+  <view class="line-seperate"></view>
+
+  <view class="order-info" hidden="{{handleOption.pay}}">
+    <view class="order-sn">
+      <view>订单编号：{{orderInfo.orderSn}}</view>
+      <view class="copy" bindtap="copyText" data-text="{{orderInfo.orderSn}}">复制</view>
+    </view>
+    <view>创建时间：{{orderInfo.addTime}}</view>
+    <!-- <view>付款时间：{{orderInfo.payTime}}</view> -->
+    <!-- <view>发货时间：{{orderInfo.shipTime}}</view> -->
+    <view class="offcode">
+      <view class="o-left">核销码：{{orderInfo.writeOffCode}}</view>
+      <view class="copy" bindtap="copyText" data-text="{{orderInfo.writeOffCode}}">复制</view>
+    </view>
+  </view>
+  <view class="line-seperate"></view>
+
+  <!-- 更多精选商品 -->
+  <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
+    <view class="h">
+      <view class="line"></view>
+      <text class="title">更多精选商品</text>
+    </view>
+    <view class="b">
+      <view class="item" wx:for="{{relatedGoods}}" wx:key="id">
+        <navigator url="/pages/goods/goods?id={{item.id}}">
+          <image class="img" src="{{item.picUrl}}" background-size="cover"></image>
+          <text class="name">{{item.name}}</text>
+          <text class="price">￥{{item.retailPrice}}</text>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
+
+
+<!-- 以下为旧页面结构 -->
+<view class="container">
+  <!-- <view class="order-goods">
+    <view class="h">
+      <view class="label">商品信息</view>
+      <view class="status">{{orderInfo.orderStatusText}}</view>
+    </view>
+    <view class="goods">
+      <view class="item" wx:for="{{orderGoods}}" wx:key="id">
+        <view class="img">
+          <image src="{{item.picUrl}}"></image>
+        </view>
+        <view class="info">
+          <view class="t">
+            <text class="name">{{item.goodsName}}</text>
+            <text class="number">x{{item.number}}</text>
+          </view>
+          <view class="attr">{{item.specifications}}</view>
+          <view class="price">￥{{item.price}}</view>
+          <view class="btn active" wx:if="{{handleOption.comment && (item.comment == 0)}}">
+            <navigator url="../../commentPost/commentPost?orderId={{item.orderId}}&&valueId={{item.goodsId}}&type=0">去评价</navigator>
+          </view>
+          <view class="btn active" wx:if="{{handleOption.rebuy}}">
+            <navigator url="../../goods/goods?id={{item.goodsId}}">再次购买</navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="order-bottom">
+      <view class="address">
+        <view class="t">
+          <text class="name">{{orderInfo.consignee}}</text>
+          <text class="mobile">{{orderInfo.mobile}}</text>
+        </view>
+        <view class="b">{{orderInfo.address}}</view>
+      </view>
+      <view class="total">
+        <view class="t">
+          <text class="label">商品合计：</text>
+          <text class="txt">￥{{orderInfo.goodsPrice}}</text>
+        </view>
+        <view class="t">
+          <text class="label">运费：</text>
+          <text class="txt">￥{{orderInfo.freightPrice}}</text>
+        </view>
+        <view class="t">
+          <text class="label">优惠：</text>
+          <text class="txt">￥-{{orderInfo.couponPrice}}</text>
+        </view>
+      </view>
+      <view class="pay-fee">
+        <text class="label">实付：</text>
+        <text class="txt">￥{{orderInfo.actualPrice}}</text>
+      </view>
+
+
+    </view>
+  </view> -->
+
+  <!-- <view class="order-info">
+    <view class="h">订单信息</view>
+    <view class="detail">
+      <view class="offcode">核销码：{{orderInfo.writeOffCode}}</view>
+      <view class="item-a">下单时间：{{orderInfo.addTime}}</view>
+      <view class="item-a">订单编号：{{orderInfo.orderSn}}</view>
+      <view class="item-a">提货日期：{{orderInfo.deliveryTime}}</view>
+      <view class="item-a">付款时间：{{orderInfo.deliveryTime}}</view>
+      <view class="order-tips">注：提货7天后,将不能申请退款</view>
+    </view>
+    <view class="item-c">
+      <view class="l">实付：
+        <text class="cost">￥{{orderInfo.actualPrice}}</text>
+      </view>
+      <view class="r">
+        <view class="btn active" bindtap="cancelOrder" wx:if="{{handleOption.cancel}}">取消订单</view>
+        <view class="btn active" bindtap="payOrder" wx:if="{{handleOption.pay}}">去付款</view>
+        <view class="btn active" bindtap="confirmOrder" wx:if="{{handleOption.confirm}}">确认收货</view>
+        <view class="btn active" bindtap="deleteOrder" wx:if="{{handleOption.delete}}">删除订单</view>
+        <view class="btn active" bindtap="refundOrder" wx:if="{{handleOption.refund}}">申请退款</view>
+      </view>
+    </view>
+  </view> -->
+
+  <!-- 物流信息,仅收货状态下可见 -->
+  <!-- <view class="order-express" bindtap="expandDetail" wx:if="{{ handleOption.confirm }}">
+    <view class="order-express">
+      <view class="title">
+        <view class="t">快递公司：{{expressInfo.shipperName}}</view>
+        <view class="b">物流单号：{{expressInfo.logisticCode}}</view>
+      </view>
+      <image class="ti" src="/static/images/address_right.png" background-size="cover"></image>
+    </view>
+    <view class="traces" wx:for="{{expressInfo.Traces}}" wx:key="item" wx:for-item="iitem" wx:if="{{ flag }}">
+      <view class="trace">
+        <view class="acceptStation">{{iitem.AcceptStation}}</view>
+        <view class="acceptTime">{{iitem.AcceptTime}}</view>
+      </view>
+    </view>
+  </view> -->
+</view>

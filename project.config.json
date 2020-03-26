@@ -1,0 +1,494 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"uglifyFileName": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"nodeModules": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.0",
+	"appid": "wxe5abc07a2d6f1c8a",
+	"projectname": "litemall-wx",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 61,
+			"list": [
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "专题",
+					"pathName": "pages/topic/topic",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "专题详情",
+					"pathName": "pages/topicDetail/topicDetail",
+					"query": "id=314"
+				},
+				{
+					"id": -1,
+					"name": "专题评论列表",
+					"pathName": "pages/topicComment/topicComment",
+					"query": "valueId=314&type=1"
+				},
+				{
+					"id": -1,
+					"name": "专题评论添加",
+					"pathName": "pages/topicCommentPost/topicCommentPost",
+					"query": "valueId=314&type=1"
+				},
+				{
+					"id": -1,
+					"name": "品牌",
+					"pathName": "pages/brand/brand",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "品牌详情",
+					"pathName": "pages/brandDetail/brandDetail",
+					"query": "id=1001000"
+				},
+				{
+					"id": -1,
+					"name": "人气推荐",
+					"pathName": "pages/hotGoods/hotGoods",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "新品首发",
+					"pathName": "pages/newGoods/newGoods",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分类",
+					"pathName": "pages/catalog/catalog",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分类详情",
+					"pathName": "pages/category/category",
+					"query": "id=1008002"
+				},
+				{
+					"id": -1,
+					"name": "查找",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "商品",
+					"pathName": "pages/goods/goods",
+					"query": "id=1181003"
+				},
+				{
+					"id": -1,
+					"name": "商品评论列表",
+					"pathName": "pages/comment/comment",
+					"query": "valueId=1181000&type=0"
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/cart/cart",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "下单",
+					"pathName": "pages/checkout/checkout",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "支付结果",
+					"pathName": "pages/payResult/payResult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/ucenter/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的订单列表",
+					"pathName": "pages/ucenter/order/order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的订单详情",
+					"pathName": "pages/ucenter/orderDetail/orderDetail",
+					"query": "id=1"
+				},
+				{
+					"id": 22,
+					"name": "待评价的订单详情",
+					"pathName": "pages/ucenter/orderDetail/orderDetail",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "购买商品评价",
+					"pathName": "pages/commentPost/commentPost",
+					"query": "orderId=2&type=0&valueId=1116011"
+				},
+				{
+					"id": 22,
+					"name": "我的优惠券",
+					"pathName": "pages/ucenter/couponList/couponList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/ucenter/collect/collect",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的足迹",
+					"pathName": "pages/ucenter/footprint/footprint",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的地址",
+					"pathName": "pages/ucenter/address/address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的地址添加",
+					"pathName": "pages/ucenter/addressAdd/addressAdd",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/auth/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "账号登录",
+					"pathName": "pages/auth/accountLogin/accountLogin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/auth/register/register",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "找回密码",
+					"pathName": "pages/auth/reset/reset",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关于",
+					"pathName": "pages/about/about",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "测试更新",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "意见反馈",
+					"pathName": "pages/ucenter/feedback/feedback",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "团购专区",
+					"pathName": "pages/groupon/grouponList/grouponList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "选择优惠券",
+					"pathName": "pages/ucenter/couponSelect/couponSelect",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的优惠券列表",
+					"pathName": "pages/ucenter/couponList/couponList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "优惠券列表",
+					"pathName": "pages/coupon/coupon",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "帮助中心",
+					"pathName": "pages/help/help",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员中心",
+					"pathName": "pages/ucenter/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "签到日历",
+					"pathName": "userCenterPages/signPage/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "充值",
+					"pathName": "userCenterPages/myCard/cardRecharge/cardRecharge",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "星享金",
+					"pathName": "userCenterPages/enjoyStar/enjoyStar/enjoyStar",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 43,
+					"name": "我的会员卡",
+					"pathName": "userCenterPages/myCard/myCard/myCard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "绑定会员卡",
+					"pathName": "userCenterPages/bindCard/bindCard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择提货地点",
+					"pathName": "userCenterPages/selectAddress/selectAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择支付页面",
+					"pathName": "userCenterPages/selectPay/selectPay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试页",
+					"pathName": "lib/textPage/textPage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新分类页面",
+					"pathName": "pages/newCategory/newCategory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分销员中心",
+					"pathName": "userCenterPages/sellerCenter/sellerCenter",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "业绩统计",
+					"pathName": "userCenterPages/sellerCenter/performanceStatistics/preformanceStatistics",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的客户",
+					"pathName": "userCenterPages/sellerCenter/myClient/myClient",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的邀请",
+					"pathName": "userCenterPages/sellerCenter/myInvitation/myInvitation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "结算中心",
+					"pathName": "userCenterPages/sellerCenter/setllementCenter/setllementCenter",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "常见问题",
+					"pathName": "userCenterPages/sellerCenter/problems/problems",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "推广商品列表页",
+					"pathName": "userCenterPages/sellerCenter/promotionGoods/promotionGoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息中心",
+					"pathName": "userCenterPages/sellerCenter/msgCenter/msgCenter",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请卡",
+					"pathName": "userCenterPages/sellerCenter/invitationCard/invitationCard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品推广订单",
+					"pathName": "userCenterPages/sellerCenter/promoteOrder/promoteOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "秒杀",
+					"pathName": "userCenterPages/secKillDetail/secKillDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠套餐",
+					"pathName": "userCenterPages/discountPackage/discountPackage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "通用会员卡",
+					"pathName": "userCenterPages/newCard/newCard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 62,
+					"name": "优惠券",
+					"pathName": "pages/ucenter/couponDetail/couponDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "充值记录",
+					"pathName": "pages/ucenter/records/rechargerecord/rechargerecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 64,
+					"name": "安享金记录",
+					"pathName": "pages/ucenter/records/anxiangrecord/anxiangrecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优先享记录",
+					"pathName": "pages/ucenter/records/youxianrecord/youxianrecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 66,
+					"name": "销售单记录",
+					"pathName": "pages/ucenter/records/xiaoshoudanrecord/xiaoshoudanrecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "随享卡申请",
+					"pathName": "userCenterPages/newClient/newClient",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

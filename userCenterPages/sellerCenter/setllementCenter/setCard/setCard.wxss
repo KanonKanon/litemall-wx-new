@@ -1,0 +1,50 @@
+/* userCenterPages/sellerCenter/setllementCenter/setCard/setCard.wxss */
+.line-s{
+  width: 100%;
+  height: 30rpx;
+  background: whitesmoke;
+}
+
+.main-wrap{
+  width: 100%;
+  height: 1334rpx;
+  background: whitesmoke;
+}
+
+.item{
+  display: flex;
+  height: 100rpx;
+  justify-content: flex-start;
+  align-items: center;
+  background: white;
+}
+.item .i-left{
+  display: flex;
+  width: 200rpx;
+  height: 100rpx;
+  align-items: center;
+  padding:0 20rpx; 
+}
+.item .i-right{
+  display: flex;
+  align-items: center;
+  width: 70%;
+}
+.item .i-right picker{
+  display: flex;
+  justify-content: flex-start;
+}
+.item .i-right input{
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 400rpx;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30rpx 30rpx;
+  background: green;
+  color: white;
+  height: 100rpx;
+}

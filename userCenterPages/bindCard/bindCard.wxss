@@ -1,0 +1,9 @@
+/* userCenterPages/bindCard/bindCard.wxss */
+.radio{
+  padding-left: 20rpx;
+  margin-top: 20rpx;
+}
+.pwd{
+  letter-spacing: 50rpx;
+  font-size: 200rpx;
+}

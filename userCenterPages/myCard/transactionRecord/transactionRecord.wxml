@@ -1,0 +1,2 @@
+<!--pages/transactionRecord/transactionRecord.wxml-->
+<view class="top"><text>交易记录查询</text></view>

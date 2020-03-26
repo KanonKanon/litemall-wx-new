@@ -1,0 +1,22 @@
+<!-- pages/cardRecharge/cardRecharge.wxml -->
+<view class="top">
+  <text>会员卡充值</text>
+</view>
+<view class="itemColumn">
+  <view>请选择充值金额  
+    <text>¥{{recharge}}元</text>
+  </view>
+  <view class="row">
+    <block wx:for="{{recharges}}" wx:key="index">
+      <view>
+        <button id="{{index}}" type="default" class="rechargeBtn" bindtap="rechargeSelect">{{item}}</button>
+      </view>
+    </block>
+    <view class="viewModule">
+      <view hidden="{{inputShow}}"h>请输入要充值的金额:</view>
+      <input hidden="{{inputShow}}" maxlength="4" type="number" bindinput="rechargeInput" value="{{recharge}}" />
+    </view>
+  </view>
+</view>
+<button class="loginBtn" bindtap="bindViewTap">马上充值</button>
+

@@ -1,0 +1,77 @@
+/* enjoyStar/enjoyStarOrder/enjoyStarOrder.wxss */
+/* pages/enjoyStar/enjoyStar.wxss */
+.top{
+margin-bottom: 40rpx;
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+background-color: #ab956d;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 30rpx;
+color:white;
+}
+.top text{
+  color:white;
+}
+.topWord{
+padding: 20rpx 0;
+margin-bottom: 10rpx;
+display: flex;
+font-size: 40rpx;
+}
+.center{
+
+display: flex;
+font-size: 35rpx;
+color: red;
+}
+.button{
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+font-size: 35rpx;
+
+}
+.listRow{
+  display: flex;
+  flex-direction: row;
+}
+.image{
+  display: flex;
+  width:340rpx;
+  height:255rpx;
+  margin: auto 20rpx;
+}
+.buttonLine{
+  height:3rpx;
+  width:100%;
+  background-color: black;
+}
+.word{
+  margin-left: 10rpx;
+  margin-bottom: 30rpx;
+}
+.point{
+  display: flex;
+  flex:row;
+}
+.point view{
+  margin: auto 15rpx;
+}
+.point input{ 
+  width: 100rpx;   
+  float: left;  
+  margin: auto 5rpx;  
+  text-align: center;  
+  font-size: 12px;  
+  border: 1px solid #ccc;  
+}
+.pay-btn{
+  color: white;
+  background: rgb(171,149,109);
+}
+.pay-button .hover-tap{
+  color:gray;
+}

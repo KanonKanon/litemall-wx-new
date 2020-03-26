@@ -1,0 +1,38 @@
+/* userCenterPages/selectAddress/selectAddress.wxss */
+
+.item {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  margin: 0 30rpx;
+  border-bottom: 1rpx solid gainsboro;
+  flex-wrap: wrap;
+}
+
+.left {
+  width: 80%;
+}
+
+.item-shopname {
+  font-size: 35rpx;
+  line-height: 60rpx;
+  display: flex;
+  
+}
+
+.item-addr {
+  color: gray;
+  font-size: 25rpx;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 40rpx;
+}
+
+.right {
+  width: 20%;
+  color: gray;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 25rpx;
+  text-align: right;
+}

@@ -1,0 +1,67 @@
+/* userCenterPages/sellerCenter/setllementCenter/getMoney/getMoney.wxss */
+.line-s{
+  width: 100%;
+  height: 20rpx;
+  background: whitesmoke;
+}
+.line-b{
+  width: 100%;
+  height: 2rpx;
+  background: whitesmoke;
+}
+.main-wrap{
+  height: 1334rpx;
+  width: 100%;
+  background: whitesmoke;
+
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100rpx;
+  padding: 0 30rpx;
+  background: white;
+}
+.item .i-left{
+  display: flex;
+  align-items: center;
+  height: 100rpx;  
+}
+.item .i-right{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+}
+.item .i-right input{
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.item .i-right view{
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+}
+.item .i-right view image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.btn{
+  display: flex;
+  height: 100rpx;
+  color: white;
+  margin: 30rpx 20rpx;
+  justify-content: center;
+  align-items: center;
+}
+.txt{
+  display: flex;
+  height: 60rpx;
+  justify-content: flex-start;
+  padding-left: 60rpx;
+  align-items: center;
+  color: grey;
+}

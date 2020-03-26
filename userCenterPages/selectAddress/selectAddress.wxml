@@ -1,0 +1,27 @@
+<!--userCenterPages/selectAddress/selectAddress.wxml-->
+<wxs module="fix" src="../../utils/Fixed.wxs"></wxs>
+<view class='main-wrap'>
+  <view>
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onSearch">
+      <picker slot="action" mode="selector" bindchange="areaSelect" range='{{citys}}'>
+        <view size='small'>{{cityVal}}
+          <van-icon name="arrow-down" />
+        </view>
+      </picker>
+    </van-search>
+  </view>
+
+  <view>
+    <view>
+      <view wx:for="{{shopList}}" wx:key="id">
+        <view wx:if="{{item.city==cityVal}}" class='item' bindtap="onClick" data-item="{{item}}">
+          <view class="left">
+            <view class="item-shopname">{{item.name}}</view>
+            <view class="item-addr">{{item.province+item.city+item.area+item.addr}}</view>
+          </view>
+          <view class="right">{{fix.showDistance(item.distance)}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

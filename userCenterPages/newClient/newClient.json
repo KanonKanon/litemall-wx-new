@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "星光珠宝随享卡申请",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "van-cell-group" : "../vant_component/cell-group/index",
+    "van-field":"../vant_component/field/index",
+    "van-tabs":"../vant_component/tabs/index",
+    "van-tab": "../vant_component/tab/index",
+    "van-cell":"../vant_component/cell/index",
+    "van-dropdown-menu":"../vant_component/dropdown-menu/index",
+    "van-dropdown-item":"../vant_component/dropdown-item/index",
+    "van-button":"../vant_component/button/index"
+  }
+}

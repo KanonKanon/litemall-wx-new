@@ -1,0 +1,2 @@
+/* userCenterPages/sellerCenter/setllementCenter/selectAcount/selectAcount.wxss */
+@import '../getMoney/getMoney.wxss'

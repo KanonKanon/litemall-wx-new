@@ -1,0 +1,34 @@
+<!--userCenterPages/sellerCenter/msgCenter/msgCenter.wxml-->
+<view class="main-wrap">
+  <view class="line-b"></view>
+  <view class="labels">
+    <view class="l-item {{labelIndex==1?'active':''}}" catchtap='selectLabel' data-index="1">进行中</view>
+    <view class="l-item {{labelIndex==2?'active':''}}" catchtap='selectLabel' data-index="2">已失效</view>
+  </view>
+  <view class="line-b"></view>
+
+   <view class="data-list">
+    <view wx:if="{{dataList.length}}">
+    </view>
+    <view wx:else class='no-data'>
+      <view>
+        <image src="/static/images/empty.png"></image>
+      </view>
+      <view>暂无数据</view>
+    
+    </view>
+  </view>
+
+</view>
+<view class="btn-list">
+  <view class="btn-l" catchtap='goToIndex'>
+    首页
+  </view>
+  <view class="btn-c" catchtap='goToPromotionGoods'>
+    推广商品
+  </view>
+  <view class="btn-r" catchtap='goToSetllementCenter'>
+    结算中心
+  </view>
+</view>
+

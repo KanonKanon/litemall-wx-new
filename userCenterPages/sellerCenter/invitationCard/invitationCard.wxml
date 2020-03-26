@@ -1,0 +1,42 @@
+<!--userCenterPages/sellerCenter/invitationCard/invitationCard.wxml-->
+
+<view class="main-wrap">
+  <view class='canvas-wrap' catchlongtap='saveImg'>
+    <canvas canvas-id='myCanvas' style='width:{{canvasWidth}}px; height:{{canvasHeight}}px' disable-scroll='true'>
+    </canvas>
+  </view>
+
+  <!-- <view class='card' bindlongtap='onCutPic'>
+    <view class="pic">
+      <image src="/static/images/background.png"></image>
+    </view>
+    <view class='avatar'>
+      <image src="{{userInfo.avatarUrl}}"></image>
+      <view class="name">{{userInfo.nickName}}</view>
+    </view>
+
+
+    <view class="weixinma">
+      <image src=""></image>
+    </view>
+  </view> -->
+
+  <view class='logo'>
+    <view class="tips">
+      <view class="icon">
+        <image src="/static/images/finger.png"></image>
+      </view>
+      <view class="desc">长按图片保存到相册</view>
+    </view>
+
+    <view class="logo-pic">
+      <image src="/static/images/xingfangzhilian.png"></image>
+    </view>
+
+    <view class="desc">星坊智链技术支持</view>
+
+
+  </view>
+
+
+</view>

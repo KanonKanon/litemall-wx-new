@@ -1,0 +1,17 @@
+<!--userCenterPages/newCard/newCard.wxml-->
+<view wx:for="{{customMemberData}}" wx:key="{{index}}">
+  <view class="top">
+    <text>我的会员卡</text>
+  </view>
+  <view style="margin-bottom: 40rpx;">
+    <view class="background">
+      <view>卡号：{{item.card}}</view>
+    </view>
+
+    <view class="reward">
+      <view>积分：{{item.point}}分</view>
+      <view>会员名称：{{item.userName}}</view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,47 @@
+<!--userCenterPages/sellerCenter/myInvitation/myInvitation.wxml-->
+<view class='main-wrap'>
+ <view class="top">
+    <view class="yesterday {{time==1?'active':''}}" bindtap='showData' data-index="1">昨天</view>
+    <view class="sevendays {{time==2?'active':''}}" bindtap='showData' data-index="2">近七天</view>
+    <view class="all {{time==3?'active':''}}" bindtap='showData' data-index="3">全部</view>
+  </view>
+
+  <view class="data-list">
+  <view class="line-b"></view>
+    <view wx:if="{{dataList.length}}">
+       <view class="data-item" wx:for="{{dataList}}" wx:key="{{index}}">
+        <view class="d-left">
+          <view>{{item.userName}}</view>
+          <view>成交额：{{item.salesVolume}}</view>
+        </view>
+        <view class="d-right">
+          <view>关系长期有效</view>
+          <view>{{item.protectionPeriod}}天内不会被抢</view>
+        </view>
+       
+        
+      </view>
+    </view>
+    <view wx:else class='no-data'>
+      <view>
+        <image src="/static/images/empty.png"></image>
+      </view>
+      <view>暂无数据</view>
+    
+    </view>
+  </view>
+</view>
+
+
+<view class="btn-list">
+  <view class="btn-l" catchtap='goToIndex'>
+    首页
+  </view>
+  <view class="btn-c" catchtap='goToPromotionGoods'>
+    推广商品
+  </view>
+  <view class="btn-r" catchtap='goToSetllementCenter'>
+    结算中心
+  </view>
+</view>
+

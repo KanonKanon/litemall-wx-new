@@ -1,0 +1,84 @@
+/* pages/ucenter/couponDetail/couponDetail.wxss */
+
+.main-wrap {
+  margin:100rpx auto;
+  width:600rpx;
+  height: 836rpx;
+  position: relative;
+}
+.image-wrap{
+  width:600rpx;
+  height: 836rpx;
+}
+
+.bg-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-wrap {
+  position: absolute;
+  top:0rpx;
+  height: 180rpx;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  color: white !important;
+}
+
+.desc-wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 195rpx;
+  width: 100%;
+  height: 200rpx;
+}
+
+.desc, .discount, .min {
+  color: black;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  overflow: hidden;
+  color: white;
+}
+
+.discount {
+  font-size: 50rpx;
+}
+
+.days-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+  color: grey;
+  position: absolute;
+  top: 428rpx;
+  width: 100%;
+}
+
+.btn-wrap{
+  position: absolute;
+  top: 535rpx;
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  
+  width: 60%;
+  color: white;
+}

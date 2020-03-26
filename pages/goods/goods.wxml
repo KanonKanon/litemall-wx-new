@@ -1,0 +1,363 @@
+<wxs module="fix" src="../../utils/Fixed.wxs" />
+<view class="container">
+  <swiper class="goodsimgs" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular="{{circular}}" bindchange='swiperChange' style="height:{{imgHeights[current]}}rpx;">
+    <swiper-item wx:for="{{goods.gallery}}" wx:key="*this">
+      <video class='videoclass' wx:if="{{fix.endwith(item,'.mp4')}}" src="{{item}}"></video>
+      <image wx:else src="{{item}}" background-size="cover" bindload='imgLoad' data-index="{{index}}" style="height:{{imgHeights[current]}}rpx;"></image>
+    </swiper-item>
+
+  </swiper>
+
+  <!-- 限时折扣 -->
+  <view class="timeLimitDiscount" hidden="{{true}}">
+    <view class="t-label">臻返8%</view>
+    <view class="t-time">
+      <view>距结束仅剩：</view>
+      <view>9天13时27分07秒</view>
+    </view>
+  </view>
+
+  <!-- 分享 -->
+  <view class='share-wrap'>
+    <view class='goods_name'>
+      <view class='goods_name_left'>{{goods.name}}</view>
+    </view>
+    <view class="desc">{{goods.brief}}</view>
+    <view class="goods_name_right" bindtap="shareFriendOrCircle">
+      <view class="icon-share">
+        <image src="/static/images/goodsShare.png"></image>
+      </view>
+      <view class="text">分享</view>
+    </view>
+  </view>
+
+  <view class="share-pop-box" wx:if="{{openShare}}">
+    <view class="share-pop">
+      <view class="close" bindtap="closeShare">
+        <image class="icon" src="/static/images/icon_close.png"></image>
+      </view>
+      <view class='share-info'>
+        <button class="sharebtn" open-type="share" wx:if="{{!isGroupon}}">
+          <image class='sharebtn_image' src='/static/images/wechat.png'></image>
+          <view class='sharebtn_text'>分享给好友</view>
+        </button>
+        <!-- <button  class="savesharebtn" open-type="openSetting" bindopensetting="handleSetting" wx:if="{{(!isGroupon) && (!canWrite)}}" >
+          <image class='sharebtn_image' src='/static/images/friend.png'></image>
+          <view class='sharebtn_text'>发朋友圈</view>
+        </button> -->
+        <button class="savesharebtn" bindtap="showTxtCode">
+          <image class='sharebtn_image' src='/static/images/friend.png'></image>
+          <view class='sharebtn_text'>图文分享</view>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view class="goods-info">
+    <view class="wrap">
+      <view class="price">
+        <view class="retailPrice">
+          <view class="sign">￥</view>
+          {{goods.retailPrice}}
+          <view class="zero">.00</view>
+          <text class="q">起</text>
+          <!-- <view class="d">(实际售价以具体规格为准)</view> -->
+        </view>
+        <view class="counterPrice">专柜参考价：￥{{goods.counterPrice}}.00
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='line-smoke'></view>
+  <view class="count-info">
+    <!-- <view class="freight">运费 免运费</view> -->
+    <view class="sales">销量 {{salesVolume}}</view>
+    <view class="remaining">剩余 {{totalGoods}}</view>
+  </view>
+  <view class='line-sperate'></view>
+
+  <!-- <view class="section-nav section-attr" bindtap="switchAttrPop">
+    <view class="t">{{checkedSpecText}}</view>
+    <image class="i" src="/static/images/address_right.png" background-size="cover"></image>
+  </view>
+  <view class='line-smoke'></view> -->
+
+  <!-- <view class="section-nav section-attr" bindtap="">
+    <view class="t">配送 自提</view>
+    <image class="i" src="/static/images/address_right.png" background-size="cover"></image>
+  </view>
+  <view class='line-sperate'></view> -->
+
+
+  <!-- <view class='shopWrap'>
+    <view class="up">
+      <view class="left">
+        <image src="/static/images/logo.jpg"></image>
+      </view>
+      <view class="middle">
+        <view class="shopname">星光珠宝{{shop.name}}</view>
+        <view class="label">官方</view>
+      </view>
+      <view class="right">
+        <navigator url="../index/index" open-type="switchTab" class='go-to-shop'>进店</navigator>
+      </view>
+    </view>
+    <view class="down">
+      {{shop.addr}}
+    </view>
+    <view class='line-smoke'></view>
+
+    <view class="labels-wrap">
+      <view class="l-item" wx:for="{{labelList}}" wx:key="index">
+        <view class='icon'>
+          <image src="/static/images/line-right.png"></image>
+        </view>
+        <view>{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='line-sperate'></view> -->
+
+
+  <!-- <view class="goods-attr" wx:if="{{attribute.length}}">
+    <view class="t">商品参数</view>
+    <view class="l">
+      <view class="item" wx:for="{{attribute}}" wx:key="name">
+        <text class="left">{{item.attribute}}</text>
+        <text class="right">{{item.value}}</text>
+      </view>
+    </view>
+  </view> -->
+
+  <!-- 优惠套餐 -->
+  <view class="discountPackage" bindtap="goToDiscountPackage" hidden="{{true}}">
+    <view class="title">
+      <view>优惠套餐</view>
+      <view class="t-right">
+        <view>查看更多</view>
+        <view>
+          <image src="/static/images/address_right.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="goods">
+      <view class="pic">
+        <image src="" class="img"></image>
+      </view>
+      <view class="desc">
+        <view class="d-title">套餐名</view>
+        <view class="price">套餐价：￥120</view>
+        <view class="discount">最多可省￥40</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='line-sperate'></view>
+
+  <view class="detail">
+    <view class='title'>商品详情</view>
+    <import src="/lib/wxParse/wxParse.wxml" />
+    <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />
+  </view>
+  <view class='line-sperate'></view>
+
+  <!-- 评论 -->
+  <view class="comments" wx:if="{{comment.count > 0}}">
+    <view class="h">
+      <navigator url="/pages/comment/comment?valueId={{goods.id}}&type=0">
+        <text class="t">评价({{comment.count > 999 ? '999+' : comment.count}})</text>
+        <text class="i">查看全部</text>
+      </navigator>
+    </view>
+    <view class="b">
+      <view class="item" wx:for="{{comment.data}}" wx:key="id">
+        <view class="info">
+          <view class="user">
+            <image src="{{item.avatar}}"></image>
+            <text>{{item.nickname}}</text>
+          </view>
+          <view class="time">{{item.addTime}}</view>
+        </view>
+        <view class="content">
+          {{item.content}}
+        </view>
+        <view class="imgs" wx:if="{{item.picList.length > 0}}">
+          <image class="img" wx:for="{{item.picList}}" wx:key="*this" wx:for-item="iitem" src="{{iitem}} "></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class="common-problem">
+    <view class="h">
+      <view class="line"></view>
+      <text class="title">常见问题</text>
+    </view>
+    <view class="b">
+      <view class="item" wx:for="{{issueList}}" wx:key="id">
+        <view class="question-box">
+          <text class="spot"></text>
+          <text class="question">{{item.question}}</text>
+        </view>
+        <view class="answer">
+          {{item.answer}}
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+  <!-- 大家都在看 -->
+  <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
+    <view class="h">
+      <view class="line"></view>
+      <text class="title">更多精选商品</text>
+    </view>
+    <view class="b">
+      <view class="item" wx:for="{{relatedGoods}}" wx:key="id">
+        <navigator url="/pages/goods/goods?id={{item.id}}">
+          <image class="img" src="{{item.picUrl}}" background-size="cover"></image>
+          <text class="name">{{item.name}}</text>
+          <text class="price">￥{{item.retailPrice}}</text>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 规格选择界面 -->
+<view class="attr-pop-box" hidden="{{!openAttr}}">
+  <view class="attr-pop">
+    <view class="close" bindtap="closeAttr">
+      <image class="icon" src="/static/images/icon_close.png"></image>
+    </view>
+    <view class="img-info">
+      <image class="img" src="{{goods.picUrl}}"></image>
+      <view class="info">
+        <view class="c">
+          <view class="a">{{goods.name}}</view>
+          <view class="p">￥{{checkedSpecPrice}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 规格列表 -->
+    <view class="spec-con">
+      <view class="spec-item">
+        <view class="name">店铺选择：</view>
+        <view class="values">
+          <view class="value {{item.checked ? 'selected' : ''}}" bindtap="clickWareHouse" wx:for="{{shopList}}" wx:key="index" data-index="{{index}}" data-shopname="{{item.name}}">{{item.name}}</view>
+        </view>
+      </view>
+
+      <view class="spec-item" wx:if="{{wareHouse.length}}">
+        <view class="name">规格选择：</view>
+        <view class="values">
+          <view class="value {{item.checked ? 'selected' : ''}}" bindtap="clickSpec" wx:for="{{wareHouse}}" wx:key="index" data-index="{{index}}" data-serialnumber="{{serialnumber}}">{{item.grossweight}}克</view>
+        </view>
+      </view>
+
+      <view class="spec-item" wx:if="{{groupon.length > 0}}">
+        <view class="name">团购立减</view>
+        <view class="values">
+          <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickGroupon" wx:for="{{groupon}}" wx:for-item="vitem" wx:key="id" data-value-id="{{vitem.id}}" data-name="{{vitem.specification}}">￥{{vitem.discount}} ({{vitem.discountMember}}人)</view>
+        </view>
+      </view>
+
+      <!-- 数量 -->
+      <view class="number-item">
+        <view class='left'>
+          <view class="name">数量:</view>
+          <view class="count">剩余{{specNumber}}件</view>
+        </view>
+
+        <view class="selnum">
+          <view class="cut" bindtap="cutNumber">-</view>
+          <input value="{{number}}" class="number" disabled="true" type="number" />
+          <view class="add" bindtap="addNumber">+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 联系客服 -->
+<view class="contact">
+  <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27">
+  </contact-button>
+</view>
+
+<!-- 底部按钮 -->
+<view class="bottom-btn">
+  <view class="l l-collect" bindtap="addCollectOrNot" wx:if="{{!isGroupon}}">
+    <image class="icon" src="{{ collectImage }}"></image>
+  </view>
+  <view class="l l-cart" wx:if="{{!isGroupon}}">
+    <view class="box">
+      <text class="cart-count">{{cartGoodsCount}}</text>
+      <image bindtap="openCartPage" class="icon" src="/static/images/ic_menu_shoping_nor.png"></image>
+    </view>
+  </view>
+  <view class="r" bindtap="addToCart" wx:if="{{!soldOut}}" wx:if="{{!isGroupon}}">加入购物车</view>
+  <view class="c" bindtap="addFast" wx:if="{{!soldOut}}">{{isGroupon?'参加团购':'立即购买'}}</view>
+  <view class="c" wx:if="{{soldOut}}">商品已售馨</view>
+</view>
+
+<view class="distribution" bindtap="showShare" wx:if="{{isDistributor&&isExtension}}">
+  赚
+</view>
+<view class="distribution-panel" hidden='{{isHideCenter}}'>
+  <view class="close-btn" catchtap='closeCenter'>
+    <view class="d-close">X</view>
+  </view>
+  <view class="title">立即分享给好友</view>
+  <view class="desc">朋友通过你分享的页面成功购买后，你可获得对应的佣金。</view>
+  <view class="desc">佣金可在“会员中心-分销员中心”里查看</view>
+  <view class="btn-list">
+    <button class="share-btn" open-type='share'>
+      <image src="/static/images/wx.png"></image>
+      <view class="s-txt">微信</view>
+    </button>
+    <button class="share-btn" catchtap='showWxCode'>
+      <image src="/static/images/sx.png"></image>
+      <view class="s-txt">小程序码</view>
+    </button>
+    <button class="share-btn" catchtap='showTxtCode'>
+      <image src="/static/images/px.png"></image>
+      <view class="s-txt">图文卡片</view>
+    </button>
+  </view>
+  <view class="center-btn" catchtap='goSellerCenter'>
+    我的分销员中心
+  </view>
+</view>
+
+<view class="xiaochengxuma" hidden='{{isHideCode}}' catchtouchmove='true'>
+  <view class="x-wrap">
+    <view class="x-close" style="width:50rpx;height:50rpx;" catchtap='closeWxCode'>
+      X
+    </view>
+    <view style="width:500rpx;height:500rpx">
+      <image style="width:500rpx;height:500rpx" src="{{wxCodeUrl}}"></image>
+    </view>
+    <button class="x-btn" catchtap='saveImg'>保存图片</button>
+  </view>
+</view>
+
+<view class="txtCode" hidden='{{isHideTxtCode}}' catchtouchmove='true'>
+  <view class="t-wrap">
+    <view class="t-close" style="width:50rpx;height:50rpx;" catchtap='closeTxtCode'>
+      X
+    </view>
+    <canvas class="wx-canvas" canvas-id='shareCanvas' style='width:{{canvasWidth}}px; height:{{canvasHeight}}px' disable-scroll='true' bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd"></canvas>
+
+    <button class="t-btn" catchtap='saveCanvasToPic'>保存图片</button>
+  </view>
+</view>
+
+<view class="logo">
+  <view>
+    <image src="/static/images/logo.png"></image>
+  </view>
+  <view class="desc">星坊智链技术支持</view>
+</view>

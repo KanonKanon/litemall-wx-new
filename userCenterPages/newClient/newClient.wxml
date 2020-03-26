@@ -1,0 +1,80 @@
+<!--userCenterPages/newClient/newClient.wxml-->
+<view>
+  <van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="分店引导开卡" name="storeOpen">
+      <van-cell-group>
+        <view>
+          <button class="scan-btn" bindtap="chooseImg">
+            <image src="../../static/images/scanIdCard.png" style="width:100rpx;height:100rpx;"></image>
+            扫描身份证
+          </button>
+        </view>
+        <van-field value="{{ dataForm.name }}" required clearable label="姓名" placeholder="请输入姓名" bind:input="nameInput" />
+        <van-cell title="性别" required class="sex-wrap">
+          <van-dropdown-menu class="sex">
+            <van-dropdown-item value="{{ dataForm.sex }}" options="{{ sexOption }}" bind:change="sexSelect" />
+          </van-dropdown-menu>
+        </van-cell>
+        <van-field value="{{ dataForm.idCard }}" type="idcard" required clearable label="身份证" placeholder="请输入身份证" bind:input="idCardInput" />
+        <van-cell title="生日" required class="birth-wrap">
+          <picker mode="date" value="{{dataForm.birth}}" start="1900-01-01" end="2100-01-01" bindchange="bindDateChange">
+            <view class="birth-picker">
+              <view wx:if="{{dataForm.birth}}">{{dataForm.birth}}</view>
+              <view wx:else>请选择你的生日</view>
+            </view>
+          </picker>
+        </van-cell>
+        <van-cell title="住址" required>
+          <view class="t-con"></view>
+        </van-cell>
+        <view class="text-wrap">
+          <textarea cursor-spacing="50" value="{{dataForm.addr}}" bindinput="addrInput" placeholder="请输入住址" class="text-a"></textarea>
+        </view>
+        <van-cell title="开卡分店" required class="birth-wrap">
+          <picker value="{{dataForm.storeName}}" range="{{shopList}}" bindchange="bindStoreChange">
+            <view class="birth-picker">
+              <view wx:if="{{dataForm.storeName}}">{{dataForm.storeName}}</view>
+              <view wx:else>请选择开卡分店</view>
+            </view>
+          </picker>
+        </van-cell>
+        <van-field value="{{ dataForm.editorName }}" required clearable label="销售员" placeholder="请输入销售员" bind:input="editorInput" />
+
+        <button type="primary" style="margin:30rpx auto;width:80%" bindtap="storeConfirm">确认开通随享卡</button>
+      </van-cell-group>
+    </van-tab>
+    <van-tab title="自助开卡" name="selfOpen">
+      <van-cell-group>
+        <view>
+          <button class="scan-btn" bindtap="chooseImg">
+            <image src="../../static/images/scanIdCard.png" style="width:100rpx;height:100rpx;"></image>
+            扫描身份证
+          </button>
+        </view>
+        <van-field value="{{ dataForm.name }}" required clearable label="姓名" placeholder="请输入姓名" bind:input="nameInput" />
+        <van-cell title="性别" required class="sex-wrap">
+          <van-dropdown-menu class="sex">
+            <van-dropdown-item value="{{ dataForm.sex }}" options="{{ sexOption }}" bind:change="sexSelect" />
+          </van-dropdown-menu>
+        </van-cell>
+        <van-field value="{{ dataForm.idCard }}" type="idcard" required clearable label="身份证" placeholder="请输入身份证" bind:input="idCardInput" />
+        <van-cell title="生日" required class="birth-wrap">
+          <picker mode="date" value="{{dataForm.birth}}" start="1900-01-01" end="2100-01-01" bindchange="bindDateChange">
+            <view class="birth-picker">
+              <view wx:if="{{dataForm.birth}}">{{dataForm.birth}}</view>
+              <view wx:else>请选择你的生日</view>
+            </view>
+          </picker>
+        </van-cell>
+
+        <van-cell title="住址" required>
+        </van-cell>
+        <view class="text-wrap">
+          <textarea cursor-spacing="50" value="{{dataForm.addr}}" bindinput="addrInput" placeholder="请输入住址" class="text-a"></textarea>
+        </view>
+
+        <button type="primary" style="margin:30rpx auto;width:80%" bindtap="selfConfirm">确认开通随享卡</button>
+      </van-cell-group>
+    </van-tab>
+  </van-tabs>
+</view>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "销售单记录",
+  "usingComponents": {
+    "van-collapse": "/userCenterPages/vant_component/collapse/index",
+    "van-collapse-item": "/userCenterPages/vant_component/collapse-item/index"
+    
+  },
+  "enablePullDownRefresh": true
+}

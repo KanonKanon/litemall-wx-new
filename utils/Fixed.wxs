@@ -1,0 +1,101 @@
+var filters = {
+
+  endwith: function(str, endstr) {
+    return str.indexOf(endstr) > -1
+  },
+
+  //太长的字符串用“...”替换，val:要限制长度的字符串，count:限制的长度
+  substr: function(val, count = 12) {
+    if (val.length == 0 || val == undefined) {
+      return false;
+    } else if (val.length > count) {
+      return val.substring(0, count) + "...";
+    } else {
+      return val;
+    }
+  },
+  //显示距离样式
+  showDistance: function(val) {
+    if (val > 1000) {
+      return Number(val * 0.001).toFixed(2) + "km"
+    } else {
+      return val + "m"
+    }
+  },
+
+  toFix: function(value) {
+    return value.toFixed(2) //此处2为保留两位小数
+  },
+
+  //把"2019-04-08 12:12:54" 转成 “2019-04-08”  date:为输入时间字符串“"2019-04-08 12:12:54"”
+  formatTime: function(date) {
+    var date = getDate(date); //返回当前时间对象
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+    return [year, month, day].join('-')
+  },
+
+  //转化为对于现在的相对时间 time:"2019-5-1 11:12:10" 
+  dateFromNow: function(time) {
+    var minute = 1000 * 60;
+    var hour = minute * 60;
+    var day = hour * 24;
+    var halfamonth = day * 15;
+    var month = day * 30;
+    var now = getDate(); //有些特殊 不能使用 new Date()
+    var diffValue = now - getDate(time);
+    if (diffValue < 0) {
+      return;
+    }
+    var monthC = diffValue / month;
+    var weekC = diffValue / (7 * day);
+    var dayC = diffValue / day;
+    var hourC = diffValue / hour;
+    var minC = diffValue / minute;
+    if (monthC >= 1) {
+      result = "" + parseInt(monthC) + "月前";
+    } else if (weekC >= 1) {
+      result = "" + parseInt(weekC) + "周前";
+    } else if (dayC >= 1) {
+      result = "" + parseInt(dayC) + "天前";
+    } else if (hourC >= 1) {
+      result = "" + parseInt(hourC) + "小时前";
+    } else if (minC >= 1) {
+      result = "" + parseInt(minC) + "分钟前";
+    } else
+      result = "刚刚";
+    return result;
+  }, //时间戳转化为几天前，几小时前，几分钟前
+
+  
+
+  timestampToTime: function (value) {
+    //不能使用 new Date()
+    // value = value.replace(".000+0000", "Z");
+    var time = getDate(value);
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var date = time.getDate();
+    var hour = time.getHours();
+    var minute = time.getMinutes();
+    var second = time.getSeconds();
+    month = month < 10 ? "0" + month : month;
+    date = date < 10 ? "0" + date : date;
+    hour = hour < 10 ? "0" + hour : hour;
+    minute = minute < 10 ? "0" + minute : minute;
+    second = second < 10 ? "0" + second : second;
+    return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+  }
+
+}
+
+module.exports = {
+  toFix: filters.toFix,
+  formatTime: filters.formatTime,
+  fromNow: filters.dateFromNow,
+  substr: filters.substr,
+  showDistance: filters.showDistance,
+  endwith: filters.endwith,
+  timestampToTime: filters.timestampToTime
+}

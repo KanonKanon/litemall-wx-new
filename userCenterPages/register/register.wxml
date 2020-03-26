@@ -1,0 +1,72 @@
+
+<view class="top"><text>注册</text></view>
+<image class="image" mode="aspectFill" src="https://usercenter.bingold.cn/image/usercenter/loginBack.gif"/>
+<view wx:if="{{step == 0}}">
+  <view class="container">
+    <view class="itemView">
+      <view class="item"></view>
+      <!-- <text>号码:</text> -->
+      <input class="input" name="cardId" placeholder="请输入随享卡号或电话号" bindinput="cardInput"
+             value="{{prepaidCard}}"  />
+    </view>
+    <view class="itemView">
+      <view class="item"></view>
+      <!-- <view>卡密码:</view> -->
+      <input type='password' class="input" placeholder="请输入随享卡密码" bindinput="cardPwdInput"
+             value="{{cardPwd}}"  />
+    </view>
+     <view class="forgetBtn" bindtap = "forget">忘记密码</view>
+  </view>
+  <text style="color: red; font-size:20rpx;">温馨提示:已注册原会员中心之客户,请直接输入电话号码,新注册客户请输入随享卡号</text>
+  <view bindtap="{{events[step]}}">
+    <button class="registerBtn">提交</button>
+  </view>
+</view>
+
+<view wx:if="{{step == 1}}">
+  
+
+  <view class="container">
+    <view class="itemView">
+      <view class="item"></view>
+      <text style="margin: auto 10rpx;width: 150rpx;">电话号码:</text>
+      <input disabled="{{phoneDis}}" class="input" placeholder="请输入电话号码" bindinput="phoneInput"
+             value="{{phone}}"  />
+    </view>
+
+    <view class="itemView">
+        <view style="margin: auto 10rpx;width: 150rpx;">验证码:</view>
+        <input class="input" style="width:250rpx" placeholder="请输入验证码" bindinput="codeInput"  />
+    
+        <button style="width: 210rpx;margin: auto;" class="sendCodeButton" bindtap="sendCode" disabled="{{codeDis}}">
+          <text hidden="{{flag || currentTime == '获取验证码'}}">重发</text>
+          <text>{{currentTime}}</text>
+          <text hidden="{{currentTime == '获取验证码'}}">S</text>
+        </button>
+    </view>
+    
+    <view class="itemView">
+      <view class="item"></view>
+      <view style="margin: auto 10rpx;width: 150rpx;">登录密码:</view>
+      <input type='password' class="input" placeholder="请输入登录密码" bindinput="pswInput"
+      value="{{psw}}"  />
+    </view>
+  </view>
+
+  <view class="itemView">
+    <view class="item"></view>
+    <view style="margin: auto 10rpx;width: 150rpx;">密码确认:</view>
+    <input type='password' class="input" placeholder="请再次输入登陆密码" bindinput="pswTest"  />
+  </view>
+
+  <view bindtap="{{events[step]}}">
+    <button class="registerBtn">提交</button>
+  </view>
+</view>
+  
+  <view class="info">
+    <view>星光珠宝至臻会员平台升级，臻贵享不凡:</view>
+    <text style="margin-right: 35rpx;">● 享便捷</text> 
+    <text style="margin-right: 35rpx;">● 享福利</text> 
+    <text style="margin-right: 35rpx;">● 享安心</text>
+  </view>

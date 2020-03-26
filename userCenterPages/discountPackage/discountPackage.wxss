@@ -1,0 +1,119 @@
+/* userCenterPages/discountPackage/discountPackage.wxss */
+
+.line-s {
+  height: 20rpx;
+  background: gainsboro;
+}
+
+.main-wrap {
+  background: gainsboro;
+  height: 100%;
+  width: 100%;
+}
+
+.item-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: white;
+  position: relative;
+  padding: 0 20rpx;
+}
+
+.item-wrap .check-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 150rpx;
+  background: white;
+}
+
+.goods-item {
+  display: flex;
+  flex-direction: row;
+  background: white;
+}
+
+.goods-item .left {
+  width: 150rpx;
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+  background: white;
+}
+
+.goods-item .left .pic {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.goods-item .right {
+  padding: 20rpx 30rpx;
+  background: white;
+}
+
+.goods-item .right .price {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.goods-item .right .price .count {
+  position: absolute;
+  right: 20rpx;
+}
+
+.goods-item .right .price .s-price {
+  color: red;
+}
+
+.goods-item .right .price .o-price {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.bottom-bar .price {
+  width: 250rpx;
+  height: 100rpx;
+  padding:10rpx 10rpx;
+}
+
+.bottom-bar .cart {
+  width: 200rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: orange;
+}
+
+.bottom-bar .buy {
+  width: 200rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: red;
+}
+
+.picker{
+  margin-left:10rpx;
+  border:2rpx solid black;
+  padding: 0 5rpx;
+}

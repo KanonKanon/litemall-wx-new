@@ -1,0 +1,39 @@
+/* pages/directionForUse/directionForUse.wxss */
+.main-wrap{
+  padding:0 20rpx;
+}
+.top{
+margin-bottom: 40rpx;
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+background-color: #ab956d;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 30rpx;
+color:white;
+}
+.top text{
+  color:white;
+}
+.itemLine{
+padding: 20rpx 0;
+display: flex;
+font-size: 35rpx;
+color:black;
+}
+.itemFirst{
+  font-size: 30rpx;
+}
+.itemButtom{
+  margin-top: 40rpx;
+  font-size: 25rpx;
+}
+.itemDetilSmall{
+  font-size: 25rpx;
+}
+.listRow{
+  display: flex;
+  flex-direction: row;
+}

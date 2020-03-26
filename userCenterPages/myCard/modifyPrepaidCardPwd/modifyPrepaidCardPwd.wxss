@@ -1,0 +1,42 @@
+/* pages/ModifyPrepaidCardPwd/ModifyPrepaidCardPwd.wxss */
+.top{
+margin-bottom: 40rpx;
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+background-color: #ab956d;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 30rpx;
+color:white;
+}
+.top text{
+  color:white;
+}
+.itemView{
+  margin: 20rpx 0;
+  background-color: #FFFFFF;
+  border-radius: 4rpx;
+  overflow: hidden;
+  height: 50px;
+  align-items: center;
+  font-size: 35rpx;
+  display: flex;
+}
+.loginBtn{
+  width: 148rpx;
+  height: 70rpx;
+  color:white;
+  background-color:#ab956d;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 42rpx;
+  display: flex;
+}
+.input{
+    margin-left: 50rpx;
+}
+
+

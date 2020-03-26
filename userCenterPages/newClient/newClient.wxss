@@ -1,0 +1,143 @@
+/* userCenterPages/newClient/newClient.wxss */
+
+.sex-wrap, .birth-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sex-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.sex {
+  position: relative;
+  top: -5rpx;
+  left: 200rpx;
+  height: 50rpx;
+}
+
+.birth-picker {
+  position: absolute;
+  top: 20rpx;
+  left: 195rpx;
+}
+
+.scan-btn {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: lightblue;
+  color: white;
+}
+
+.addr-wrap {
+  position: relative;
+}
+
+.text-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100rpx;
+  left: 212rpx;
+  top: 485rpx;
+  overflow: hidden;
+}
+
+.text-a {
+  height: 88rpx;
+  width: 490rpx;
+}
+.t-con{
+  height: 80rpx;
+}
+
+@media screen and (max-width: 350px) {
+  .sex {
+    position: absolute;
+    top: -5rpx;
+    left: 228rpx;
+    height: 50rpx;
+  }
+
+  .birth-picker {
+    position: absolute;
+    top: 20rpx;
+    left: 250rpx;
+  }
+
+  .text-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100rpx;
+    left: 250rpx;
+    top: 520rpx;
+  }
+
+  .text-a {
+    height: 88rpx;
+    width: 490rpx;
+    font-size: 25rpx;
+  }
+}
+
+@media screen and (min-width: 350px) and (max-width:400px) {
+  .sex {
+    position: absolute;
+    top: -5rpx;
+    left: 200rpx;
+    height: 50rpx;
+  }
+
+  .birth-picker {
+    position: absolute;
+    top: 20rpx;
+    left: 210rpx;
+  }
+
+  .text-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100rpx;
+    left: 212rpx;
+    top: 480rpx;
+  }
+
+  .text-a {
+    height: 80rpx;
+    width: 520rpx;
+    font-size: 25rpx;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .sex {
+    position: absolute;
+    top: -5rpx;
+    left: 180rpx;
+    height: 50rpx;
+  }
+
+  .birth-picker {
+    position: absolute;
+    top: 20rpx;
+    left: 195rpx;
+  }
+
+  .text-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100rpx;
+    left: 194rpx;
+    top: 430rpx;
+  }
+
+  .text-a {
+    height: 70rpx;
+    width: 520rpx;
+    font-size: 25rpx;
+  }
+}

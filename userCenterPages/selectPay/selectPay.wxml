@@ -1,0 +1,27 @@
+<!--userCenterPages/selectPay/selectPay.wxml-->
+<view class="main-container">
+  <view class="pay-money">
+    <view class="price">￥{{actualPrice}}</view>
+    <view class="txt">待支付金额</view>
+  </view>
+  <van-radio-group value="{{ radio }}" class="r-group">
+    <van-cell-group border>
+      <van-cell clickable data-name="yufu" bind:click="onClick" wx:if="{{isStarShineMember}}">
+        <view slot="title" class="row">
+          <van-icon name="/static/images/card2.png" size='30px' />
+          <view class="row-txt">随享卡支付</view>
+        </view>
+        <van-radio slot="right-icon" name="yufu" />
+      </van-cell>
+      <van-cell clickable data-name="weixin" bind:click="onClick">
+        <view slot="title" class="row">
+          <van-icon name="/static/images/wxpay.png" size='30px' />
+          <view class="row-txt">微信支付</view>
+        </view>
+        <van-radio slot="right-icon" name="weixin" />
+      </van-cell>
+    </van-cell-group>
+  </van-radio-group>
+  <button bindtap="{{isCanPay?'confirmPay':''}}" type="primary">{{isCanPay?'确认支付':cd_time+'s'}}</button>
+</view>
+<pwdinput id="pwdinput" bind:bindinput="bindInput" bind:confirm="bindConfirm" />

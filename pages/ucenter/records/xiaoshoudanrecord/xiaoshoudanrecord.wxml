@@ -1,0 +1,64 @@
+<!--pages/ucenter/records/xiaoshoudanrecord/xiaoshowdanrecord.wxml-->
+<view class="main-wrap">
+  <van-collapse wx:if="{{list.length}}" value="{{ activeName }}" bind:change="onChange" accordion>
+    <van-collapse-item wx:for="{{list}}" wx:key='index' name="{{index}}" custom-class="title-wrap">
+       <view slot="title">
+        <text style="width:400rpx!important;">{{item.id}}</text>
+      </view>
+      <view slot="value">
+        <text style="color:red;">{{item.factamount }}元 </text>
+      </view>
+
+      <view class="d-wrap">
+        <view>
+          订单号：{{item.id}}
+        </view>
+        <view>
+          金额：{{item.factamount}}元
+        </view>
+        <view>
+          时间：{{item.editdt}}
+        </view>
+        <view>
+          销售分店：{{item.saledepartmentname}}
+        </view>
+        <view>
+          开单人：{{item.editor}}
+        </view>
+        <view wx:if='{{item.paymenttype1}}'>
+          {{item.paymenttype1}}：{{item.factamount1}}元
+        </view>
+        <view wx:if='{{item.paymenttype2}}'>
+          {{item.paymenttype2}}：{{item.factamount2}}元
+        </view>
+        <view wx:if='{{item.paymenttype3}}'>
+          {{item.paymenttype3}}：{{item.factamount3}}元
+        </view>
+        <view wx:if='{{item.paymenttype4}}'>
+          {{item.paymenttype4}}：{{item.factamount4}}元
+        </view>
+        <view class='show-btn'>
+          <button size="mini" catchtap="showSalePic">销售单</button>
+        </view>
+      </view>
+
+    </van-collapse-item>
+  </van-collapse>
+
+  <view wx:else class='no-data'>
+    <view>
+      <image src="/static/images/empty.png"></image>
+    </view>
+    <view>暂无数据</view>
+  </view>
+
+  <view class="txtCode" hidden='{{!show}}' catchtouchmove='true'>
+    <view class="t-wrap">
+      <view class="t-close" style="width:50rpx;height:50rpx;" catchtap='closeTxtCode'>
+        <image style="width:50rpx;height:50rpx;" src='/static/images/icon_close.png'></image>
+      </view>
+      <canvas class="wx-canvas" canvas-id='myCanvas' style='width:{{canvasWidth}}px; height:{{canvasHeight}}px' disable-scroll='true' bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd"></canvas>
+      <button class="t-btn" catchtap='saveImg'>保存图片</button>
+    </view>
+  </view>
+</view>

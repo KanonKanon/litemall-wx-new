@@ -1,0 +1,23 @@
+/* pages/ucenter/records/anxiangrecord/anxiangrecord.wxss */
+.no-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800rpx;
+}
+
+.no-data view {
+  margin-bottom: 80rpx;
+}
+
+.no-data view image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.d-wrap{
+  padding: 20rpx 20rpx;
+  border:1rpx solid grey;
+  border-radius: 20rpx;
+}

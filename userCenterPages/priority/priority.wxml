@@ -1,0 +1,29 @@
+<!-- pages/priority/priority.wxml -->
+<view class="top">
+  <text>会员优先享</text>
+</view>
+<!-- <view class="itemView">
+  <view>选择办理会员优先享的预付卡</view>
+  <view>{{userInfo.prepaidCard}}</view>
+</view> -->
+<view class="itemColumn">
+  <view>请选择充值金额</view>
+  <text>¥{{recharge}}元</text>
+  </view>
+  <view class="row">
+    <block wx:for="{{recharges}}" wx:key="{{item.key}}">
+        <button id="{{index}}" type="default" bindtap="rechargeSelect">{{item}}</button>
+    </block>
+  </view>
+  <view class="des">
+    <view>业务说明：尊敬的客户，因您是我司随享汇会员，您当前办理
+    <text>¥{{actualRecharge}}元</text>
+    优先享业务可享受随享汇会员专属优惠，仅需实付
+    <text>¥{{recharge}}元</text>
+    即可！</view>
+  </view>
+
+
+<view bindtap="bindViewTap">
+  <button class="loginBtn">马上办理</button>
+</view>

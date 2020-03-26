@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "优惠券",
+  "usingComponents": {
+    "van-image": "/userCenterPages/vant_component/image/index",
+    "van-row": "/userCenterPages/vant_component/row/index",
+    "van-col": "/userCenterPages/vant_component/col/index"
+  }
+}

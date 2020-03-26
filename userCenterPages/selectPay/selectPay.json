@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "星光珠宝",
+  "usingComponents": {
+    "van-dialog": "../vant_component/dialog/index",
+    "pwdinput": "../../../lib/pwdInput/pwdInput",
+    "van-radio": "../vant_component/radio/index",
+    "van-radio-group": "../vant_component/radio-group/index",
+    "van-cell": "../vant_component/cell/index",
+    "van-cell-group": "../vant_component/cell-group/index",
+    "van-icon": "../vant_component/icon/index"
+  }
+}

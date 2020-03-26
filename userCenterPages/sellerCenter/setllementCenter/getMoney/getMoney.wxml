@@ -1,0 +1,34 @@
+<!--userCenterPages/sellerCenter/setllementCenter/getMoney/getMoney.wxml-->
+<view class="main-wrap">
+  <view class='line-s'></view>
+  <view class='item'>
+    <view class="i-left">可提现金额</view>
+    <view class="i-right">￥{{centerInfo.balance}}</view>
+  </view>
+  <view class="line-b"></view>
+  <view class='item'>
+    <view class='i-left'>本次提现</view>
+    <view class='i-right'>
+      <input placeholder='银行卡单笔最高提现5万'  bindinput='moneyInput'></input>
+    </view>
+  </view>
+
+  <view class="line-s"></view>
+
+  <view class='item' catchtap="goToSelectAcount">
+    <view class='i-left'>提现账户</view>
+    <view class='i-right'>
+      <view wx:if="{{useWeiXinWallet}}">{{userInfo.nickName}}</view>
+      <view wx:else>去设置</view>
+      <view>
+        <image src="/static/images/address_right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <button type="primary" class="btn" catchtap='getMoney'>提现</button>
+
+  <view class="txt">◆金额低于1元时不可提现</view>
+  <view class="txt">◆预计三个工作日可到账</view>
+
+</view>

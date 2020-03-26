@@ -1,0 +1,49 @@
+<!-- pages/modifyData/modifyData.wxml -->
+<view class="top">
+  <text>会员卡资料修改</text>
+</view>
+<view>个人信息（不可修改）：</view>
+<view class="container">
+  <view class="itemView">
+    <view>中文名：{{centerUserInfo.userName}}</view>
+  </view>
+  <view class="itemView">
+    <view>英文名:</view>
+  </view>
+  <view class="itemView">
+    <view>生日：{{centerUserInfo.userBirthday}}</view>
+  </view>
+  <view class="itemView">
+    <view>性别:{{userInfo.gender?"男":"女"}}</view>
+  </view>
+  <view class="itemView">
+    <view>身份证:{{centerUserInfo.idCard}}</view>
+  </view>
+  <view>银行卡信息:</view>
+  <view class="itemView">
+    <input disabled="true" id="1" value="{{centerUserInfo.openingBank}}" class="input" name="openingBank" placeholder="请到线下分店填写银行卡资料" bindinput="input" />
+  </view>
+  <view class="itemView">
+    <input disabled="true" id="2" value="{{centerUserInfo.bankCard}}" class="input" name="bankCard" placeholder="请到线下分店填写银行卡资料" bindinput="input" />
+  </view>
+  <view>
+    <view>所在地区：</view>
+    <picker mode="region" bindchange="pikerChange">
+      <view class="itemView">
+        <view>当前选择：{{area}}</view>
+      </view>
+    </picker>
+  </view>
+  <view>联系地址：</view>
+  <view class="itemView">
+    <input id="0" value="{{centerUserInfo.address}}" class="input" name="address" placeholder="请输入您的详细地址" bindinput="input" />
+  </view>
+
+  <view>Email：</view>
+  <view class="itemView">
+    <input id="3" value="{{userInfo.userEmail}}" class="input" name="userEmail" placeholder="请输入您的邮箱地址" bindinput="input" />
+  </view>
+  <view bindtap="submit">
+    <button class="loginBtn">提交修改</button>
+  </view>
+</view>

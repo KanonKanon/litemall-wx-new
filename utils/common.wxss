@@ -1,0 +1,101 @@
+/**
+ * 头部
+ */
+.top{
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+background-color: #861115;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 30rpx;
+color:white;
+}
+
+/**
+ * 充值的那个输入金额
+ */
+.viewModule
+{
+	margin-top: 15rpx;
+	width: 600rpx;
+	height: 70rpx;
+	display:flex;
+	flex:row;
+}
+.viewModule view{
+	margin: auto 0;
+	width: 1000rpx;
+}
+
+.viewModule input{
+	padding-left: 10rpx;
+	width: 70rpx;
+	border: 1rpx solid #ccc;
+	margin:auto 0;
+}
+/**
+ * 星享金的查询订单
+ */
+.template{
+	background-color: white;
+	margin: 20rpx 0;
+}
+.template view{
+	display: flex;
+	flex:row;
+	font-size: 25rpx;
+	margin: 10rpx 0;
+	padding: 10rpx 0;
+}
+.template view view{
+	margin:auto 15rpx;
+	height: 32rpx;
+}
+.template view text{
+	color: red;
+	margin: auto 0;
+}
+
+/**
+ * 发送验证码
+ */
+ .sendCodeButton{
+ 	margin: auto;
+ 	display: flex;
+ 	flex: row;
+ 	font-size: 30rpx;
+ }
+
+ /**
+ * 横表示
+ */
+.row{
+	display: flex;
+ 	flex: row;
+}
+
+.row input{
+	margin: auto 50rpx;
+	background-color: #FFFFFF;
+	height: 70rpx;
+	width: 400rpx;
+	font-size: 35rpx;
+}
+
+ /**
+ * 边框尖角
+ */
+.hd {  
+  content: "";  
+  height: 16rpx;  
+  width: 16rpx;  
+  border-width: 4rpx 1rpx 0 0;  
+  border-color: #ccc;  
+  border-style: solid;  
+  transform: rotate(-45deg);  
+}  
+.hd:hover {  
+  transform: rotate(-45deg);  
+} 

@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "充值记录",
+  "usingComponents": {
+      "van-collapse": "/userCenterPages/vant_component/collapse/index",
+      "van-collapse-item": "/userCenterPages/vant_component/collapse-item/index",
+      "van-tabs": "/userCenterPages/vant_component/tabs/index",
+      "van-tab": "/userCenterPages/vant_component/tab/index"
+      
+     
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}

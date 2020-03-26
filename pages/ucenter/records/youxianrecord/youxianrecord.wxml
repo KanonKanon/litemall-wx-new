@@ -1,0 +1,37 @@
+<!--pages/ucenter/records/youxianrecord/youxianrecord.wxml-->
+<view class="main-wrap">
+  <van-collapse wx:if="{{list.length}}" value="{{ activeName }}" bind:change="onChange" accordion>
+    <van-collapse-item wx:for="{{list}}" wx:key='index' name="{{index}}">
+      <view slot="title">
+        <text style="{{item.takeoutdt?'color:red':''}};">{{item.id}}</text>
+      </view>
+      <view slot="value">
+        <text style="{{item.takeoutdt?'color:red':''}};">{{item.amount}}元 </text>
+      </view>
+      <view class="d-wrap">
+        <view>
+          单号：{{item.id}}
+        </view>
+        <view>
+          金额：{{item.amount}}元
+        </view>
+        <view>
+          类型：{{item.sourceoffunds}}
+        </view>
+        <view>
+          是否赎回：{{item.takeoutflag?'是':'否'}}
+        </view>
+        <view wx:if="{{item.takeoutdt}}">
+          赎回时间：{{item.takeoutdt}}
+        </view>
+      </view>
+
+    </van-collapse-item>
+  </van-collapse>
+  <view wx:else class='no-data'>
+    <view>
+      <image src="/static/images/empty.png"></image>
+    </view>
+    <view>暂无数据</view>
+  </view>
+</view>

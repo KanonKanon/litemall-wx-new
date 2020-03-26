@@ -1,0 +1,16 @@
+/* pages/transactionRecord/transactionRecord.wxss */
+.top{
+margin-bottom: 40rpx;
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+background-color: #ab956d;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 30rpx;
+color:white;
+}
+.top text{
+  color:white;
+}

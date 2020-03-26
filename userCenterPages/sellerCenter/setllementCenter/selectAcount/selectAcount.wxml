@@ -1,0 +1,28 @@
+<!--userCenterPages/sellerCenter/setllementCenter/selectAcount/selectAcount.wxml-->
+<view class="main-wrap">
+<view class="line-s"></view>
+ <view class='item' catchtap="setCard">
+    <view class='i-left'>银行卡</view>
+    <view class='i-right'>
+      <view wx:if="{{bankCardInfo.name}}">{{bankCardInfo.name}}</view>
+      <view wx:else>去设置</view>
+      <view>
+        <image src="/static/images/address_right.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class='line-s'></view>
+   <view class='item' catchtap="setWeiXin">
+    <view class='i-left'>微信钱包</view>
+    <view class='i-right'>
+      <view wx:if="{{useWeiXinWallet}}">{{userInfo.nickName}}</view>
+      <view wx:else>去设置</view>
+      <view>
+        <image src="/static/images/address_right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="txt">未实名认证的微信用户，将无法提现到微信钱包</view>
+
+</view>

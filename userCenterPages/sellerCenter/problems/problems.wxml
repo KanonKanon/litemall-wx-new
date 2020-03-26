@@ -1,0 +1,84 @@
+<!--userCenterPages/sellerCenter/problems/problems.wxml-->
+
+<view class='main-wrap'>
+
+  <view class='Q'>
+    <view class="q-left">Q：</view>
+    <view class="q-right">怎样进行“推广赚钱”？</view>
+  </view>
+  <view class='A'>
+    <view class='a-left'>A：</view>
+    <view class='a-right'>分享店铺内带“赚”图标的页面链接，吸引好友点击，TA在15天内（客户关系设置为短期）或永久（客户关系设置为长期）在该店铺中购买带“赚”图标的商品，都会按照一定的计算方法作你的“推广赚钱”收益</view>
+  </view>
+
+  <view class='Q'>
+    <view class="q-left">Q：</view>
+    <view class="q-right">如何计算“推广赚钱”收益？</view>
+  </view>
+  <view class='A'>
+    <view class='a-left'>A：</view>
+    <view class='a-right'>每个带“赚”图标的商品都有一定的提成比例，没有该标记的表示该商品不参与“推广赚钱”。好友通过你的分享链接成功付款后，将根据订单中每个商品的提成比例分别计算提成（不参与推广的提成为0），最后累加成为该笔订单的提成收益。收益计算中会扣除运费、退款、满减等金额，以最终成交价为准。</view>
+  </view>
+
+  <view class='Q'>
+    <view class="q-left">Q：</view>
+    <view class="q-right">“推广赚钱”的收益何时到账</view>
+  </view>
+  <view class='A'>
+    <view class='a-left'>A：</view>
+    <view class='a-right'>好友通过你的分享链接成功付款后，你可在分销员中心的推广订单里看到这笔推广，状态为待结算，客户在确认收货或发货后7天订单交易完成之后15天无售后维权时完成结算，若遇到有售后维权则顺延到维权处理结束后结算，这笔收益将自动转入你的个人账户，随时可提现</view>
+  </view>
+
+  <view class='Q'>
+    <view class="q-left">Q：</view>
+    <view class="q-right">可否自己分享自己购买？</view>
+  </view>
+  <view class='A'>
+    <view class='a-left'>A：</view>
+    <view class='a-right'>若店铺开启分销员自行购买权限，你在成为分销员或点击自己的分享链接，都会与自己建立客户关系，你自己下单付款也会拿到“推广收益”。</view>
+  </view>
+
+
+
+  <view class='Q'>
+    <view class="q-left">Q：</view>
+    <view class="q-right">累计客户、累计邀请列表没头像昵称？</view>
+  </view>
+  <view class='A'>
+    <view class='a-left'>A：</view>
+    <text class='a-right'>微信要求只有关注认证服务号才能获取头像昵称，店铺是认证服务号的客户关注店铺公众号</text>
+  </view>
+
+
+
+  <view class='Q'>
+    <view class="q-left">Q：</view>
+    <view class="q-right">为什么我按上述规则分享，没有拿到推广收益？</view>
+  </view>
+  <view class='A'>
+    <view class='a-left'>A：</view>
+    <text decode='true' class='a-right'>1、客户可能并未与你建立客户关系（店铺可能开启客户关系保护期，保护期内若你的好友之前已点过其他分销员的分享链接，将无法与你建立客户关系。若店铺关闭分销员之间建立客户关系，同时你好友也是分销员，也将无法与你建立客户关系）2、好友若在微信环境外（如手机默认浏览器）打开你的分享链接，若浏览器未开启cookie,也将无法记录客户关系，即无法记录推广订单。\n3、上述都没问题时仍然没有记录推广订单，请联系工作人员</text>
+  </view>
+
+
+  <view class="logo">
+    <view>
+      <image src="/static/images/logo.png"></image>
+    </view>
+    <view class="desc">综合管理部技术支持</view>
+  </view>
+
+</view>
+
+
+<view class="btn-list">
+  <view class="btn-l" catchtap='goToIndex'>
+    首页
+  </view>
+  <view class="btn-c" catchtap='goToPromotionGoods'>
+    推广商品
+  </view>
+  <view class="btn-r" catchtap='goToSetllementCenter'>
+    结算中心
+  </view>
+</view>

@@ -1,0 +1,2 @@
+/* userCenterPages/sellerCenter/myInvitation/myInvitation.wxss */
+@import '../myClient/myClient.wxss'

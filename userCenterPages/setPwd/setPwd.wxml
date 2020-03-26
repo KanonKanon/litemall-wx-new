@@ -1,0 +1,24 @@
+
+<view class="top"><text>登录</text></view>
+<image class="image" mode="aspectFill" src="https://usercenter.bingold.cn/image/usercenter/loginBack.gif"/>
+  <view class="itemView">
+     <!-- <view>密码</view> -->
+    <input password='true' class="input"  placeholder="请设置登录密码" bindinput="pwdInput" />
+  </view>
+  <view bindtap="login">
+    <button class="loginBtn" >登录</button>
+  </view>
+  <view class="info">
+  	<view>星光珠宝至臻会员平台2018升级版，臻贵享不凡:</view>
+  	<text style="margin-right: 35rpx;">● 享便捷</text> 
+  	<text style="margin-right: 35rpx;">● 享福利</text> 
+  	<text style="margin-right: 35rpx;">● 享安心</text>
+  </view>
+
+ 
+
+
+
+
+
+

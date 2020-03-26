@@ -1,0 +1,168 @@
+<wxs module="fix" src="../../utils/Fixed.wxs" />
+<view class="container">
+  <view class="coupon-box" bindtap='showPopup2'>
+    <van-cell>
+      <view slot="title">
+        <view wx:if="{{getGoodType===''}}" >
+          请选择提货方式
+        </view>
+        <view wx:else >
+          提货方式：{{getGoodType}}
+        </view>
+      </view>
+    </van-cell>
+    <view class="r">
+      <image src="../../static/images/address_right.png"></image>
+    </view>
+  </view>
+  <view class="line-s"></view>
+  <view class="address-box" wx:if="{{getGoodType!==''}}">
+    <view class="address-item" wx:if="{{getGoodType==='到店自提'}}">
+      <view class="l">
+        <text class="name">{{checkedAddress.userName}}</text>
+        <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>
+      </view>
+      <view class="m">
+        <view class="mobile">{{checkedAddress.userPhone}}</view>
+        <view class="mobile">{{checkedAddress.name}}</view>
+        <view class="address">{{checkedAddress.addr}}</view>
+      </view>
+      <!-- <view class="r">
+        <image src="/static/images/address_right.png"></image>
+      </view> -->
+    </view>
+
+    <view class="address-item" wx:if="{{getGoodType==='邮寄快递'}}" bindtap="goAddress">
+      <view wx:if="{{fastAddress}}" class="sub-item">
+        <view class="l">
+          <text class="name">{{fastAddress.name}}</text>
+          <text class="default" wx:if="{{fastAddress.isDefault}}">默认</text>
+        </view>
+        <view class="m">
+          <view class="mobile">{{fastAddress.mobile}}</view>
+          <view class="address">{{fastAddress.provinceName+fastAddress.cityName+fastAddress.areaName+fastAddress.address}}</view>
+        </view>
+        <view class="r">
+          <image src="/static/images/address_right.png"></image>
+        </view>
+      </view>
+      <view wx:else class='sub-item'>
+        <view class="l">
+          <text class='name'>请选择地址</text>
+        </view>
+        <view class="r">
+          <image src="/static/images/address_right.png"></image>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+
+
+
+  <!-- <view class="address-box">
+    <view class="address-item" wx:if="{{shop.id > 0}}">
+      <view class="l">
+        <text class="name">{{checkedAddress.userName}}</text>
+        <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>
+      </view>
+      <view class="m">
+        <view class="mobile">{{checkedAddress.userPhone}}</view>
+        <view class="mobile">{{checkedAddress.name}}</view>
+        <view class="address">{{checkedAddress.addr}}</view>
+      </view>
+     
+    </view>
+    
+  </view> -->
+
+  <view class="time-box" wx:if="{{getGoodType==='到店自提'}}">
+    <van-cell>
+      <view slot="title">
+        <view wx:if="{{getGoodDate==''}}" bindtap='showPopup'>
+          请选择提货时间
+          <view class="time-tips">提货日期只可以选择在付款后的7天内</view>
+        </view>
+        <view wx:else bindtap="showPopup">
+          提货日期：{{getGoodDate}}
+        </view>
+      </view>
+    </van-cell>
+    <view class="time-icon">
+      <image src="../../static/images/address_right.png"></image>
+    </view>
+  </view>
+
+  <view class="coupon-box">
+    <view class="coupon-item" bindtap="selectCoupon">
+      <view class="l" wx:if="{{couponId == 0}}">
+        <view class="name">没有可用的优惠券</view>
+        <view class="txt">0张</view>
+      </view>
+      <view class="l" wx:elif="{{couponId == -1}}">
+        <view class="name">优惠券</view>
+        <view class="txt">{{availableCouponLength}} 张</view>
+      </view>
+      <view class="l" wx:else>
+        <view class="name">优惠券</view>
+        <view class="txt">-￥{{couponPrice}}元</view>
+      </view>
+      <view class="r">
+        <image src="/static/images/address_right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="message-box">
+    <input class="message-item" bindinput="bindMessageInput" placeholder="如需要，请输入留言" value="{{message}}" />
+  </view>
+
+  <view class="order-box">
+    <view class="order-item">
+      <view class="l">
+        <text class="name">商品合计</text>
+      </view>
+      <view class="r">
+        <text class="txt">￥{{goodsTotalPrice}}元</text>
+      </view>
+    </view>
+    <!-- <view class="order-item">
+      <view class="l">
+        <text class="name">运费</text>
+      </view>
+      <view class="r">
+        <text class="txt">￥{{freightPrice}}元</text>
+      </view>
+    </view> -->
+    <view class="order-item no-border">
+      <view class="l">
+        <text class="name">优惠券</text>
+      </view>
+      <view class="r">
+        <text class="txt">-￥{{couponPrice}}元</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="goods-items">
+    <view class="item" wx:for="{{checkedGoodsList}}" wx:key="id">
+      <view class="img">
+        <image src="{{item.picUrl}}"></image>
+      </view>
+      <view class="info">
+        <view class="t">
+          <text class="name">{{item.goodsName}}</text>
+          <text class="number">x{{item.number}}</text>
+        </view>
+        <view class="m">{{item.specifications}}</view>
+        <view class="b">￥{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-total">
+    <view class="l">实付：￥{{actualPrice}}</view>
+    <view class="r" bindtap="submitOrder">去付款</view>
+  </view>
+</view>

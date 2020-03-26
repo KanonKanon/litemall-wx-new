@@ -1,0 +1,81 @@
+/* userCenterPages/sellerCenter/msgCenter/msgCenter.wxss */
+.line-b{
+  height: 2rpx;
+  background: gainsboro;
+}
+.labels{
+  display: flex;
+  height: 100rpx;
+  justify-content: space-around;
+  align-items: center;
+}
+.labels .l-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  width: 150rpx;
+}
+.labels .active{
+  border-bottom: 8rpx solid red;
+  box-sizing: border-box;
+
+}
+
+
+
+.no-data{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800rpx;
+
+}
+.no-data view{
+  margin-bottom: 80rpx;
+}
+.no-data view image{
+  width:200rpx;
+  height: 200rpx;
+}
+
+
+.btn-list {
+  position: fixed;
+  bottom: -18rpx;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 120rpx;
+  background: whitesmoke;
+}
+
+.btn-list .btn-l {
+  display: flex;
+  height: 100rpx;
+  border: 1rpx solid grey;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-list .btn-c {
+  display: flex;
+  height: 100rpx;
+  border-top: 1rpx solid grey;
+  border-bottom: 1rpx solid grey;
+  color: #333;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-list .btn-r {
+  display: flex;
+  height: 100rpx;
+  border: 1rpx solid grey;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}

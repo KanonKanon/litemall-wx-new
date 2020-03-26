@@ -1,0 +1,117 @@
+<!--pages/directionForUse/directionForUse.wxml-->
+<view class='main-wrap'>
+  <view class="top">
+    <text>会员卡使用说明</text>
+  </view>
+  <view class="itemLine">
+    <text>(一)如何申请成为“STARSHINE”星光珠宝会员？</text>
+  </view>
+  <view class="itemFirst">
+    <view class="itemDetil">
+      您可在广东星光珠宝金行有限公司任一分店，一次性消费或充值一定金额，即可申请成为“STARSHINE”星光珠宝会员。
+    </view>
+    <view class="itemDetil">
+      【申请成为“STARSHINE”星光珠宝会员之具体消费金额或充值金额以广东星光珠宝金行有限公司服务公告为准。】
+    </view>
+  </view>
+  <view class="itemLine">
+    <text>(二)如何升级我的会员等级？</text>
+  </view>
+  <view class="itemFirst">
+    <view class="itemDetil">
+      “STARSHINE”星光珠宝会员等级共分四级，具体为：一星级、二星级、三星级、四星级。会员等级每自然季度调整一次，等级升降由系统自动实现，无需申请。
+    </view>
+    <view class="itemDetil">
+      在您成功申请“STARSHINE”星光珠宝会员资格后，您即成为一星级会员。当您每个自然季度累积越来越多的奖励积分时（详细要点请细阅“如何获得和兑领奖励积分”），下一自然季度您将获得免费的会员升级。
+    </view>
+  </view>
+  <view class="itemLine">
+    <text>(三)获得会员等级资格有哪些优惠好礼</text>
+  </view>
+  <view class="itemFirst">
+    <view class="itemDetil">
+      “STARSHINE”星光珠宝会员持卡在广东星光珠宝金行有限公司分店消费，可享受会员专属优惠：
+    </view>
+    <view class="listRow">
+      <view>基础优惠折扣</view>
+      <view>
+        <view>会员等级</view>
+        <view>以克计价之正价饰品</view>
+        <view>以件计价之正价饰品</view>
+        <view>星享金产品佣金</view>
+      </view>
+      <view>
+        <view>一星级</view>
+        <view>每克优惠2元</view>
+        <view>尊享9.6折</view>
+        <view>0.8%</view>
+      </view>
+      <view>
+        <view>二星级</view>
+        <view>每克优惠5元</view>
+        <view>尊享9折</view>
+        <view>0.5%</view>
+      </view>
+      <view>
+        <view>三星级</view>
+        <view>每克优惠8元</view>
+        <view>尊享8.5折</view>
+        <view>0.2%</view>
+      </view>
+      <view>
+        <view>四星级</view>
+        <view>每克优惠13元</view>
+        <view>尊享8折</view>
+        <view>免</view>
+      </view>
+    </view>
+    <view class="itemDetil">
+      “STARSHINE”星光珠宝会员在广东星光珠宝金行有限公司各分店可优先体验会员专属服务。
+    </view>
+    <view class="itemDetilSmall">
+      【详细的会员专属服务信息以广东星光珠宝金行有限公司服务公告为准】
+    </view>
+  </view>
+  <view class="itemLine">
+    <text>(四)如何获得和兑领奖励积分？</text>
+  </view>
+  <view class="itemDetil">
+    成为“STARSHINE”星光珠宝会员，可获预付奖励积分和消费奖励积分：
+  </view>
+  <view class="itemLine">
+    <text>预付奖励积分：</text>
+  </view>
+  <view class="itemDetil">
+    您可以通过贡献余额和贡献天数累计动态贡献点，动态贡献点将按照“星级评定系数”折算为预付奖励积分。
+  </view>
+  <view class="itemLine">
+    <text>消费奖励积分：</text>
+  </view>
+  <view class="itemFirst">
+    <view class="itemDetil">
+      您每次购物消费，消费金额可按相应的比例折算成对应的消费奖励积分，消费奖励积分可累计兑换相应的礼品。
+    </view>
+    <view class="itemDetil">
+      消费奖励积分累积满8000分后，即可兑换我司店内价值280元的任意饰品（或礼品）。
+    </view>
+    <view class="itemDetil">
+      奖励积分仅可用于购物优惠或兑换礼品，不可以任何形式退付现金。 【星级评定系数、消费金额与奖励积分的换算比例每年核定并对外公布一次，会员可按“查询及了解会员信息”指引查询】
+    </view>
+  </view>
+  <view class="itemLine">
+    <text>（五）查询及了解会员信息？</text>
+  </view>
+  <view class="itemFirst">
+    <view class="itemDetil">
+      “STARSHINE”星光珠宝会员可致电我司全国服务热线：400-818-0828，或关注我司微信公众号：Starshine星光珠宝，或查阅我司 官方网站www.starshine.hk，查阅您的会员等级、奖励积分及了解相关会员信息。也可亲临我司任何门店出示会员卡或相关身份证 名文件进行查询。
+    </view>
+    <view class="itemButtom">
+      <view>
+        详细信息请参阅广东星光珠宝金行有限公司“STARSHINE”星光珠宝会员章程，或亲临我司任一门点咨询。
+      </view>
+      <view>
+        广东星光珠宝金行有限公司拥有“STARSHINE”星光珠宝会员规则和各条款的最终解释权，并对“STARSHINE”星光珠宝会员章程有完 全的管理权力，有权对其各项使用细则进行增补、删减和修改，同时不负事先通知之责。
+      </view>
+    </view>
+  </view>
+</view>

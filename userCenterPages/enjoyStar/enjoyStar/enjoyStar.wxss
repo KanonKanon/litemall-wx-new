@@ -1,0 +1,99 @@
+/* pages/enjoyStar/enjoyStar.wxss */
+
+.top {
+  padding: 20rpx 0;
+  background-color: #ab956d;
+  color: white;
+  display: flex;
+  flex: row;
+}
+
+.top text {
+  color: white;
+}
+
+.topView {
+  padding: 20rpx 0;
+  margin-bottom: 10rpx;
+  display: flex;
+  font-size: 40rpx;
+  justify-content: center;
+  text-align: right;
+}
+
+.topWord {
+  padding: 30rpx 0;
+  display: flex;
+  font-size: 32rpx;
+  height: 60rpx;
+  align-items: center;
+  overflow: hidden;
+}
+
+.center {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 35rpx;
+  color: red;
+  margin-top: 30rpx;
+}
+
+.button {
+  padding: 20rpx 0;
+  display: flex;
+  min-height: 40rpx;
+  font-size: 28rpx;
+  flex-direction: row;
+}
+
+.button-left {
+  height: 30rpx;
+  width: 220rpx;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.button-right {
+  height: 30rpx;
+  width: 220rpx;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.listRow {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  width: 100%;
+  height: 260rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.image {
+  display: flex;
+  width: 187rpx;
+  height: 140rpx;
+  margin: 60rpx 20rpx;
+}
+
+.word {
+  margin-left: 10rpx;
+  margin-bottom: 0rpx;
+}
+
+.top-view {
+  /* margin-top: 20rpx; */
+  margin-left: 200rpx;
+  font-size: 25rpx;
+  color: white;
+}
+
+.top-text {
+  margin-left: 325rpx;
+}
+
+.hover-tap{
+  background: wheat;
+}

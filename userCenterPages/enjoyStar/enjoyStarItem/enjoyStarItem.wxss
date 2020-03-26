@@ -1,0 +1,82 @@
+
+.top{
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+background-color: #ab956d;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 30rpx;
+color:white;
+}
+.top text{
+  color: white;
+}
+
+.viewRow{
+  border-bottom: 1rpx solid #ccc;
+  display: flex;
+  flex:row;
+  height:100rpx;
+  padding-left: 20rpx;
+}
+.Words{
+margin: 30rpx 0rpx;
+font-size: 30rpx;
+width:100%;
+display: flex;
+justify-content: space-between;
+}
+.image{
+  width:400rpx;
+  height:300rpx;
+  display: flex;
+  margin: 40rpx auto;
+}
+  
+/*主容器*/  
+.stepper {  
+    width: 80px;  
+    height: 26px;  
+    /*给主容器设一个边框*/  
+    border: 1px solid #ccc;  
+    border-radius: 3px;  
+    margin: 30rpx 10rpx 10rpx 10rpx;  
+    display: flex;
+    flex-direction: row;
+}  
+  
+/*加号和减号*/  
+.stepper text {  
+    width: 19px;  
+    line-height: 26px;  
+    text-align: center;  
+}  
+  
+/*数值*/  
+.stepper input {  
+    width: 40px;  
+    height: 26px;  
+    float: left;  
+    margin: 0 auto;  
+    text-align: center;  
+    font-size: 12px;  
+    /*给中间的input设置左右边框即可*/  
+    border-left: 1px solid #ccc;  
+    border-right: 1px solid #ccc;  
+}  
+  
+/*普通样式*/  
+.stepper .normal{  
+    color: black;  
+}  
+  
+/*禁用样式*/  
+.stepper .disabled{  
+    color: #ccc;  
+}  
+
+.hover-tap{
+  color: grey;
+}

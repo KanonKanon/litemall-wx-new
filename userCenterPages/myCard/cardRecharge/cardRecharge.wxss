@@ -1,0 +1,79 @@
+@import "../../../utils/common.wxss";
+.top{
+margin-bottom: 40rpx;
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+background-color: #ab956d;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 30rpx;
+color:white;
+}
+.itemView{
+  margin: 20rpx 0;
+  background-color: #FFFFFF;
+  border-radius: 4rpx;
+  overflow: hidden;
+  height: 50px;
+  align-items: center;
+  font-size: 35rpx;
+}
+.rechargeBtn{
+  width: 200rpx;
+  height: 70rpx;
+  color:black;
+  background-color:white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 30rpx;
+  display: flex;
+  margin-top: 10rpx;
+  margin-left: 25rpx;
+}
+.loginBtn{
+  width: 700rpx;
+  height: 70rpx;
+  color:white;
+  background-color:#ab956d;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 42rpx;
+  display: flex;
+  margin-top: 50rpx;
+}
+.row{
+  display: flex;
+  flex-flow: row wrap;
+}
+.itemColumn{
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction:column; 
+}
+.itemColumn text{
+  color:red;
+  margin-left: 20rpx;
+}
+.chargeBtn{
+  margin-left: 200rpx;
+}
+.itemViewLine{
+  margin: 20rpx 0;
+  background-color: #FFFFFF;
+  border-radius: 4rpx;
+  overflow: hidden;
+  height: 50px;
+  align-items: center;
+  font-size: 35rpx;
+  display: flex;
+  flex-direction: row;
+}
+.input{
+  width: 700rpx;
+  height: 70rpx;
+}
+

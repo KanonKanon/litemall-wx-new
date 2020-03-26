@@ -1,0 +1,107 @@
+<!--pages/ucenter/records/rechargerecord/rechargerecord.wxml-->
+<wxs module="fix" src="../../../../utils/Fixed.wxs"></wxs>
+<view class="main-wrap">
+  <van-tabs bind:change="tabChange" active="{{tabName}}" sticky swipeable>
+  <van-tab title="线下充值记录" name="offline">
+    <van-collapse wx:if="{{offlineList.length}}" value="{{ activeName }}" bind:change="onChange" accordion>
+    <van-collapse-item wx:for="{{offlineList}}" wx:key='index' name="{{index}}">
+      <view slot="title">
+        <text>{{item.id}}</text>
+      </view>
+      <view slot="value">
+        <text style="color:red;">+{{item.amount}}{{item.rechargetype=='积分'?'积分 ':'元 '}}</text>
+      </view>
+      <view class="d-wrap">
+        <view>
+          单号：{{item.id}}
+        </view>
+        <view>
+          充值金额：{{item.amount}}{{item.rechargetype=='积分'?'积分 ':'元 '}}
+        </view>
+        <view>
+          充值时间：{{item.editdt}}
+        </view>
+        <view>
+          充值类型：{{item.rechargetype}}
+        </view>
+        <view>
+          充值部门：{{item.storename}}
+        </view>
+      </view>
+    </van-collapse-item>
+  </van-collapse>
+  <view wx:else class='no-data'>
+    <view>
+      <image src="/static/images/empty.png"></image>
+    </view>
+    <view>暂无数据</view>
+  </view>
+  </van-tab>
+  <van-tab title="线上充值记录" name="online">
+    <van-collapse wx:if="{{onlineList.length}}" value="{{ activeName }}" bind:change="onChange" accordion>
+    <van-collapse-item wx:for="{{onlineList}}" wx:key='index' name="{{index}}">
+      <view slot="title">
+        <text style="font-size:25rpx">{{item.orderno}}</text>
+      </view>
+      <view slot="value" wx:if="{{item.type===1||item.type===2||item.type===5||item.type===6}}">
+        <text style="color:red;">+{{item.amount/100}} 元</text>
+      </view>
+       <view slot="value" wx:if="{{item.type===3||item.type===4}}">
+        <text style="color:red;">+{{item.amount/100}} 分</text>
+      </view>
+      <view class="d-wrap">
+        <view>
+          单号：{{item.orderno}}
+        </view>
+        <view wx:if="{{item.type===1||item.type===2||item.type===5||item.type===6}}">
+          充值金额：{{item.amount/100}}元
+        </view>
+         <view wx:if="{{item.type===3||item.type===4}}">
+          充值金额：{{item.amount/100}}分
+        </view>
+        
+        <view wx:if="{{item.type===1}}">
+          充值类型：优先享
+        </view>
+         <view wx:if="{{item.type===2}}">
+          充值类型：可用余额
+        </view>
+         <view wx:if="{{item.type===3}}">
+          充值类型：奖励积分
+        </view>
+         <view wx:if="{{item.type===4}}">
+          充值类型：消费积分
+        </view>
+         <view wx:if="{{item.type===5}}">
+          充值类型：安享积存金
+        </view>
+         <view wx:if="{{item.type===6}}">
+          充值类型：诚意金
+        </view>
+        <view>
+          充值时间：{{fix.timestampToTime(item.addTime*1000)}}
+        </view>
+        <view>
+          随享卡：{{item.cardNum}}
+        </view>
+        <view>
+          状态：{{item.status===1?'成功':'失败'}}
+        </view>
+         <view>
+          充值部门：{{item.rechargeSource}}
+        </view>
+      </view>
+
+    </van-collapse-item>
+  </van-collapse>
+  <view wx:else class='no-data'>
+    <view>
+      <image src="/static/images/empty.png"></image>
+    </view>
+    <view>暂无数据</view>
+  </view>
+  </van-tab>
+</van-tabs>
+
+  
+</view>

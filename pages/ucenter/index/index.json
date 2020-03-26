@@ -1,0 +1,9 @@
+{
+  "backgroundColor": "#f4f4f4",
+  "navigationBarTitleText": "会员中心",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+   "popup":"../../../lib/popup/popup",
+   "pwdinput":"../../../lib/pwdInput/pwdInput"
+  }
+}

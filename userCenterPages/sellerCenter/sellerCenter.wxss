@@ -1,0 +1,283 @@
+/* userCenterPages/sellerCenter/sellerCenter.wxss */
+
+.line {
+  width: 100%;
+  height: 1rpx;
+  background: gainsboro;
+}
+.line-s{
+  width: 100%;
+  height: 20rpx;
+  background: gainsboro;
+}
+.main-wrap{
+  overflow-y:auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+
+}
+.top {
+  display: flex;
+  flex-direction: row;
+  background: #333;
+  padding: 50rpx 50rpx;
+  height: 250rpx;
+  width: 100%;
+}
+
+.top .t-left image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.top .t-right {
+  padding-left: 30rpx;
+}
+
+.top .t-right .name {
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 40rpx;
+}
+
+.top .t-right .shop {
+  color: grey;
+  display: flex;
+  align-items: center;
+  height: 50rpx;
+  font-size: 20rpx;
+}
+
+.top .t-right .status-label {
+  display: flex;
+  flex-direction: row;
+}
+
+.top .t-right .status-label .s-left {
+  color: grey;
+  border: 1rpx solid grey;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50rpx;
+  padding: 0 5rpx;
+  font-size: 20rpx;
+}
+
+.top .t-right .status-label .s-right {
+  color: goldenrod;
+  border: 1rpx solid goldenrod;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50rpx;
+  margin-left: 10rpx;
+  padding: 0 5rpx;
+  font-size: 20rpx;
+}
+
+.center {
+  width: 100%;
+  margin-bottom: 100rpx;
+  overflow-y:auto;
+  overflow-x:hidden;  
+}
+
+.earnings-panel .e-top {
+  height: 250rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.earnings-panel .e-top .e-money {
+  height: 100rpx;
+  font-size: 80rpx;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.earnings-panel .e-top view {
+  color: grey;
+}
+
+.earnings-panel .e-middle {
+  height: 250rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.earnings-panel .e-middle .left, .right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+.earnings-panel .e-middle .left{
+  border-right: 1rpx solid gainsboro;
+
+}
+.earnings-panel .e-middle view{
+  color: grey;
+}
+
+.earnings-panel .e-middle .left .l-money {
+  height: 100rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  font-size: 60rpx;
+  font-weight: bold;
+}
+
+.earnings-panel .e-middle .right .r-money {
+  height: 100rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  font-size: 60rpx;
+  font-weight: bold;
+}
+.earnings-panel .e-bottom{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  justify-content: space-between;
+}
+.earnings-panel .e-bottom .left{
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+.earnings-panel .e-bottom .right{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 30rpx;
+}
+
+.earnings-panel .e-bottom .right image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.client-panel{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 250rpx;
+}
+.client-panel .item{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column; 
+}
+.client-panel .item .num{
+  height: 80rpx;
+  font-size: 60rpx;
+  color: lightseagreen;
+  font-weight: bold;
+}
+
+.pic-panel{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30rpx 30rpx;
+  justify-content: space-between;
+}
+
+.pic-panel .img image{
+  width: 210rpx;
+  height: 140rpx;
+}
+
+.problems{
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  align-items: center;
+}
+.problems view image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.problems view{
+  display: flex;
+  align-items: center;
+}
+
+.logo{
+  height: 250rpx;
+  background: gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.logo view image{
+  width: 250rpx;
+  height: 80rpx;
+}
+
+
+
+
+
+
+
+.btn-list {
+  position: fixed;
+  bottom: -18rpx;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 120rpx;
+  background: whitesmoke;
+}
+
+.btn-list .btn-l {
+  display: flex;
+  height: 100rpx;
+  border: 1rpx solid gainsboro;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-list .btn-c {
+  display: flex;
+  height: 100rpx;
+  border-top: 1rpx solid gainsboro;
+  border-bottom: 1rpx solid gainsboro;
+  color: #333;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-list .btn-r {
+  display: flex;
+  height: 100rpx;
+  border: 1rpx solid gainsboro;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}

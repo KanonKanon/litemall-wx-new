@@ -1,0 +1,29 @@
+/* userCenterPages/sellerCenter/setllementCenter/getMoneyRecord/getMoneyRecord.wxss */
+@import '../../myClient/myClient.wxss';
+.data-list .item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10rpx 30rpx;
+  height: 100rpx;
+  background: white;
+  border-bottom: 2rpx solid whitesmoke;
+  
+}
+.data-list .item .i-left{
+  height: 100rpx;
+}
+.data-list .item .i-left view:nth-child(2){
+ margin-top: 10rpx;
+ color:grey;
+}
+
+.data-list .item .i-right{
+  color:grey;
+}
+.data-list .item .red{
+  color: red;
+}
+.data-list .item .green{
+  color:green;
+}

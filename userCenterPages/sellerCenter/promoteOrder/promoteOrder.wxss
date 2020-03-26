@@ -1,0 +1,83 @@
+@import '../myClient/myClient.wxss';
+
+.item {
+  background: white;
+}
+
+.item .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  height: 80rpx;
+}
+
+.item .title .t-right view {
+  color: grey;
+}
+
+.item .desc {
+  display: flex;
+  height: 100rpx;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10rpx 30rpx;
+}
+
+.item .desc view {
+  color: grey;
+}
+
+.sitem-wrap {
+  background: whitesmoke;
+  padding: 10rpx 30rpx;
+}
+
+.sitem-wrap .sitem {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.sitem-wrap .sitem .item-left {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.sitem-wrap .sitem .item-left image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.sitem-wrap .sitem .item-middle {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 60%;
+}
+.sitem-wrap .sitem .item-middle view:nth-child(2){
+  color: red;
+}
+
+.sitem-wrap .sitem .item-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 10%;
+}
+.item .price{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 30rpx;
+  height: 80rpx;
+  align-items: center;
+  background: white;
+}
+
+.item .price view:nth-child(2){
+  color: grey;
+}

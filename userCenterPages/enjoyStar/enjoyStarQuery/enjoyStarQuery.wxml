@@ -1,0 +1,37 @@
+<view class="top">
+  <text>订单查询</text>
+</view>
+
+<block wx:for="{{enjoyInfos}}" wx:key="orderNumber">
+  <view class="template" id="{{index}}" bindtap="{{item.payStatus==2?'bindtap':''}}">
+    <view style="border-bottom: 1px solid #ccc;">
+        <view class="order-num">单号: {{item.orderNumber}}</view>
+        <view class="order-time">日期: {{item.addTime}}</view>
+    </view>
+
+    <view style="font-size: 30rpx;">
+        <view style="width: 550rpx; display:flex;align-items:center;" >商品: {{item.enjoyTitle}}</view>
+        <view style="display:flex;align-items:center;">{{status[item.payStatus-1]}}</view>
+    </view>
+
+    <view style="font-size: 30rpx;">
+        <view style="display:flex;align-items:center;">总金额: </view>
+        <text style="display:flex;align-items:center;">¥{{item.moneyCount}}元</text>
+        <view style="display:flex;align-items:center;">积分抵扣: </view>
+        <text style="display:flex;align-items:center;">¥{{item.integralDeductible}}元</text>
+    </view>
+
+
+    <view style="font-size: 30rpx;">
+        <view style="display:flex;align-items:center;">数量: {{item.buyNum}}</view>
+        <view style="display:flex;align-items:center;">佣金: </view>
+        <text style="display:flex;align-items:center;">¥{{item.commission}}元</text>
+    </view>
+
+    <view style="border-top: 1px solid #ccc;">
+        <view style="display:flex;align-items:center;">共{{item.buyNum}}件</view>
+        <view style="display:flex;align-items:center;">实际支付:</view>
+        <text style="display:flex;align-items:center;">¥{{item.moneyCount-item.integralDeductible}}元</text>
+    </view>
+  </view>
+</block>

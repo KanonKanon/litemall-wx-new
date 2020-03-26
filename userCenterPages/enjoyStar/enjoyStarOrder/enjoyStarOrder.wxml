@@ -1,0 +1,58 @@
+<wxs module="filters" src="../../../utils/Fixed.wxs">
+</wxs>
+<view class="top">
+  <text>确认订单</text>
+</view>
+<view style="border-bottom: 1rpx solid #ccc;">
+  <view class="listRow">
+    <image class="image" src="../../../static/images/gold.jpg"></image>
+    <view class="word">
+      <view class="button">{{orderData.enjoyTitle}}</view>
+      <view class="button">规格:{{orderData.enjoyWeight}}克</view>
+      <view class="button">价格:{{orderData.enjoyGold*orderData.enjoyWeight}}元</view>
+      <view class="button">数量:{{orderData.buyNum}}</view>
+      <view class="button">佣金:{{orderData.commission}}元</view>
+      <view class="button">总计（共{{orderData.buyNum}}件：¥{{orderData.moneyCount}}元)</view>
+    </view>
+  </view>
+
+  <!--输入密码的弹窗-->
+  <!-- <modal hidden="{{isShow}}" title="{{title}}" confirm-text="提交" bindcancel="cancel" bindconfirm="confirm">
+    <input password placeholder="请输入密码" type="number" bindinput="inputPsw" />
+  </modal> -->
+  <pwdinput id="pwdinput" bind:bindinput="inputPsw" bind:confirm="confirm" />
+
+  <modal hidden="{{isShow2}}" title="温馨提示" confirm-text="继续" bindcancel="cancel2" bindconfirm="confirm2">
+    <view style='color:red'>
+      <text>23:30之后下单，结算时间是T+2。</text>
+    </view>
+  </modal>
+
+  <!-- 银行卡输入 -->
+  <modal hidden="{{isBankShow }}" title="请输入银行卡信息" confirm-text="提交" bindcancel="cancel" bindconfirm="bankConfirm">
+    <input placeholder="请输入开户银行" bindinput="inputBankName" />
+    <input placeholder="请输入银行卡号" type="number" bindinput="inputBankCard" />
+  </modal>
+
+
+</view>
+
+<view style="margin:10rpx 0">
+  <view style="margin: auto 15rpx;"> 积分优惠(共{{wallet.prepayPoint/100}}积分,可优惠{{wallet.prepayPoint/100/40|Int}}元)
+    <switch style="margin: auto 30rpx;" bindchange="switchChange" />
+
+    <view class="point" style=" height: 50rpx; ">
+      <view hidden="{{isPoint}}">抵</view>
+      <input hidden="{{isPoint}}" value="{{point}}" type="number" bindinput="inputPoint" />
+      <view hidden="{{isPoint}}">元,使用{{point*40}}积分</view>
+    </view>
+  </view>
+</view>
+
+<view class="point">
+  <view>实际支付:</view>
+  <view style="color: red;font-size: 40rpx">¥{{orderData.moneyCount-point}}元</view>
+</view>
+<view class="pay-button">
+  <button bindtap="submit" class="pay-btn" hover-class='hover-tap'>去支付</button>
+</view>

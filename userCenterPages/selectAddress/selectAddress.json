@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "选择提货点",
+  "usingComponents": {
+    "van-area": "../vant_component/area/index",
+    "van-search": "../vant_component/search/index",
+    "van-icon":"../vant_component/icon/index",
+    "van-cell": "../vant_component/cell/index",
+    "van-cell-group": "../vant_component/cell-group/index"
+  }
+}

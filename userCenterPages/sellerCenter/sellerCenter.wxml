@@ -1,0 +1,108 @@
+<!--userCenterPages/sellerCenter/sellerCenter.wxml-->
+<view class="main-wrap">
+  <view class="top">
+    <view class="t-left">
+      <image src="{{userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="t-right">
+      <view class="name">{{userInfo.nickName}}</view>
+      <view class="shop">当前店铺：星商城+</view>
+      <view class="status-label">
+        <view class="s-left">自购分佣</view>
+        <view class="s-right">分销员间绑定</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="center">
+    <view class="earnings-panel">
+      <view class="e-top" bindtap="goToMyClient">
+        <view>当前店铺累计收益（元）</view>
+        <view class="e-money">{{sellerCenterData.profit}}</view>
+        <view>包含待结算{{sellerCenterData.balanceYet}}元</view>
+      </view>
+
+      <view class="e-middle" bindtap="goToMyClient">
+        <view class="left">
+          <view>昨日收益（元）</view>
+          <view class="l-money">{{sellerCenterData.profitYes}}</view>
+          <!-- <view>待结算{{sellerCenterData.commissionYet}}元</view> -->
+        </view>
+        <view class="right">
+          <view>昨日新增客户（人）</view>
+          <view class="r-money">{{sellerCenterData.offlineYes}}</view>
+          <!-- <view>需要加油哦</view> -->
+        </view>
+      </view>
+
+      <view class='line'></view>
+      <view class="e-bottom" bindtap="goToSetllementCenter">
+        <view class="left">可提现佣金{{sellerCenterData.balance}}元</view>
+        <view class="right">
+          <view>立即提现</view>
+          <image src="/static/images/address_right.png"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="line-s"></view>
+
+    <view class="client-panel">
+      <view class="item" catchtap='goToClient'>
+        <view class="num">{{sellerCenterData.offline}}</view>
+        <view>累计客户</view>
+      </view>
+      <view class="item" catchtap='goToMyinvitation'>
+        <view class="num">{{sellerCenterData.invitation}}</view>
+        <view>累计邀请</view>
+      </view>
+      <view class="item" catchtap='goToPromoteOrder'>
+        <view class="num">{{sellerCenterData.order}}</view>
+        <view>推广订单</view>
+      </view>
+    </view>
+
+    <view class="line-s"></view>
+
+    <view class="pic-panel">
+      <view class="img" catchtap='goToPromotionGoods'>
+        <image src="/static/images/sharegoods.jpg"></image>
+      </view>
+      <view class="img" catchtap='goToInvitationCard'>
+        <image src="/static/images/sharefriend.jpg"></image>
+      </view>
+      <view class="img" catchtap='goToMsgCenter'>
+        <image src="/static/images/messagecenter.jpg"></image>
+      </view>
+    </view>
+
+    <view class='line-s'></view>
+
+    <view class="problems" catchtap='goToProblem'>
+      <view>常见问题</view>
+      <view>
+        <image src="/static/images/address_right.png"></image>
+      </view>
+    </view>
+
+    <view class="logo">
+      <view>
+        <image src="/static/images/logo.png"></image>
+      </view>
+      <view class="desc">星坊智链技术支持</view>
+    </view>
+
+  </view>
+
+  <view class="btn-list">
+    <view class="btn-l" catchtap='goToIndex'>
+      首页
+    </view>
+    <view class="btn-c" catchtap='goToPromotionGoods'>
+      推广商品
+    </view>
+    <view class="btn-r" catchtap='goToSetllementCenter'>
+      结算中心
+    </view>
+  </view>
+</view>

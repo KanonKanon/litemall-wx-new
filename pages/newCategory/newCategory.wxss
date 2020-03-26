@@ -1,0 +1,530 @@
+/* pages/newCategory/newCategory.wxss */
+
+.main-wrap {
+  /* display: flex;
+  flex-direction: row; */
+  position: relative;
+  width: 100vw;
+  height:100vh;
+  margin-top: 190rpx;
+}
+
+.main-wrap .left {
+  position: absolute;
+  width: 20%;
+  background: whitesmoke;
+  height: 100%;
+  top: 0;
+  left: 0;
+  
+}
+
+.left .cate-item {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  padding: 0rpx 18rpx 0 18rpx;
+}
+
+.cate-hover {
+  background: white;
+  border-left: 8rpx solid #a78845;
+  font-weight: bold;
+}
+
+.main-wrap .goods-view {
+  width: 600rpx;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.catalog-title {
+  margin-top: 30rpx;
+}
+
+.goods-item {
+  width: 100%;
+  height: 150rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-top: 30rpx;
+}
+.img-wrap{
+  width: 210rpx;
+  height: 150rpx;
+  overflow: hidden;
+}
+.goods-item .img-wrap image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.desc-wrap {
+  width: 100%;
+  margin-left: 20rpx;
+  position: relative;
+}
+
+.desc-wrap .title {
+  font-weight: bold;
+  font-size: 30rpx;
+  padding-right: 20rpx
+}
+
+.desc-wrap .price {
+  width: 200rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #a78845;
+  font-size: 25rpx;
+  position: absolute;
+  bottom: 0;
+}
+
+.plus {
+  position: absolute;
+  bottom: 0;
+  right:20rpx;
+  overflow: hidden;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.plus image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.attr-pop-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 8;
+  bottom: 0;
+  /* display: none; */
+}
+
+.attr-pop {
+  width: 100%;
+  height: auto;
+  max-height: 780rpx;
+  padding: 31.25rpx;
+  background: #fff;
+  position: fixed;
+  z-index: 9;
+  bottom: 100rpx;
+}
+
+.attr-pop .close {
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  right: 31.25rpx;
+  overflow: hidden;
+  top: 31.25rpx;
+  z-index: 30;
+}
+
+.attr-pop .close .icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.attr-pop .img-info {
+  width: 687.5rpx;
+  height: 137rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #c4a867;
+  position: relative;
+}
+
+.attr-pop .img {
+  height: 177rpx;
+  width: 177rpx;
+  background: #f4f4f4;
+  margin-right: 31.25rpx;
+  position: fixed;
+  bottom: 400rpx;
+  z-index: 20;
+  border-radius: 10rpx;
+}
+
+.attr-pop .info {
+  float: left;
+  height: 137rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 200rpx;
+  top: -10rpx;
+}
+
+.attr-pop .p {
+  font-size: 40rpx;
+  color: #c2a875;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.attr-pop .a {
+  font-size: 25rpx;
+  color: #333;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.spec-con {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.spec-con .name {
+  height: 32rpx;
+  margin-bottom: 22rpx;
+  font-size: 29rpx;
+  color: #333;
+  overflow: hidden;
+}
+
+.spec-con .values {
+  height: auto;
+  margin-bottom: 31.25rpx;
+  font-size: 0;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.spec-con .value {
+  display: inline-block;
+  height: 62rpx;
+  padding: 0 35rpx;
+  line-height: 56rpx;
+  text-align: center;
+  margin-right: 25rpx;
+  margin-bottom: 16.5rpx;
+  border: 1px solid #333;
+  font-size: 25rpx;
+  color: #333;
+}
+
+.spec-con .value.disable {
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+
+.spec-con .value.selected {
+  border: 1px solid #b4282d;
+  color: #b4282d;
+}
+
+.number-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.number-item .left {
+  display: flex;
+  flex-direction: column;
+  height: 71rpx;
+}
+
+.number-item .name {
+  height: 25rpx;
+  line-height: 25rpx;
+}
+
+.number-item .count {
+  height: 25rpx;
+  line-height: 25rpx;
+  color: gray;
+}
+
+.number-item .selnum {
+  width: 322rpx;
+  height: 71rpx;
+  border: 1px solid #ccc;
+  display: flex;
+}
+
+.number-item .cut {
+  width: 93.75rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 65rpx;
+}
+
+.number-item .number {
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  line-height: 68.75rpx;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  float: left;
+}
+
+.number-item .add {
+  width: 93.75rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 65rpx;
+}
+.btn-wrap{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  z-index: 9;
+  bottom: 0;
+}
+.btn-wrap .btn-left{
+ width: 50%;
+ text-align: center;
+ z-index: 10;
+ height: 100rpx;
+ line-height: 100rpx;
+ background: #f5efe3;
+ color: #c8aa6e;
+}
+.btn-wrap .btn-right{
+  width: 50%;
+ text-align: center;
+ z-index: 10;
+ height: 100rpx;
+ line-height: 100rpx;
+ background: #c8aa6e;
+ color:white;
+}
+
+/* 秒杀列表样式 */
+.secKillList{
+  height:340rpx;
+  padding:20rpx 20rpx; 
+}
+.sec-view{
+  height:340rpx;
+  overflow-x:auto;
+  overflow-y:hidden;  
+  white-space: nowrap;
+}
+.sec-view .secKill-item{
+  height:340rpx;
+  width:100vw;
+  overflow-x:auto;
+  overflow-y:hidden;  
+  display: inline-flex;
+}
+.sec-view .secKill-item .temp-wrap{
+  width: 100vw;
+  height:340rpx;
+  display: inline-flex;
+  flex-direction: row;
+}
+.secKill-item .s-pic{
+  width: 300rpx;
+  height: 300rpx;
+  position: relative;
+  overflow: hidden;
+}
+.secKill-item .s-pic .s-img{
+  width: 300rpx;
+  height:300rpx;
+}
+.s-pic .s-time{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right:0;
+  background: #a78845;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60rpx;
+  padding:0 20rpx;
+}
+.s-pic .s-time text:nth-child(1){
+  color: white;
+  font-size: 25rpx;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+.s-pic .s-time text:nth-child(2){
+  color: white;
+  font-size: 25rpx;
+
+}
+.secKill-item .s-info{
+  height: 100%;
+  padding: 20rpx 20rpx;
+  width:55%;
+}
+.s-info .title text:nth-child(2){
+  color:#a78845;
+  font-size: 25rpx;
+  background: gold;
+  padding: 10rpx 10rpx;
+
+}
+.s-info .title text:nth-child(1){
+  color: #333;
+  font-size: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.s-info .amount{
+  color: grey;
+  font-size: 25rpx;
+  margin-top: 30rpx;
+}
+.s-info .price{
+  margin-top: 100rpx;
+}
+.s-info .price text:nth-child(1){
+  color:#a78845;
+}
+.s-info .price text:nth-child(2){
+  color:grey;
+  font-size: 25rpx;
+  margin-left: 10rpx;
+  text-decoration: line-through;
+}
+
+
+/* 选择店铺样式 */
+.select-shop{
+  background: white;
+  position: fixed;
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  padding-left: 30rpx;
+  left: 0rpx;
+  right: 0rpx;
+  top: 0rpx;
+}
+.select-shop .img image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.select-shop .shopname{
+  color: grey;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+}
+.select-shop .change-btn{
+  color: black;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+
+/* 限时折扣样式 */
+.limitTimePanel{
+  
+}
+.limitTimePanel .limit-time{
+ height: 80rpx;
+ background: white;
+}
+.limit-time .status{
+  font-size: 35rpx;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  color: black;
+  margin: 0 30rpx;
+}
+.limit-time .num{
+  background: red;
+  color:white;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 5rpx;
+}
+.limit-time .txt{
+  color:grey;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 5rpx;
+}
+
+.limit-goods-list{
+  background: whitesmoke;
+  white-space: nowrap;
+  height:420rpx;
+}
+.limit-goods-list .limit-item{
+  display: inline-flex;
+  height: 400rpx;
+  width: 200rpx;
+  border-radius: 20rpx;
+  flex-direction: column;
+  background: white;
+  margin: 10rpx 0rpx 10rpx 10rpx;
+
+}
+.limit-item .limit-pic{
+  width: 200rpx;
+  height: 200rpx;
+  position: relative;
+  overflow: hidden;
+}
+.limit-pic image{
+  width: 200rpx;
+  height: 200rpx;
+}
+.limit-pic .sold-out{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.limit-item .limit-info{
+  padding: 10rpx 10rpx;
+  overflow: hidden;
+}
+.limit-item .limit-info .name{
+  white-space: normal;
+  font-size: 20rpx;
+}
+.limit-info .l-price{
+  margin-top:40rpx;
+  color:#a78845;
+}
+.limit-info .o-price{
+  text-decoration: line-through;
+  color:grey;
+}
+
+.logo {
+  height: 250rpx;
+  background: gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo view image {
+  width: 250rpx;
+  height: 80rpx;
+}
+
+.search-bar{
+  position: fixed;
+  top:80rpx;
+  left: 0rpx;
+  right: 0rpx;
+}
+
+
+

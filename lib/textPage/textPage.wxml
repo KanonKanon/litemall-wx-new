@@ -1,0 +1,3 @@
+<!--lib/textPage/textPage.wxml-->
+<button bindtap='showInput'>弹出密码框</button>
+<pwdinput id="pwdinput" bindinput="onInput" />

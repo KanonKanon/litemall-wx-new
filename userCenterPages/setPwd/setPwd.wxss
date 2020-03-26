@@ -1,0 +1,53 @@
+/* pages/login/login.wxss */
+.top{
+  /*margin-bottom: 40rpx;*/
+  padding: 20rpx 0;
+  display: flex;
+  min-height: 40rpx;
+  background-color: #861115;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30rpx;
+  color:white;
+}
+.itemView{
+  margin: 20rpx 20rpx;
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  overflow: hidden;
+  height: 50px;
+  align-items: center;
+  font-size: 35rpx;
+  display: flex;
+  border: 2rpx solid #DDDDDD;
+}
+.loginBtn{
+  height: 70rpx;
+  color:white;
+  background-color:#861115;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 42rpx;
+  display: flex;
+  margin: 20rpx 20rpx;
+}
+.input{
+    margin-left: 50rpx;
+}
+.forgetBtn{
+  color:#861115;
+  margin-left: 550rpx;
+  font-size: 30rpx;
+}
+.image{
+  width: 100%;
+}
+.info{
+  margin: 10rpx 20rpx;
+  font-size: 25rpx;
+  color: #C0C0C0;
+}
+
+

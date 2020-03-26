@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "商品列表",
+  "usingComponents": {
+    "van-search": "/userCenterPages/vant_component/search/index"
+  }
+}

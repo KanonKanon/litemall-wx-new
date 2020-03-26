@@ -1,0 +1,68 @@
+<!--userCenterPages/sellerCenter/myInvitation/myInvitation.wxml-->
+<view class='main-wrap'>
+  <view class="top">
+    <view class="yesterday {{time==1?'active':''}}" bindtap='showData' data-index="1">昨天</view>
+    <view class="sevendays {{time==2?'active':''}}" bindtap='showData' data-index="2">近七天</view>
+    <view class="all {{time==3?'active':''}}" bindtap='showData' data-index="3">全部</view>
+  </view>
+
+  <view class="data-list">
+    <view class='line-b'></view>
+    <view wx:if="{{dataList.length}}">
+      <view class="item" wx:for="{{dataList}}" wx:key="{{index}}">
+        <view class="title">
+          <view class="t-left">买家:{{item.userName}}</view>
+          <view class="t-right">
+            <view wx:if="{{item.state==0}}" class="status">待结算</view>
+            <view wx:if="{{item.state==1}}" class="status">已结算</view>
+            <view wx:if="{{item.state==2}}" class="status">已取消</view>
+          </view>
+        </view>
+        <view class='line-b'></view>
+        <view class="desc">
+          <view>订单编号：{{item.orderSn}}</view>
+          <view>下单时间：{{item.addTime}}</view>
+        </view>
+        <view class="sitem-wrap">
+          <view class='sitem' wx:for="{{item.goodsList}}" wx:for-item="sitem" wx:for-index="sindex" wx:key="{{sindex}}">
+            <view class='item-left'>
+              <image src="{{sitem.picUrl}}"></image>
+            </view>
+            <view class="item-middle">
+              <view>{{sitem.goodsName}}</view>
+              <view>{{sitem.goodsCommissionRate*100}}%</view>
+            </view>
+            <view class="item-right">
+              X{{sitem.stock}}
+            </view>
+          </view>
+        </view>
+        <view class="price">
+          <view>商品佣金：￥{{item.commission}}</view>
+          <view>（订单总价：￥{{item.actualPrice}}）</view>
+        </view>
+        <view class="line-s"></view>
+
+      </view>
+    </view>
+    <view wx:else class='no-data'>
+      <view>
+        <image src="/static/images/empty.png"></image>
+      </view>
+      <view>暂无数据</view>
+
+    </view>
+  </view>
+</view>
+
+<view class="btn-list">
+  <view class="btn-l" catchtap='goToIndex'>
+    首页
+  </view>
+  <view class="btn-c" catchtap='goToPromotionGoods'>
+    推广商品
+  </view>
+  <view class="btn-r" catchtap='goToSetllementCenter'>
+    结算中心
+  </view>
+</view>

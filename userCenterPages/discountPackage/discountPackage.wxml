@@ -1,0 +1,82 @@
+<view class="main-wrap">
+
+  <view class="oGoods">
+    <view class="item-wrap">
+      <view class="check-wrap">
+        <radio checked="{{true}}"></radio>
+      </view>
+      <view class="goods-item">
+        <view class="left">
+          <image class="pic" src="{{oGoods.picUrl}}"></image>
+        </view>
+        <view class="right">
+          <view>商品标题</view>
+          <view class="price">
+            <view class="s-price">￥现价</view>
+            <view class="o-price">￥原价</view>
+            <view>
+                <picker bindchange="oSecChange" value="{{oProductIndex}}" range="{{oGoods.productList}}">
+                  <view class="picker">
+                    当前选择：{{array[index]}}
+                  </view>
+                </picker>
+              </view>
+            <view class="count">X1</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="line-s"></view>
+
+  <view class="goods-list">
+    <radio-group bindchange="radioChange">
+      <view class="item-wrap" wx:for="{{goodsList}}" wx:key="{{index}}">
+        <view class="check-wrap">
+          <radio checked="{{item.isCheck}}" value="{{index}}"></radio>
+        </view>
+        <view class="goods-item">
+          <view class="left">
+            <image class="pic" src="{{item.picUrl}}"></image>
+          </view>
+          <view class="right">
+            <view>{{item.name}}</view>
+            <view class="price">
+              <view class="s-price">￥{{item.price}}</view>
+              <view class="o-price">￥{{item.retailPrice}}</view>
+              <view>
+                <picker bindchange="packageSecChange" value="{{productIndex}}" range="{{item.productList}}">
+                  <view class="picker" wx:if="{{item.productList[productIndex]}}">
+                    规格：{{item.productList[productIndex]}}
+                  </view>
+                   <view class="picker" wx:else>
+                    请选择规格
+                  </view>
+                </picker>
+              </view>
+              <view class="count">X1</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </radio-group>
+
+  </view>
+
+  <view class="bottom-bar">
+    <view class="price">
+      <view>
+        <text>套餐价：</text>
+        <text style="color:red;">￥180</text>
+      </view>
+      <view>
+        <text style="color:grey;">为你节省￥60</text>
+      </view>
+    </view>
+    <view class="cart">加入购物车</view>
+    <view class="buy">立即购买</view>
+  </view>
+
+</view>

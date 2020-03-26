@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+      "van-icon": "../../userCenterPages/vant_component/icon/index",
+      "van-cell": "../../userCenterPages/vant_component/cell/index",
+      "van-cell-group": "../../userCenterPages/vant_component/cell-group/index",
+      "van-popup": "../../userCenterPages/vant_component/popup/index"
+  },
+  "navigationBarTitleText": "填写订单"
+}

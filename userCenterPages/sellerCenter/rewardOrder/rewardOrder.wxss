@@ -1,0 +1,2 @@
+/* userCenterPages/sellerCenter/rewardOrder/rewardOrder.wxss */
+@import '../myClient/myClient.wxss'

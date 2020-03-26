@@ -1,0 +1,109 @@
+/* userCenterPages/sellerCenter/setllementCenter/setllementCenter.wxss */
+.line-b{
+  width: 100%;
+  height: 2rpx;
+  background: gainsboro;
+}
+
+
+.main-wrap{
+  height: 1334rpx;
+  width: 100%;
+  background: whitesmoke;
+}
+.can-get-money{
+  height: 600rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 80rpx 30rpx 30rpx 30rpx;
+  align-items: center;
+}
+.can-get-money .img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200rpx;
+}
+.can-get-money .txt{
+  height: 60rpx;
+}
+.can-get-money .img image{
+  width: 386rpx;
+  height: 169rpx;
+  
+}
+.can-get-money view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100rpx;
+}
+.can-get-money .money{
+  font-size: 60rpx;
+  font-weight: bolder;
+}
+.can-get-money .btn{
+  width: 100%;
+  height: 100rpx;
+  color: white;
+  margin-top:80rpx;
+}
+
+
+
+.problems{
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  align-items: center;
+  background: white;
+}
+.problems view image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.problems view{
+  display: flex;
+  align-items: center;
+}
+
+.btn-list {
+  position: fixed;
+  bottom: -18rpx;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 120rpx;
+  background: whitesmoke;
+}
+
+.btn-list .btn-l {
+  display: flex;
+  height: 100rpx;
+  border: 1rpx solid grey;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-list .btn-c {
+  display: flex;
+  height: 100rpx;
+  border-top: 1rpx solid grey;
+  border-bottom: 1rpx solid grey;
+  color: #333;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-list .btn-r {
+  display: flex;
+  height: 100rpx;
+  border: 1rpx solid grey;
+  width: 33.3%;
+  justify-content: center;
+  align-items: center;
+}

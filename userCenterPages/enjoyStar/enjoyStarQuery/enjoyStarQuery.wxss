@@ -1,0 +1,36 @@
+@import "../../../utils/common.wxss";
+.top{
+margin-bottom: 40rpx;
+padding: 20rpx 0;
+display: flex;
+min-height: 40rpx;
+background-color: #ab956d;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 30rpx;
+color:white;
+}
+.top text{
+  color:white;
+}
+
+.order-num{
+  display: flex;
+  align-items: center;
+}
+.order-time{
+  display: flex;
+  align-items: center;
+}
+
+@media screen and(max-width:350px){
+  view{
+    font-size: 20rpx;
+  }
+}
+@media screen and(min-width:350px){
+  view{
+    font-size: 25rpx;
+  }
+}

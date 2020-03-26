@@ -1,0 +1,53 @@
+<!--userCenterPages/sellerCenter/promotionGoods/promotionGoods.wxml-->
+<wxs module="fix" src="../../../utils/Fixed.wxs"></wxs>
+<view class="main-wrap">
+  <van-search value="{{ value }}" placeholder="商品搜索：请输入商品关键字" show-action bind:search="onSearch" bind:cancel="onCancel" />
+
+  <!-- <view class='line-b'></view> -->
+
+  <!-- <view class="label-list">
+    <view class="l-item {{labelIndex==1?'active':''}}" catchtap='selectLabel' data-index="1">佣金</view>
+    <view class="l-item {{labelIndex==2?'active':''}}" catchtap='selectLabel' data-index="2">最新</view>
+    <view class="l-item {{labelIndex==3?'active':''}}" catchtap='selectLabel' data-index="3">最热</view>
+    <view class="l-item {{labelIndex==4?'active':''}}" catchtap='selectLabel' data-index="4">价格</view>
+  </view> -->
+
+  <view class='line-b'></view>
+
+  <view class="goods-list">
+    <view class="g-item" wx:for="{{goodsList}}" wx:key="{{index}}" catchtap="goToDetail" data-item="{{item}}">
+      <view class="g-left">
+        <image src="{{item.picUrl}}"></image>
+      </view>
+      <view class="g-right">
+        <view class="g-name">{{fix.substr(item.name,15)}}</view>
+        <view class="g-desc">
+          <view class='g-d-left'>佣金比例{{fix.toFix(item.commissionRate*100)}}%</view>
+          <view class="g-d-middle">/</view>
+          <view class="g-d-money">预计赚{{fix.toFix(item.retailPrice*item.commissionRate)}}元</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{!goodsList.length}}" class='no-data'>
+      <view>
+        <image src="/static/images/empty.png"></image>
+      </view>
+      <view>暂无数据</view>
+    
+    </view>
+
+  </view>
+
+
+</view>
+<view class="btn-list">
+    <view class="btn-l" catchtap='goToIndex'>
+      首页
+    </view>
+    <view class="btn-c" catchtap='goToPromotionGoods'>
+      推广商品
+    </view>
+    <view class="btn-r" catchtap='goToSetllementCenter'>
+      结算中心
+    </view>
+  </view>
