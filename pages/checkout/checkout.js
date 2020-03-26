@@ -309,46 +309,27 @@ Page({
 
     let data = {
       cartId: that.data.cartId,
-      addressId: that.data.addressId,
+      offlineAddressId: that.data.offlineAddressId,
       couponId: that.data.couponId,
       grouponRulesId: that.data.grouponRulesId
     }
     console.log('getCheckoutinfo data' + JSON.stringify(data))
-    util.request(api.CartCheckout, data).then(function(res) {
-      // console.log(res)
+    util.request(api.OffCartCheckout, data).then(function(res) {
+      console.log(res)
       if (res.errno === 0) {
         let centerInfo = wx.getStorageSync("centerUserInfo");
         let customUserInfo = wx.getStorageSync('customMemberData')
         let userInfo = wx.getStorageSync('userInfo')
-        var checkedAddress = res.data.checkedAddress;
+        let tempAddress = res.data.checkedAddress;
+        let newCheckedAddress = tempAddress[0]
+        
 
-        // console.log('centerInfo: ' + JSON.stringify(centerInfo))
-        // console.log('customUerInfo: ' + JSON.stringify(customUserInfo))
 
-        checkedAddress.isDefault = true;
-        try {
-          if (centerInfo) {
-            checkedAddress.userName = centerInfo.userName
-            checkedAddress.userPhone = centerInfo.userPhone
-          } else {
-            if (customUserInfo) {
-              checkedAddress.userName = customUserInfo[0].userName
-              checkedAddress.userPhone = customUserInfo[0].userPhone
-            }
-          }
-          if (typeof checkedAddress.userName === 'undefined' || typeof checkedAddress.userPhone === 'undefined') {
-            checkedAddress.userName = userInfo.nickName
-            checkedAddress.userPhone = userInfo.userPhone
-          }
-        } catch (err) {
-          util.showError("getCheckoutinfo: " + JSON.stringify(err))
-        }
-
-        // console.log("checkedAddress: " + JSON.stringify(checkedAddress))
+        
 
         that.setData({
           checkedGoodsList: res.data.checkedGoodsList,
-          checkedAddress: checkedAddress,
+          checkedAddress: newCheckedAddress,
           fastAddress: res.data.checkedOfflineAddress,
           availableCouponLength: res.data.availableCouponLength,
           actualPrice: res.data.actualPrice,
@@ -357,10 +338,9 @@ Page({
           freightPrice: res.data.freightPrice,
           goodsTotalPrice: res.data.goodsTotalPrice,
           orderTotalPrice: res.data.orderTotalPrice,
-          addressId: res.data.addressId,
+          offlineAddressId: res.data.offlineAddressId,
           couponId: res.data.couponId,
           grouponRulesId: res.data.grouponRulesId
-
         });
 
         that.getFastAddress()

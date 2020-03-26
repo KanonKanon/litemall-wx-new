@@ -155,11 +155,11 @@ Page({
     let itemIndex = event.target.dataset.itemIndex;
     let that = this;
 
-    let productIds = [];
-    productIds.push(that.data.cartGoods[itemIndex].productId);
+    let serialnumberList = [];
+    serialnumberList.push(that.data.cartGoods[itemIndex].serialnumber);
     if (!this.data.isEditCart) {
-      util.request(api.CartChecked, {
-        productIds: productIds,
+      util.request(api.OffCartChecked, {
+        serialnumberList: serialnumberList,
         isChecked: that.data.cartGoods[itemIndex].checked ? 0 : 1
       }, 'POST').then(function(res) {
         if (res.errno === 0) {
@@ -191,24 +191,22 @@ Page({
     }
   },
   getCheckedGoodsCount: function() {
-    let checkedGoodsCount = 0;
-    this.data.cartGoods.forEach(function(v) {
-      if (v.checked === true) {
-        checkedGoodsCount += v.number;
+    let checkedGoodsCount = 0
+    for(let item of this.data.cartGoods){
+      if(item.checked){
+        checkedGoodsCount+=1
       }
-    });
-    console.log(checkedGoodsCount);
+    }
     return checkedGoodsCount;
   },
   checkedAll: function() {
     let that = this;
-
     if (!this.data.isEditCart) {
-      var productIds = this.data.cartGoods.map(function(v) {
-        return v.productId;
+      var serialnumberList = this.data.cartGoods.map(function(v) {
+        return v.serialnumber;
       });
-      util.request(api.CartChecked, {
-        productIds: productIds,
+      util.request(api.OffCartChecked, {
+        serialnumberList: serialnumberList,
         isChecked: that.isCheckedAll() ? 0 : 1
       }, 'POST').then(function(res) {
         if (res.errno === 0) {
@@ -262,13 +260,12 @@ Page({
     }
 
   },
-  updateCart: function(productId, goodsId, number, id) {
+  updateCart: function (serialnumber, goodsId, id) {
     let that = this;
 
-    util.request(api.CartUpdate, {
-      productId: productId,
+    util.request(api.OffCartUpdate, {
+      serialnumber: serialnumber,
       goodsId: goodsId,
-      number: number,
       id: id
     }, 'POST').then(function(res) {
       that.setData({
@@ -286,7 +283,7 @@ Page({
     this.setData({
       cartGoods: this.data.cartGoods
     });
-    this.updateCart(cartItem.productId, cartItem.goodsId, number, cartItem.id);
+    this.updateCart(cartItem.serialnumber, cartItem.goodsId, cartItem.id);
   },
   addNumber: function(event) {
     let itemIndex = event.target.dataset.itemIndex;
@@ -296,7 +293,7 @@ Page({
     this.setData({
       cartGoods: this.data.cartGoods
     });
-    this.updateCart(cartItem.productId, cartItem.goodsId, number, cartItem.id);
+    this.updateCart(cartItem.serialnumber, cartItem.goodsId,cartItem.id);
 
   },
 
@@ -358,7 +355,7 @@ Page({
     //获取已选择的商品
     let that = this;
 
-    let productIds = this.data.cartGoods.filter(function(element, index, array) {
+    let serialnumberList= this.data.cartGoods.filter(function(element, index, array) {
       if (element.checked == true) {
         return true;
       } else {
@@ -366,19 +363,19 @@ Page({
       }
     });
 
-    if (productIds.length <= 0) {
+    if (serialnumberList.length <= 0) {
       return false;
     }
 
-    productIds = productIds.map(function(element, index, array) {
+    serialnumberList = serialnumberList.map(function(element, index, array) {
       if (element.checked == true) {
-        return element.productId;
+        return element.serialnumber;
       }
     });
 
 
-    util.request(api.CartDelete, {
-      productIds: productIds
+    util.request(api.OffCartDelete, {
+      serialnumberList: serialnumberList
     }, 'POST').then(function(res) {
       if (res.errno === 0) {
         console.log(res.data);
