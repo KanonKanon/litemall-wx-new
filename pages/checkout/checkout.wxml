@@ -17,7 +17,7 @@
   </view>
   <view class="line-s"></view>
   <view class="address-box" wx:if="{{getGoodType!==''}}">
-    <view class="address-item" wx:if="{{getGoodType==='到店自提'}}">
+    <view class="address-item" wx:if="{{getGoodType==='到店自提'}}" bindtap='selectAddress'>
       <view class="l">
         <text class="name">{{checkedAddress.userName}}</text>
         <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>

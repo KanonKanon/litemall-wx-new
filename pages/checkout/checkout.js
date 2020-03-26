@@ -163,6 +163,7 @@ Page({
       }
       console.log(shop)
       this.setData({
+        checkedAddress:temp,
         shop: shop,
         addressId: temp.id
       })
@@ -297,6 +298,9 @@ Page({
     this.checkShop();
 
   },
+  /**
+   * 跳转选择快递地址
+   */
   goAddress() {
     wx.navigateTo({
       url: "/pages/ucenter/address/address"
@@ -320,12 +324,29 @@ Page({
         let centerInfo = wx.getStorageSync("centerUserInfo");
         let customUserInfo = wx.getStorageSync('customMemberData')
         let userInfo = wx.getStorageSync('userInfo')
-        let tempAddress = res.data.checkedAddress;
-        let newCheckedAddress = tempAddress[0]
+        console.log("centerInfo: "+JSON.stringify(centerInfo))
+        console.log("customUserInfo: "+JSON.stringify(customUserInfo))
+        console.log('userInfo: '+JSON.stringify(userInfo))
+        let newCheckedAddress = res.data.checkedAddress[0]
+        newCheckedAddress.isDefault = true
         
-
-
-        
+        if (centerInfo){
+          newCheckedAddress.userName = centerInfo.userName
+          newCheckedAddress.userPhone = centerInfo.userPhone
+        }
+        else{
+          if (customUserInfo){
+            newCheckedAddress.userName= customUserInfo.userName
+            newCheckedAddress.userPhone = customUserInfo.userPhone
+          }
+          else{
+            if(userInfo){
+              newCheckedAddress.userName = userInfo.nickName
+              newCheckedAddress.userPhone = userInfo.userPhone
+            }
+          }
+        }
+        console.log('checkAddress: '+JSON.stringify(newCheckedAddress))
 
         that.setData({
           checkedGoodsList: res.data.checkedGoodsList,
@@ -353,22 +374,34 @@ Page({
 
 
   },
+  /**
+   * 跳转选择店铺
+   */
   selectAddress() {
     wx.navigateTo({
       url: '../../userCenterPages/selectAddress/selectAddress'
     })
   },
+  /**
+   * 跳转选择优惠券
+   */
   selectCoupon() {
     wx.navigateTo({
       url: '/pages/ucenter/couponSelect/couponSelect',
     })
   },
+  /**
+   * 输入留言
+   */
   bindMessageInput: function(e) {
     this.setData({
       message: e.detail.value
     });
   },
 
+  /**
+   * 选择提货日期
+   */
   bindPickerChange: function(e) {
     this.setData({
       getGoodDate: this.data.timeList[parseInt(e.detail.value)]
