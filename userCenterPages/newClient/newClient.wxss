@@ -13,10 +13,19 @@
 }
 
 .sex {
-  position: relative;
-  top: -5rpx;
+  position: absolute;
+  top: 200rpx;
   left: 200rpx;
   height: 50rpx;
+}
+.sex .btn{
+  height: 48rpx;
+  width: 48rpx;
+  background:lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .birth-picker {
@@ -58,8 +67,8 @@
 @media screen and (max-width: 350px) {
   .sex {
     position: absolute;
-    top: -5rpx;
-    left: 228rpx;
+    top: 231rpx;
+    left: 247rpx;
     height: 50rpx;
   }
 
@@ -87,8 +96,8 @@
 @media screen and (min-width: 350px) and (max-width:400px) {
   .sex {
     position: absolute;
-    top: -5rpx;
-    left: 200rpx;
+    top: 210rpx;
+    left: 210rpx;
     height: 50rpx;
   }
 
@@ -116,8 +125,8 @@
 @media screen and (min-width: 400px) {
   .sex {
     position: absolute;
-    top: -5rpx;
-    left: 180rpx;
+    top: 198rpx;
+    left: 194rpx;
     height: 50rpx;
   }
 

@@ -80,6 +80,7 @@
  color: #c4a867;
  background: white;
  border-radius: 10rpx;
+ overflow: hidden;
 }
 .remain-time .r-sign{
   color: white;

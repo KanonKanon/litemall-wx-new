@@ -18,7 +18,7 @@
         <text>可用余额\n¥{{ isShowNum?wallet.canUseBalance*0.01|int:"****" }}元</text>
       </view>
       <view>
-        <text>优先享\n{{ isShowNum?wallet.earnestBalance*0.01|int:"****"}}元</text>
+        <text>优先享\n{{ isShowNum?wallet.enjoyBalance*0.01|int:"****"}}元</text>
       </view>
       <view>
         <text>安享金\n{{ isShowNum?wallet.storeBalance*0.01|int:"****"}}克</text>
@@ -34,13 +34,73 @@
 
   <view class='separate' wx:if="{{isStarShineMember}}"></view>
 
+  <view class='user_row'>
+    <view class='user_row_left'>臻享功能</view>
+  </view>
+  <view class='user_column'>
+    <view class='user_column_item' bindtap='goToOpenCard' hidden="{{isStarShineMember}}">
+      <image class='user_column_item_image bigger-image' src='/static/images/memberCard.svg'></image>
+      <view class='user_column_item_text'>办理会员卡</view>
+    </view>
+    <view class='user_column_item' bindtap='sign'>
+      <image class='user_column_item_image bigger-image' src='/static/images/sign.png'></image>
+      <view class='user_column_item_text'>签到</view>
+    </view>
+    <view class='user_column_item' bindtap='cardRecharge' hidden="{{!isStarShineMember}}">
+      <image class='user_column_item_image bigger-image' src='/static/images/recharge.png'></image>
+      <view class='user_column_item_text'>充值</view>
+    </view>
+    <view class='user_column_item' bindtap='enjoyStar' hidden="{{!isStarShineMember}}">
+      <image class='user_column_item_image bigger-image' src='/static/images/stargold.png'></image>
+      <view class='user_column_item_text'>星享金</view>
+    </view>
+    <view class='user_column_item' bindtap='myCard' wx:if="{{isStarShineMember}}">
+      <image class='user_column_item_image bigger-image' src='/static/images/memberCard.svg'></image>
+      <view class='user_column_item_text'>我的会员卡</view>
+    </view>
+    <!-- <view class='user_column_item' bindtap='showBecome' wx:else>
+      <image class='user_column_item_image bigger-image' src='/static/images/memberCard.svg'></image>
+      <view class='user_column_item_text'>成为会员</view>
+    </view> -->
+    <view class='user_column_item' bindtap='rewardShoop' hidden="{{!isStarShineMember}}">
+      <image class='user_column_item_image bigger-image' src='/static/images/fenshop.png'></image>
+      <view class='user_column_item_text'>积分商城</view>
+    </view>
+  </view>
+
+  <view class='separate'></view>
+
+  <view class='user_row'>
+    <view class='user_row_left'>查询功能</view>
+  </view>
+  <view class='user_column' hidden="{{!isStarShineMember}}">
+    <view class='user_column_item' bindtap='goToRechargeRecord'>
+      <image class='user_column_item_image bigger-image' src='/static/images/congzhi.png'></image>
+      <view class='user_column_item_text'>充值记录</view>
+    </view>
+    <view class='user_column_item' bindtap='goToAnxiangRecord'>
+      <image class='user_column_item_image bigger-image' src='/static/images/anxiangjin.png'></image>
+      <view class='user_column_item_text'>安享金记录</view>
+    </view>
+    <view class='user_column_item' bindtap='goToYouxianRecord'>
+      <image class='user_column_item_image bigger-image' src='/static/images/youxianxiang.png'></image>
+      <view class='user_column_item_text'>优先享记录</view>
+    </view>
+    <view class='user_column_item' bindtap='goToSaleRecord'>
+      <image class='user_column_item_image bigger-image' src='/static/images/xiaoshoudan.png'></image>
+      <view class='user_column_item_text'>销售单记录</view>
+    </view>
+
+  </view>
+  <view class='separate'></view>
+
+
   <view class='user_area'>
     <view class='user_row' bindtap='goOrder'>
       <view class='user_row_left'>我的订单</view>
       <view class='user_row_right'>
         <image src='/static/images/goright.png'></image>
       </view>
-
     </view>
     <view class='user_column'>
       <view class='user_column_item' bindtap='goOrderIndex' data-index='0' data-route='/pages/ucenter/order/order'>
@@ -108,75 +168,14 @@
       <image class='user_column_item_image' src='/static/images/address.png'></image>
       <view class='user_column_item_text'>地址管理</view>
     </view>
-    <!-- <button class="user_column_item_phone" open-type='getPhoneNumber' bindgetphonenumber='bindPhoneNumber'>
+    <button class="user_column_item_phone" open-type='getPhoneNumber' bindgetphonenumber='bindPhoneNumber'>
       <image class='user_column_item_image' src='/static/images/mobile.png'></image>
       <view class='user_column_item_text_phone'>绑定手机号</view>
-    </button> -->
+    </button>
     <!-- <view class="user_column_item" bindtap="bindCard" hidden="{{!isStarShineMember}}">
       <image class='user_column_item_image' src='/static/images/modifyPwd.png'></image>
       <view class='user_column_item_text'>绑定会员卡</view>
     </view> -->
-
-  </view>
-
-  <view class='separate'></view>
-
-  <view class='user_row'>
-    <view class='user_row_left'>臻享功能</view>
-  </view>
-  <view class='user_column'>
-    <view class='user_column_item' bindtap='goToOpenCard' hidden="{{isStarShineMember}}">
-      <image class='user_column_item_image bigger-image' src='/static/images/memberCard.svg'></image>
-      <view class='user_column_item_text'>办理会员卡</view>
-    </view>
-    <view class='user_column_item' bindtap='sign'>
-      <image class='user_column_item_image bigger-image' src='/static/images/sign.png'></image>
-      <view class='user_column_item_text'>签到</view>
-    </view>
-    <view class='user_column_item' bindtap='cardRecharge' hidden="{{!isStarShineMember}}">
-      <image class='user_column_item_image bigger-image' src='/static/images/recharge.png'></image>
-      <view class='user_column_item_text'>充值</view>
-    </view>
-    <view class='user_column_item' bindtap='enjoyStar' hidden="{{!isStarShineMember}}">
-      <image class='user_column_item_image bigger-image' src='/static/images/stargold.png'></image>
-      <view class='user_column_item_text'>星享金</view>
-    </view>
-    <view class='user_column_item' bindtap='myCard' wx:if="{{isStarShineMember}}">
-      <image class='user_column_item_image bigger-image' src='/static/images/memberCard.svg'></image>
-      <view class='user_column_item_text'>我的会员卡</view>
-    </view>
-    <!-- <view class='user_column_item' bindtap='showBecome' wx:else>
-      <image class='user_column_item_image bigger-image' src='/static/images/memberCard.svg'></image>
-      <view class='user_column_item_text'>成为会员</view>
-    </view> -->
-    <view class='user_column_item' bindtap='rewardShoop' hidden="{{!isStarShineMember}}">
-      <image class='user_column_item_image bigger-image' src='/static/images/fenshop.png'></image>
-      <view class='user_column_item_text'>积分商城</view>
-    </view>
-  </view>
-
-  <!-- <view class='separate'></view>
-
-  <view class='user_row'>
-    <view class='user_row_left'>记录查询</view>
-  </view> -->
-  <view class='user_column' hidden="{{!isStarShineMember}}">
-    <view class='user_column_item' bindtap='goToRechargeRecord'>
-      <image class='user_column_item_image bigger-image' src='/static/images/congzhi.png'></image>
-      <view class='user_column_item_text'>充值记录</view>
-    </view>
-    <view class='user_column_item' bindtap='goToAnxiangRecord'>
-      <image class='user_column_item_image bigger-image' src='/static/images/anxiangjin.png'></image>
-      <view class='user_column_item_text'>安享金记录</view>
-    </view>
-    <view class='user_column_item' bindtap='goToYouxianRecord'>
-      <image class='user_column_item_image bigger-image' src='/static/images/youxianxiang.png'></image>
-      <view class='user_column_item_text'>优先享记录</view>
-    </view>
-    <view class='user_column_item' bindtap='goToSaleRecord'>
-      <image class='user_column_item_image bigger-image' src='/static/images/xiaoshoudan.png'></image>
-      <view class='user_column_item_text'>销售单记录</view>
-    </view>
 
   </view>
   <view class='separate'></view>

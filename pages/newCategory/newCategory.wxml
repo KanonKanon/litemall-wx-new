@@ -86,7 +86,7 @@
   </view>
 
   <!-- 秒杀列表 -->
-  <view class="secKillList" wx:if="{{detailList.length}}">
+  <!-- <view class="secKillList" wx:if="{{detailList.length}}">
     <view class="sec-view">
       <view class="secKill-item" wx:for="{{detailList}}" wx:key="index" data-item="{{item}}" catchtap="goToSkDetail">
         <view wx:if="{{item.desc.totalGoods}}" class="temp-wrap">
@@ -114,7 +114,7 @@
       </view>
 
     </view>
-  </view>
+  </view> -->
 
   <view class="left">
     <view class="cate-item {{selectIndex==index?'cate-hover':''}}" wx:for="{{catalogListGoods}}" wx:key="id" bindtap='selectCate' data-index="{{index}}" data-id="{{item.id}}">{{item.name}}</view>
@@ -212,7 +212,7 @@
 </view>
 
 <view class='search-bar'>
-  <van-search value="{{ searchKey }}" placeholder="请输入商品名称" bind:change="inputSearchKey" bind:clear="clearKey" bind:focus="inputFocus" use-action-slot clearable> 
+  <van-search value="{{ searchKey }}" placeholder="请输入关键词" bind:change="inputSearchKey" bind:clear="clearKey" bind:focus="inputFocus" use-action-slot clearable> 
     <view slot="action" bind:tap="searchGood">搜索</view>
   </van-search>
 </view>

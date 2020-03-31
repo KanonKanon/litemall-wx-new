@@ -49,8 +49,12 @@ Page({
     picwidth: 750,
     isDistributor: false, //是否分销员
     offsetH: 260, //修正不同手机canvas的高度
-    layerModel: false
+    layerModel: false,
+    startTimeData:{},
+    endTimeData:{}
   },
+
+ 
 
   changeModalCancel() {
     this.setData({
@@ -79,6 +83,66 @@ Page({
       url: '../../userCenterPages/secKillDetail/secKillDetail?storeId=' + this.data.shop.id + "&skId=" + item.maskGoods.id,
     })
   },
+  /**
+   * 计算剩余时间
+   */
+  countLeftTime(endtime){
+    var that = this;
+    var date = new Date();
+    var now = date.getTime();
+    // console.log("now: "+now)
+    var format = endtime.replace(/-/g, '/')
+    var endDate = new Date(format); //设置开始时间
+    var end = endDate.getTime();
+    // console.log('end: '+end)
+    var leftTime =parseInt(end - now); //时间差    
+    console.log("leftTime: "+leftTime)
+    return leftTime           
+  },
+  
+  /**
+   * 开始倒计时结束
+   */
+  startTimeFinish(e){
+    console.log("startTimeFinish: "+JSON.stringify(e))
+    let index = e.target.dataset.index
+    let item = this.data.detailList[index]
+    item.desc.canBuy=true
+    this.setData({
+      detailList:this.data.detailList
+    })
+  },
+
+  /**
+   * 结束倒计时结束
+   */
+  endTimeFinish(e) {
+    let index = e.target.dataset.index
+    let item = this.data.detailList[index]
+    item.desc.isfinish=true
+    this.setData({
+      detailList: this.data.detailList
+    })
+  },
+
+
+  /**
+  * 开始倒计时
+  */
+  onStartChange(e) {
+    this.setData({
+      startTimeData: e.detail
+    })
+  },
+  /**
+   * 结束倒计时
+   */
+  onEndChange(e) {
+    this.setData({
+      endTimeData: e.detail
+    })
+  },
+
 
   /**
    * 倒计时
@@ -119,16 +183,16 @@ Page({
    * 所有秒杀商品一起计时
    */
   allItemCountTime() {
-    var that = this;
-    for (var i in this.data.detailList) {
+    let that = this;
+    for (let i in this.data.detailList) {
       ((v) => {
-        var timer = setInterval(() => {
+        let timer = setInterval(() => {
           that.countTime(v.maskGoods.startTime, v, () => {
             v.desc.canBuy = true;
             that.setData({
               detailList: that.data.detailList
             })
-            var timer2 = setInterval(() => {
+            let timer2 = setInterval(() => {
               that.countTime(v.maskGoods.endTime, v, () => {
                 v.desc.isfinish = true;
                 v.desc.canBuy = false;
@@ -180,17 +244,26 @@ Page({
             storeId: that.data.shop.id,
             skId: v.skId
           }
+          console.log(data)
           var func = (res) => {
-            // console.log(res)
+            console.log(res)
             if (res.errno == 0) {
+              let startLeftTime = this.countLeftTime(res.data.maskGoods.startTime)
+              let endLeftTime = this.countLeftTime(res.data.maskGoods.endTime)
+              let finish=false
+              if(endLeftTime<=0){
+                finish=true
+              }
               var desc = {
                 totalGoods: 0,
-                isfinish: false,
+                isfinish: finish,
                 canBuy: false,
                 day: '00',
                 hour: '00',
                 min: '00',
                 sec: '00',
+                startLeftTime: startLeftTime,
+                endLeftTime: endLeftTime
               }
               const plength = res.data.productList.length
               const pList = res.data.productList
@@ -202,9 +275,10 @@ Page({
               that.setData({
                 detailList: templist
               })
-              setTimeout(() => {
-                that.allItemCountTime();
-              }, 1000)
+
+              // setTimeout(() => {
+              //   that.allItemCountTime();
+              // }, 1000)
 
             } else {
               util.showError(res.errmsg)
@@ -924,7 +998,7 @@ Page({
 
     setTimeout(()=>{
       this.getTempShopList()
-    },2000)
+    },1000)
 
   },
   /**
@@ -1072,7 +1146,7 @@ Page({
     }
 
     //获取店铺列表
-    if (!this.data.shopList.length) {
+    if (!this.data.shopList.length && JSON.stringify(this.data.shop)==="{}") {
       this.getShopList(() => {
         app.globalData.tempShopLit=that.data.shopList
       })

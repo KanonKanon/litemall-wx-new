@@ -1,7 +1,6 @@
 <!--index.wxml-->
 <!-- 新页面 -->
 <view class="new-container">
-
   <!-- 广告 -->
   <view class="banner-container">
     <swiper class="new-banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular='{{circular}}' bindchange="bindchange" style="height:{{imgheights[current]}}rpx;">
@@ -29,25 +28,45 @@
               <view class="r-right" wx:if="{{!item.desc.canBuy}}">
                 <view class="desc">距秒杀开始还剩余:</view>
                 <view class="remain-time">
-                  <view class="r-num">{{item.desc.day}}</view>
+                  <!-- <view class="r-num">{{item.desc.day}}</view>
                   <view class="r-sign">天</view>
                   <view class="r-num">{{item.desc.hour}}</view>
                   <view class="r-sign">时</view>
                   <view class="r-num">{{item.desc.min}}</view>
                   <view class="r-sign">分</view>
-                  <view class="r-num">{{item.desc.sec}}</view>
+                  <view class="r-num">{{item.desc.sec}}</view> -->
+                  <van-count-down use-slot time="{{ item.desc.startLeftTime }}" bind:change="onStartChange" bind:finish="startTimeFinish" data-index="{{index}}">
+                    <text class="time-item">{{ startTimeData.days }}</text>
+                    <text class="n-sign">天</text>
+                    <text class="time-item">{{ startTimeData.hours }}</text>
+                    <text class="n-sign">时</text>
+                    <text class="time-item">{{ startTimeData.minutes }}</text>
+                    <text class="n-sign">分</text>
+                    <text class="time-item">{{ startTimeData.seconds }}</text>
+                    <text class="n-sign">秒</text>
+                  </van-count-down>
                 </view>
               </view>
               <view class="r-right" wx:if="{{item.desc.canBuy}}">
                 <view class="desc">距秒杀结束还剩余:</view>
                 <view class="remain-time">
-                  <view class="r-num">{{item.desc.day}}</view>
+                  <!-- <view class="r-num">{{item.desc.day}}</view>
                   <view class="r-sign">天</view>
                   <view class="r-num">{{item.desc.hour}}</view>
                   <view class="r-sign">时</view>
                   <view class="r-num">{{item.desc.min}}</view>
                   <view class="r-sign">分</view>
-                  <view class="r-num">{{item.desc.sec}}</view>
+                  <view class="r-num">{{item.desc.sec}}</view> -->
+                  <van-count-down use-slot time="{{ item.desc.endLeftTime }}" bind:change="onEndChange" bind:finish="endTimeFinish" data-index="{{index}}">
+                    <text class="time-item">{{ endTimeData.days }}</text>
+                    <text class="n-sign">天</text>
+                    <text class="time-item">{{ endTimeData.hours }}</text>
+                    <text class="n-sign">时</text>
+                    <text class="time-item">{{ endTimeData.minutes }}</text>
+                    <text class="n-sign">分</text>
+                    <text class="time-item">{{ endTimeData.seconds }}</text>
+                    <text class="n-sign">秒</text>
+                  </van-count-down>
                 </view>
               </view>
             </view>

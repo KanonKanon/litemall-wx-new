@@ -4,6 +4,8 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
    "popup":"../../../lib/popup/popup",
-   "pwdinput":"../../../lib/pwdInput/pwdInput"
+   "pwdinput":"../../../lib/pwdInput/pwdInput",
+    "van-collapse": "../../../userCenterPages/vant_component/collapse/index",
+    "van-collapse-item": "../../../userCenterPages/vant_component/collapse-item/index"
   }
 }

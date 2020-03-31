@@ -11,11 +11,14 @@
         </view>
         <van-field value="{{ dataForm.name }}" required clearable label="姓名" placeholder="请输入姓名" bind:input="nameInput" />
         <van-cell title="性别" required class="sex-wrap">
-          <van-dropdown-menu class="sex">
+          <!-- <van-dropdown-menu class="sex">
             <van-dropdown-item value="{{ dataForm.sex }}" options="{{ sexOption }}" bind:change="sexSelect" />
-          </van-dropdown-menu>
+          </van-dropdown-menu> -->
         </van-cell>
-        <van-field value="{{ dataForm.idCard }}" type="idcard" required clearable label="身份证" placeholder="请输入身份证" bind:input="idCardInput" />
+         <view  class="sex">
+           <button  bindtap="sexSelect" class="btn">{{dataForm.sex}}</button>
+        </view>
+        <van-field value="{{ dataForm.idCard }}" type="idcard" required clearable label="身份证" placeholder="请输入身份证" bind:input="idCardInput" bind:confirm="splitBirth" />
         <van-cell title="生日" required class="birth-wrap">
           <picker mode="date" value="{{dataForm.birth}}" start="1900-01-01" end="2100-01-01" bindchange="bindDateChange">
             <view class="birth-picker">
@@ -31,7 +34,7 @@
           <textarea cursor-spacing="50" value="{{dataForm.addr}}" bindinput="addrInput" placeholder="请输入住址" class="text-a"></textarea>
         </view>
         <van-cell title="开卡分店" required class="birth-wrap">
-          <picker value="{{dataForm.storeName}}" range="{{shopList}}" bindchange="bindStoreChange">
+          <picker value="{{dataForm.storeName}}" range="{{shopList}}" range-key="name" bindchange="bindStoreChange">
             <view class="birth-picker">
               <view wx:if="{{dataForm.storeName}}">{{dataForm.storeName}}</view>
               <view wx:else>请选择开卡分店</view>
@@ -53,11 +56,14 @@
         </view>
         <van-field value="{{ dataForm.name }}" required clearable label="姓名" placeholder="请输入姓名" bind:input="nameInput" />
         <van-cell title="性别" required class="sex-wrap">
-          <van-dropdown-menu class="sex">
+          <!-- <van-dropdown-menu class="sex">
             <van-dropdown-item value="{{ dataForm.sex }}" options="{{ sexOption }}" bind:change="sexSelect" />
-          </van-dropdown-menu>
+          </van-dropdown-menu> -->
         </van-cell>
-        <van-field value="{{ dataForm.idCard }}" type="idcard" required clearable label="身份证" placeholder="请输入身份证" bind:input="idCardInput" />
+        <view  class="sex">
+           <button bindtap="sexSelect" class="btn">{{dataForm.sex}}</button>
+        </view>
+        <van-field value="{{ dataForm.idCard }}" type="idcard" required clearable label="身份证" placeholder="请输入身份证" bind:input="idCardInput" bind:confirm="splitBirth" />
         <van-cell title="生日" required class="birth-wrap">
           <picker mode="date" value="{{dataForm.birth}}" start="1900-01-01" end="2100-01-01" bindchange="bindDateChange">
             <view class="birth-picker">

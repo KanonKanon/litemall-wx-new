@@ -79,7 +79,7 @@
   </view>
   <view class='line-s'></view>
 
-  <view class="common-problem">
+  <!-- <view class="common-problem">
     <view class="h">
       <view class="line"></view>
       <text class="title">常见问题</text>
@@ -95,7 +95,7 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
 
 
 

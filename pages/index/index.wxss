@@ -62,6 +62,16 @@
 .inner image {
   display: block;
 }
+.time-item {
+  display: inline-block;
+  width: 22px;
+  margin-right: 5px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  background-color: #1989fa;
+  border-radius: 2px;
+}
 
 /* 以下为分销员中心样式 */
 
@@ -949,6 +959,12 @@
 .logo view image {
   width: 250rpx;
   height: 80rpx;
+}
+.n-sign{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 @media (max-height:630px) {

@@ -20,8 +20,7 @@ Page({
       editorName:''
     },
     sexOption: [
-      { text: '男', value: '男' },
-      { text: '女', value: '女' },
+     '男','女'
     ],
     shopList:[],
     selectPicUrl:''
@@ -44,13 +43,18 @@ Page({
     })
   },
 
-  splitBirth(birth){
-    let blist = []
-    blist.push(birth.slice(0,4))
-    blist.push(birth.slice(4,6))
-    blist.push(birth.slice(6))
-    console.log(blist)
-    return blist.join('-')
+  splitBirth(){
+    let dataForm = this.data.dataForm
+    let idcard = dataForm.idCard
+    let birth = idcard.slice(6,14)
+    if(idcard.length!==18){
+     util.showError('请输入正确的份证号码')
+     return false
+    }
+    dataForm.birth = birth 
+    this.setData({
+      dataForm
+    })
   },
 
   reflash(){
@@ -221,99 +225,8 @@ Page({
   */
   getShopList: function () {
     var that = this;
-    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.userLocation" 这个 scope
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userLocation']) {
-          wx.authorize({
-            scope: 'scope.userLocation',
-            success() {
-              wx.getLocation({
-                // type: 'wgs84',
-                success(res) {
-                  const latitude = res.latitude; //纬度
-                  const longitude = res.longitude; //经度
-
-                  var data = {
-                    cur_lat: latitude,
-                    cur_lng: longitude,
-                    idList: ""
-                  }
-                  var func = (res2) => {
-                    if (res2.errno == 0) {
-                      var citys = [];
-                      res2.data.forEach((v) => {
-                        if (citys.indexOf(v.city) == -1) {
-                          citys.push(v.city);
-                        }
-                      })
-
-                      let tempdata = util.insertSort(res2.data)
-                      let templist = []
-                      for (let item of tempdata) {
-                        templist.push(item.name)
-                      }
-                      that.setData({
-                        shopList: tempdata,
-                      })
-                    } else {
-                      wx.showModal({
-                        title: '信息提示',
-                        content: res2.errmsg,
-                        showCancel: false
-                      })
-                    }
-                  }
-                  util.request(api.StoreList, data).then(func);
-                }
-              })
-            }
-          })
-        } else {
-          wx.getLocation({
-            // type: 'wgs84',
-            success(res) {
-              // console.log(res);
-              const latitude = res.latitude; //纬度
-              const longitude = res.longitude; //经度
-
-              var data = {
-                cur_lat: latitude,
-                cur_lng: longitude,
-                idList: ""
-              }
-              var func = (res2) => {
-                // console.log(res2)
-                if (res2.errno == 0) {
-                  var citys = [];
-                  res2.data.forEach((v) => {
-                    if (citys.indexOf(v.city) == -1) {
-                      citys.push(v.city);
-                    }
-                  })
-
-                  let tempdata = util.insertSort(res2.data)
-                  let templist = []
-                  for(let item of tempdata){
-                    templist.push(item.name)
-                  }
-
-                  that.setData({
-                    shopList: templist,
-                  })
-                } else {
-                  wx.showModal({
-                    title: '信息提示',
-                    content: res2.errmsg,
-                    showCancel: false
-                  })
-                }
-              }
-              util.request(api.StoreList, data).then(func);
-            }
-          })
-        }
-      }
+    this.setData({
+      shopList: app.globalData.tempShopList
     })
   },
 
@@ -339,7 +252,7 @@ Page({
   },
   bindStoreChange(e){
     let dataform = this.data.dataForm
-    dataform.storeName =this.data.shopList[e.detail.value]
+    dataform.storeName =this.data.shopList[e.detail.value].name
     this.setData({
       dataForm: dataform
     })
@@ -372,11 +285,18 @@ Page({
    * 选择性别
    */
   sexSelect(e){
-    console.log(e)
-    const dataForm = this.data.dataForm
-    dataForm.sex=e.detail
-    this.setData({
-      dataForm:dataForm
+    // console.log(e)
+    let that=this
+    wx.showActionSheet({
+      itemList: this.data.sexOption,
+      success(res){
+        //  console.log(res)
+         let temp = that.data.dataForm
+         temp.sex = that.data.sexOption[res.tapIndex]
+         that.setData({
+           dataForm:temp
+         })
+      }
     })
   },
 

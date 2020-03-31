@@ -3,6 +3,7 @@
   "enablePullDownRefresh":true,
   "usingComponents": {
     "zan-capsule": "../../lib/zanui-weapp/capsule/index",
-    "van-icon": "/userCenterPages/vant_component/icon/index"
+    "van-icon": "/userCenterPages/vant_component/icon/index",
+    "van-count-down": "/userCenterPages/vant_component/count-down/index"
   }
 }

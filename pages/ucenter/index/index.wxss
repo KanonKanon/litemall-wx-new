@@ -69,7 +69,7 @@ page {
   /* border: 1px solid black; */
   height: 86rpx;
   line-height: 86rpx;
-  border-bottom: 1rpx solid #cdcdcd;
+  
   background: white;
   overflow: hidden;
 }
@@ -109,6 +109,8 @@ page {
   justify-content: flex-start;
   align-items: center;
   background: white;
+  border-top:4rpx solid #f4f4f4;
+  overflow: hidden;
 }
 
 .user_column_item {

@@ -225,9 +225,27 @@ Page({
     if (wx.getStorageSync("shop") != ""){
       let shop = wx.getStorageSync("shop");
       console.log(shop)
+      let centerInfo = wx.getStorageSync("centerUserInfo");
+      let customUserInfo = wx.getStorageSync('customMemberData')
+      let userInfo = wx.getStorageSync('userInfo')
+      let userName = centerInfo?centerInfo.userName:customUserInfo.userName
+      let userPhone = centerInfo?centerInfo.userPhone:customUserInfo.userPhone
+      if(!userName && userInfo){
+        userName = userInfo.nickName
+        userPhone = userInfo.userPhone
+      }
+      let checkedAddress={
+        shopName:shop.shopName,
+        isDefault:true,
+        mobile:userPhone,
+        name:userName,
+        address:shop.addr
+      }
       this.setData({
-        shop:shop
+        shop:shop,
+        checkedAddress,
       })
+
     }
     if (wx.getStorageSync("checkedAddress") != "") {
       let temp = wx.getStorageSync("checkedAddress")
@@ -243,7 +261,7 @@ Page({
       //客户选择了店铺，就要重置默认店铺
       wx.setStorageSync('shop', '')
     }
-    console.log(this.data.shop)
+    console.log("shop: "+this.data.shop)
 
     //获取店铺列表
     if (this.data.shopList.length == 0 && JSON.stringify(this.data.shop) == "{}") {

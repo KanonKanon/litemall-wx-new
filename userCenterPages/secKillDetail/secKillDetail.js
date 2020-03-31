@@ -491,7 +491,8 @@ Page({
     var that = this;
     var date = new Date();
     var now = date.getTime();
-    var endDate = new Date(endtime); //设置开始时间
+    var format = endtime.replace(/-/g, '/')
+    var endDate = new Date(format); //设置开始时间
     var end = endDate.getTime();
     var leftTime = end - now; //时间差                              
     var d, h, m, s, ms;

@@ -32,9 +32,9 @@ Page({
       canUseBalance: 0,//可用余额
       enjoyBalance: 0,//优先享
       storeBalance: 0,//安享金
-      consumePoint:0,//消费积分
-      earnestBalance:0,//股改诚意金
-      prepayPoint:0,//预付积分
+      consumePoint: 0,//消费积分
+      earnestBalance: 0,//股改诚意金
+      prepayPoint: 0,//预付积分
     },
     hasLogin: false,
     canUseEye: false,
@@ -837,8 +837,9 @@ Page({
     }
   },
   bindPhoneNumber: function(e) {
+    console.log(e)
     var that = this;
-    if (e.detail.detail.errMsg != "getPhoneNumber:ok") {
+    if (e.detail.errMsg != "getPhoneNumber:ok") {
       // 拒绝授权
       return;
     }
@@ -851,14 +852,15 @@ Page({
       return;
     }
     let userInfo = wx.getStorageSync("userInfo")
-    that.popup.hidePopup();
+    // that.popup.hidePopup();
     util.request(api.AuthBindPhone, {
-      iv: e.detail.detail.iv, //电话号在里面
-      encryptedData: e.detail.detail.encryptedData
+      iv: e.detail.iv, //电话号在里面
+      encryptedData: e.detail.encryptedData
     }, 'POST').then(function(res) {
       if (res.errno === 0) {
         userInfo.userPhone = res.data;
         wx.setStorageSync("userInfo", userInfo)
+        console.log(userInfo)
         that.setData({
           userInfo: userInfo
         })

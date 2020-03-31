@@ -8,8 +8,12 @@
   </view>
 
   <view class="reward">
-    <view>预付奖励积分：{{canSeeNum?wallet.prepayPoint/100:"****"}}分</view>
-    <view>消费奖励积分：{{canSeeNum?wallet.consumePoint/100:"****"}}分</view>
+    <view>预付积分：{{canSeeNum?wallet.prepayPoint/100:"****"}}分</view>
+    <view>消费积分：{{canSeeNum?wallet.consumePoint/100:"****"}}分</view>
+  </view>
+  <view class="phone">
+    <view>持卡人：{{canSeeNum?centerUserInfo.userName:"****"}}</view>
+    <view>绑定手机：{{canSeeNum?centerUserInfo.userPhone:"****"}}</view>
   </view>
 </view>
 

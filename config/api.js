@@ -12,19 +12,6 @@ var WxApiRoot = 'https://litemall.bingold.cn/wx/';
 
 module.exports = {
   WxApiRoot: WxApiRoot,
-  //新库存架构的接口
-  OffGoodsDetail: WxApiRoot +'offGoods/detail',// 商品详情 get params:{goodsId}
-  OffCartIndex: WxApiRoot +'offCart/index',//用户购物车信息 get 无参数
-  OffCartAdd: WxApiRoot +'offCart/add',//加入商品到购物车 post data:{goodsId,serialnumber:条码}
-  OffCartFastadd: WxApiRoot +'offCart/fastadd',//立即购买 post data:{goodsId,serialnumber}
-  OffCartUpdate: WxApiRoot +'offCart/update',//修改购物车商品规格 post data{id,goodsId,serialnumber}
-  OffCartChecked: WxApiRoot +'offCart/checked',//购物车商品勾选状态 post data{serialnumberList:[],isChecked}
-  OffCartDelete: WxApiRoot +'offCart/delete',//购物车商品删除 post data{serialnumberlist:[]}
-  OffCartCheckout: WxApiRoot +'offCart/checkout',//购物车下单 get params{cartId,offliseAddressId,couponId,grouponRulesId}
-  OffCartGoodscount: WxApiRoot +'offCart/goodscount',//购物车商品货品数量 get 无参
-  OffOrderSubmit: WxApiRoot +'offOrder/submit',//下单页，提交订单 post data{cartId,OfflineAddressId,couponId,message,grouponRulesId,grouponLinkId,deliveryTime}
-
-
   CloudCardOpen: WxApiRoot +'offlineUc/cloudCardOpen',//随享卡开卡
   OfflineUcOrc: WxApiRoot +'offlineUc/orc',//身份证OCR
 

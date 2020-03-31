@@ -8,20 +8,32 @@ page {
   margin-bottom:20rpx;
   position: relative;
   background: white;
-  height: 80rpx;
+  height: 150rpx;
+  padding-left:20rpx; 
 }
 .time-tips{
   font-size: 20rpx;
   color:red;
 }
+.time-icon{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+}
 .time-icon image{
-  position:absolute;
-  right: 16rpx;
-  top: 14rpx;
   width: 50rpx;
   height: 50rpx;
 }
-
+.t-title{
+  display: flex;
+  align-items:center;
+  justify-content: flex-start;
+  height: 100%;
+}
 .address-box {
   width: 100%;
   background: url('http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/address-bg-bd30f2bfeb.png') 0 0 repeat-x;

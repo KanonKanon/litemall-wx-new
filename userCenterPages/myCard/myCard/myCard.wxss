@@ -35,8 +35,15 @@ color:white;
 }
 
 .reward view{
-  margin:auto; 
+  margin-left:70rpx;
 }
+.phone{
+  display: flex;
+}
+.phone view{
+  margin-left:70rpx;
+}
+
 .listView{
   margin-top: 20rpx;
 }
