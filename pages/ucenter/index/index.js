@@ -311,9 +311,13 @@ Page({
    * 跳到安享金记录
    */
   goToAnxiangRecord() {
+    // wx.navigateTo({
+    //   url: '/pages/ucenter/records/anxiangrecord/anxiangrecord',
+    // }) 
     wx.navigateTo({
-      url: '/pages/ucenter/records/anxiangrecord/anxiangrecord',
+      url: '/pages/ucenter/storeStar/storeStar',
     })
+
   },
   /**
    * 跳到优先享记录
