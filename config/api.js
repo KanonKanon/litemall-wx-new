@@ -14,6 +14,19 @@ module.exports = {
   WxApiRoot: WxApiRoot,
   CloudCardOpen: WxApiRoot +'offlineUc/cloudCardOpen',//随享卡开卡
   OfflineUcOrc: WxApiRoot +'offlineUc/orc',//身份证OCR
+  OffGoodsDetail: WxApiRoot +'offGoods/detail',//商品详情 get {goodsId}
+  OffCartIndex: WxApiRoot +'offCart/index',//用户购物车信息 get 无参
+  OffCartAdd: WxApiRoot +'offCart/add',//加入商品到购物车 post {goodsId,serialnumber}
+  OffCartFastadd: WxApiRoot +'offCart/fastadd',//立即购买 post {goodsId,serialnumber}
+  OffCartUpdate: WxApiRoot +'offCart/update',//修改购物车商品规格 post {id,goodsId,serialnumber}
+  OffCartChecked: WxApiRoot +'offCart/checked',//购物车商品货品勾选状态 post {serialnumberList,isChecked}
+  OffCartDelete: WxApiRoot +'offCart/delete',//购物车商品删除 post {serialnumberList}
+  OffCartCheckout: WxApiRoot +'offCart/checkout',//购物车下单 get {cartId,offlineAddressId,couponId,grouponRulesId}
+  OffCartGoodscount: WxApiRoot +'offCart/goodscount',//购物车商品数量 get 无参
+  OffOrderSubbmit: WxApiRoot +'offOrder/submit',//提交订单 post {cartId,offlineAddressId,couponId,message,grouponRulesId,grouponLinkId,deliveryTime}
+
+
+
 
   OfflineUcSaleList:WxApiRoot+'offlineUc/saleList',//销售单列表
   OfflineUcSaleGet:WxApiRoot+'offlineUc/saleGet',//销售单详情
