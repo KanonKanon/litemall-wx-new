@@ -6,7 +6,7 @@
   position: relative;
   width: 100vw;
   height:100vh;
-  margin-top: 190rpx;
+  margin-top: 100rpx;
 }
 
 .main-wrap .left {
@@ -521,7 +521,7 @@
 
 .search-bar{
   position: fixed;
-  top:80rpx;
+  top:0rpx;
   left: 0rpx;
   right: 0rpx;
 }

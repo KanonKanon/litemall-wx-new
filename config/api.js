@@ -4,9 +4,9 @@
 // 局域网测试使用
 // var WxApiRoot = 'https://192.168.4.5/wx/';
 // 云平台部署时使用
-// var WxApiRoot = 'http://118.24.0.153:8080/wx/';
+var WxApiRoot = 'http://123.57.38.203:8888/wx/';
 // 云平台上线时使用
-var WxApiRoot = 'https://litemall.bingold.cn/wx/';
+// var WxApiRoot = 'https://litemall.bingold.cn/wx/';
 
 // https://litemall.bingold.cn/wx/catalog/list
 
@@ -71,7 +71,7 @@ module.exports = {
 
   CardPass: WxApiRoot + "usercenter/cardPass", //支付密码看数据
   CardPay: WxApiRoot + "order/cardPay", //预付卡支付
-  zeroPay: WxApiRoot + "order/zeroPay", //零元支付
+  ZeroPay: WxApiRoot + "order/zeroPay", //零元支付
   //提货时间列表
   DeliveryList: WxApiRoot + "cart/deliveryList",
   //店铺模块接口

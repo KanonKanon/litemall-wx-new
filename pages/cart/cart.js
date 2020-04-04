@@ -124,9 +124,15 @@ Page({
     util.request(api.OffCartIndex).then(function(res) {
       console.log(res)
       if (res.errno === 0) {
+        let temp = res.data.cartList
+        for(let item of temp){
+          item.price = Math.round(item.price)
+        }
+        let cTotal = res.data.cartTotal
+        cTotal.checkedGoodsAmount= Math.round(cTotal.checkedGoodsAmount)
         that.setData({
-          cartGoods: res.data.cartList,
-          cartTotal: res.data.cartTotal
+          cartGoods: temp,
+          cartTotal: cTotal
         });
 
         that.setData({
@@ -163,9 +169,14 @@ Page({
         isChecked: that.data.cartGoods[itemIndex].checked ? 0 : 1
       }, 'POST').then(function(res) {
         if (res.errno === 0) {
+          for(let item of res.data.cartList){
+            item.price=Math.round(item.price)
+          }
+          let temp = res.data.cartTotal
+          temp.checkedGoodsAmount= Math.round(temp.checkedGoodsAmount)
           that.setData({
             cartGoods: res.data.cartList,
-            cartTotal: res.data.cartTotal
+            cartTotal: temp
           });
         }
 
@@ -211,9 +222,14 @@ Page({
       }, 'POST').then(function(res) {
         if (res.errno === 0) {
           console.log(res.data);
+          for(let item of res.data.cartList){
+            item.price = Math.round(item.price)
+          }
+          let temp = res.data.cartTotal
+          temp.checkedGoodsAmount = Math.round(temp.checkedGoodsAmount)
           that.setData({
             cartGoods: res.data.cartList,
-            cartTotal: res.data.cartTotal
+            cartTotal: temp
           });
         }
 
@@ -381,12 +397,15 @@ Page({
         console.log(res.data);
         let cartList = res.data.cartList.map(v => {
           v.checked = false;
+          v.price = Math.round(v.price)
           return v;
         });
+        let cTotal = res.data.cartTotal
+        cTotal.checkedGoodsAmount = Math.round(cTotal.checkedGoodsAmount)
 
         that.setData({
           cartGoods: cartList,
-          cartTotal: res.data.cartTotal
+          cartTotal: cTotal
         });
       }
 

@@ -2,7 +2,7 @@
 <view class="main-warp">
   <view class="time-box" bindtap='showPopup2'>
     <view class="t-title">
-      <view wx:if="{{getGoodType===''}}">
+      <view wx:if="{{!getGoodType}}">
         请选择提货方式
       </view>
       <view wx:else>

@@ -189,13 +189,13 @@
     <view class="desc">星坊智链技术支持</view>
   </view>
 
-  <view class="select-shop">
+  <!-- <view class="select-shop">
     <view class='img'>
       <image src='/static/images/logo.jpg'></image>
     </view>
     <view class='shopname'>星光珠宝{{shop.name}}</view>
     <view class="change-btn" bindtap="selectShop">[切换]</view>
-  </view>
+  </view> -->
 
 </view>
 

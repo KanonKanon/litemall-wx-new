@@ -240,6 +240,11 @@
         </view>
       </view>
     </view>
+    <!-- 数量 -->
+    <view class="number-item">
+      <view class="name">数量:</view>
+      <view class="count">剩余{{specNumber}}件</view>
+    </view>
 
     <!-- 规格列表 -->
     <view class="spec-con">
@@ -264,19 +269,7 @@
         </view>
       </view>
 
-      <!-- 数量 -->
-      <view class="number-item">
-        <view class='left'>
-          <view class="name">数量:</view>
-          <view class="count">剩余{{specNumber}}件</view>
-        </view>
 
-        <view class="selnum">
-          <view class="cut" bindtap="cutNumber">-</view>
-          <input value="{{number}}" class="number" disabled="true" type="number" />
-          <view class="add" bindtap="addNumber">+</view>
-        </view>
-      </view>
     </view>
   </view>
 </view>

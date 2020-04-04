@@ -749,7 +749,7 @@
 .attr-pop {
   width: 100%;
   height: auto;
-  max-height: 780rpx;
+  max-height: 900rpx;
   padding: 31.25rpx;
   background: #fff;
   position: fixed;
@@ -862,14 +862,13 @@
 
 .number-item {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex:row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right:30rpx;
+  top:180rpx;
 }
-
-.number-item .left-wrap {
-  height: 71rpx;
-}
-
 .number-item .name {
   height: 25rpx;
   line-height: 25rpx;

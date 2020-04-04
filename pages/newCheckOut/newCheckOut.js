@@ -400,7 +400,7 @@ Page({
    */
   checkGetGoodType() {
     let deliveryWay = wx.getStorageSync("deliveryWay")
-    if (deliveryWay !== "") {
+    if (deliveryWay) {
       if (deliveryWay === 0) {
         this.setData({
           getGoodTypes: ['到店自提', '邮寄快递'],

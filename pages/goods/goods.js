@@ -898,7 +898,7 @@ Page({
       wareHouse:wareHouse,
       shopList:shoplist,
       specNumber:1,
-      checkedSpecPrice:wareHouse[0].price,
+      checkedSpecPrice:Math.round(wareHouse[0].price),
       serialnumber: wareHouse[0].serialnumber
     })
   },
@@ -909,15 +909,16 @@ Page({
   clickSpec(e){
     console.log(e)
     const index =parseInt(e.target.dataset.index)
-    const wareHouse= this.data.wareHouse
-    for(let item in wareHouse){
+    let wareHouse= this.data.wareHouse
+    for(let item of wareHouse){
       item.checked=false
     }
+    console.log(wareHouse)
     wareHouse[index].checked=true
     this.setData({
       wareHouse:wareHouse,
       specNumber:1,
-      checkedSpecPrice:wareHouse[index].price,
+      checkedSpecPrice:Math.round(wareHouse[index].price),
       serialnumber: wareHouse[index].serialnumber
     })
   },
@@ -1176,7 +1177,7 @@ Page({
               title: '添加成功'
             });
             that.setData({
-              openAttr: !that.data.openAttr,
+              // openAttr: !that.data.openAttr,
               cartGoodsCount: _res.data
             });
             if (that.data.userHasCollect == 1) {

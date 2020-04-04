@@ -3,7 +3,7 @@
 }
 
 .banner-container {
-  margin-top: 80rpx;
+  /* margin-top: 80rpx; */
 }
 
 .select-shop {

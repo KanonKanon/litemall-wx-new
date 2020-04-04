@@ -154,16 +154,16 @@ Page({
 
     if (wx.getStorageSync("checkedAddress")) {
       let temp = wx.getStorageSync("checkedAddress")
-      console.log("checkedAddress: " + JSON.stringify(temp))
+      // console.log("checkedAddress: " + JSON.stringify(temp))
 
       let shop = {
         id: temp.id,
         name: temp.shopName,
         addr: temp.address
       }
-      console.log(shop)
+      // console.log(shop)
       this.setData({
-        checkedAddress:temp,
+        checkedAddress: temp,
         shop: shop,
         addressId: temp.id
       })
@@ -196,7 +196,7 @@ Page({
                 wx.getLocation({
                   // type: 'wgs84',
                   success(res) {
-                    console.log(res);
+                    // console.log(res);
                     const latitude = res.latitude; //纬度
                     const longitude = res.longitude; //经度
 
@@ -317,48 +317,50 @@ Page({
       couponId: that.data.couponId,
       grouponRulesId: that.data.grouponRulesId
     }
-    console.log('getCheckoutinfo data' + JSON.stringify(data))
+    // console.log('getCheckoutinfo data' + JSON.stringify(data))
     util.request(api.OffCartCheckout, data).then(function(res) {
-      console.log(res)
+      // console.log(res)
       if (res.errno === 0) {
         let centerInfo = wx.getStorageSync("centerUserInfo");
         let customUserInfo = wx.getStorageSync('customMemberData')
         let userInfo = wx.getStorageSync('userInfo')
-        console.log("centerInfo: "+JSON.stringify(centerInfo))
-        console.log("customUserInfo: "+JSON.stringify(customUserInfo))
-        console.log('userInfo: '+JSON.stringify(userInfo))
+        // console.log("centerInfo: " + JSON.stringify(centerInfo))
+        // console.log("customUserInfo: " + JSON.stringify(customUserInfo))
+        // console.log('userInfo: ' + JSON.stringify(userInfo))
         let newCheckedAddress = res.data.checkedAddress[0]
         newCheckedAddress.isDefault = true
-        
-        if (centerInfo){
+
+        if (centerInfo) {
           newCheckedAddress.userName = centerInfo.userName
           newCheckedAddress.userPhone = centerInfo.userPhone
-        }
-        else{
-          if (customUserInfo){
-            newCheckedAddress.userName= customUserInfo.userName
+        } else {
+          if (customUserInfo) {
+            newCheckedAddress.userName = customUserInfo.userName
             newCheckedAddress.userPhone = customUserInfo.userPhone
-          }
-          else{
-            if(userInfo){
+          } else {
+            if (userInfo) {
               newCheckedAddress.userName = userInfo.nickName
               newCheckedAddress.userPhone = userInfo.userPhone
             }
           }
         }
-        console.log('checkAddress: '+JSON.stringify(newCheckedAddress))
-
+        // console.log('checkAddress: ' + JSON.stringify(newCheckedAddress))
+        let temp = res.data.checkedGoodsList
+        for(let item of temp){
+          item.price = Math.round(item.price)
+        }
+        wx.setStorageSync("offlineAddressId", res.data.offlineAddressId)
         that.setData({
           checkedGoodsList: res.data.checkedGoodsList,
           checkedAddress: newCheckedAddress,
           fastAddress: res.data.checkedOfflineAddress,
           availableCouponLength: res.data.availableCouponLength,
-          actualPrice: res.data.actualPrice,
-          couponPrice: res.data.couponPrice,
-          grouponPrice: res.data.grouponPrice,
-          freightPrice: res.data.freightPrice,
-          goodsTotalPrice: res.data.goodsTotalPrice,
-          orderTotalPrice: res.data.orderTotalPrice,
+          actualPrice: Math.round(res.data.actualPrice),
+          couponPrice: Math.round(res.data.couponPrice),
+          grouponPrice: Math.round(res.data.grouponPrice),
+          freightPrice: Math.round(res.data.freightPrice),
+          goodsTotalPrice: Math.round(res.data.goodsTotalPrice),
+          orderTotalPrice: Math.round(res.data.orderTotalPrice),
           offlineAddressId: res.data.offlineAddressId,
           couponId: res.data.couponId,
           grouponRulesId: res.data.grouponRulesId
@@ -492,20 +494,20 @@ Page({
     user.checkedBindPhone()
     try {
       var cartId = wx.getStorageSync('cartId');
-      if (cartId === "") {
+      if (!cartId) {
         cartId = 0;
       }
 
       var couponId = wx.getStorageSync('couponId');
-      if (couponId === "") {
+      if (!couponId) {
         couponId = 0;
       }
       var grouponRulesId = wx.getStorageSync('grouponRulesId');
-      if (grouponRulesId === "") {
+      if (!grouponRulesId) {
         grouponRulesId = 0;
       }
       var grouponLinkId = wx.getStorageSync('grouponLinkId');
-      if (grouponLinkId === "") {
+      if (!grouponLinkId) {
         grouponLinkId = 0;
       }
 
@@ -517,8 +519,6 @@ Page({
       });
       this.getCheckoutInfo();
     } catch (err) {
-      // Do something when catch error
-      // console.log(err)
       util.showError("onshow: " + JSON.stringify(err))
     }
 
@@ -553,7 +553,7 @@ Page({
       })
       return
     }
-    if (this.data.getGoodDate == "" && this.data.getGoodType === "到店自提") {
+    if (this.data.getGoodDate === "" && this.data.getGoodType === "到店自提") {
       wx.showModal({
         title: '提示信息',
         content: '请选择提货时间',
@@ -564,8 +564,15 @@ Page({
 
     if (this.data.getGoodType === "邮寄快递") {
       let offlineAddressId = wx.getStorageSync('offlineAddressId')
+      if(offlineAddressId){
+        this.setData({
+          offlineAddressId: offlineAddressId
+        })
+      }
+    }
+    else{
       this.setData({
-        offlineAddressId: offlineAddressId
+        offlineAddressId:0
       })
     }
 
@@ -577,19 +584,17 @@ Page({
     let orderData = {
       deliveryTime: this.data.getGoodDate,
       cartId: parseInt(this.data.cartId),
-      addressId: parseInt(this.data.addressId),
       offlineAddressId: parseInt(this.data.offlineAddressId),
       couponId: parseInt(this.data.couponId),
       message: this.data.message,
       grouponRulesId: parseInt(this.data.grouponRulesId),
       grouponLinkId: parseInt(this.data.grouponLinkId),
-      actualPrice: parseInt(this.data.actualPrice),
     }
     // console.log("orderData" + JSON.stringify(orderData))
     wx.setStorageSync("orderData", orderData);
     try {
       if (this.data.actualPrice == 0) {
-        util.request(api.OrderSubmit, orderData, 'POST').then(res => {
+        util.request(api.ZeroPay, orderData, 'POST').then(res => {
           if (res.errno === 0) {
             // 下单成功，重置couponId
             wx.setStorageSync('couponId', 0);
@@ -621,7 +626,7 @@ Page({
         })
       } else {
         let orderData = wx.getStorageSync("orderData")
-        util.request(api.OrderSubmit, orderData, 'POST').then(res => {
+        util.request(api.OffOrderSubbmit, orderData, 'POST').then(res => {
           if (res.errno === 0) {
             // 下单成功，重置couponId
             wx.setStorageSync('couponId', 0);
@@ -635,7 +640,7 @@ Page({
             wx.showModal({
               title: '信息提示',
               content: res.errmsg,
-              showCancel:false
+              showCancel: false
             })
             // util.showError('非0元付款时: ' + JSON.stringify(res))
           }

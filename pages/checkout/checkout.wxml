@@ -27,9 +27,9 @@
         <view class="mobile">{{checkedAddress.name}}</view>
         <view class="address">{{checkedAddress.addr}}</view>
       </view>
-      <!-- <view class="r">
+      <view class="r">
         <image src="/static/images/address_right.png"></image>
-      </view> -->
+      </view>
     </view>
 
     <view class="address-item" wx:if="{{getGoodType==='邮寄快递'}}" bindtap="goAddress">
@@ -153,9 +153,9 @@
       <view class="info">
         <view class="t">
           <text class="name">{{item.goodsName}}</text>
-          <text class="number">x{{item.number}}</text>
+          <text class="number">x1</text>
         </view>
-        <view class="m">{{item.specifications}}</view>
+        <view class="m">{{item.grossweight}}</view>
         <view class="b">￥{{item.price}}</view>
       </view>
     </view>

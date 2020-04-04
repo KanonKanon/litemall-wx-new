@@ -46,6 +46,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .address-item .sub-item{
   display: flex;
@@ -55,7 +56,7 @@
 }
 .sub-item .r{
   position: absolute;
-  right: -5rpx;
+  right:0rpx!important;
 
 }
 
@@ -154,6 +155,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  right: 20rpx;
 }
 
 .address-item .r image {
