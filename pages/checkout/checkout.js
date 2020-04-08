@@ -349,7 +349,6 @@ Page({
         for(let item of temp){
           item.price = Math.round(item.price)
         }
-        wx.setStorageSync("offlineAddressId", res.data.offlineAddressId)
         that.setData({
           checkedGoodsList: res.data.checkedGoodsList,
           checkedAddress: newCheckedAddress,
@@ -366,8 +365,8 @@ Page({
           grouponRulesId: res.data.grouponRulesId
         });
 
-        that.getFastAddress()
         that.checkGetGoodType();
+        that.getFastAddress()
 
       } else {
         util.showError("getCheckoutinfo: " + JSON.stringify(res))
@@ -446,7 +445,6 @@ Page({
    */
   checkIsSelectAddress() {
     let isSelectAddress = wx.getStorageSync('isSelectAddress')
-    // console.log("isSelectAddress: " + isSelectAddress)
     if (isSelectAddress) {
       this.setData({
         isSelectAddress: true
@@ -463,10 +461,11 @@ Page({
     }
     try {
       let offlineAddressId = wx.getStorageSync('offlineAddressId')
+      console.log("offlineAddressId: "+offlineAddressId)
       if (offlineAddressId) {
         let func = (res) => {
           if (res.errno === 0) {
-            // console.log("getFastAddress: " + JSON.stringify(res.data))
+            console.log("getFastAddress: " + JSON.stringify(res.data))
             this.setData({
               fastAddress: res.data
             })

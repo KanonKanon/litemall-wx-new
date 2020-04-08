@@ -68,32 +68,18 @@ Page({
     let that = this
     console.log("isOffline: "+this.data.goods.isOffline)
     if (this.data.goods.isOffline) {
-      //根据选中的规格，判断是否有对应的sku信息
-      let checkedProductArray = this.getCheckedProductItem(this.getCheckedSpecKey());
-
-      let checkedProduct = checkedProductArray[0];
-
+      
       //验证团购是否有效
       let checkedGroupon = this.getCheckedGrouponValue();
 
-      console.log("checkedProduc: "+JSON.stringify(checkedProduct))
-      //验证库存
-      if (checkedProduct.number <= 0) {
-        wx.showToast({
-          image: '/static/images/icon_error.png',
-          title: '没有库存'
-        });
-        return false;
-      }
+      
       const data = {
         goodsId: this.data.goods.id,
-        number: this.data.number,
-        productId: checkedProduct.id,
-        deliveryWay: this.data.goods.deliveryWay
+        serialnumber: this.data.serialnumber
       }
       console.log("cartFastAdd data:"+JSON.stringify(data))
       //立即购买
-      util.request(api.CartFastAdd, data, "POST")
+      util.request(api.OffCartFastadd, data, "POST")
         .then(function(res) {
           if (res.errno == 0) {
             // 如果storage中设置了cartId，则是立即购买，否则是购物车购买
@@ -216,7 +202,11 @@ Page({
     let pObj = that.data.productObj
     console.log(pObj)
     for (let key of Object.keys(pObj)) {
-      total += (pObj[key]).length
+      for(let item of pObj[key]){
+        for(let key in item){
+          total += item[key].length
+        }
+      }
     }
     console.log("total: "+total)
     if (total) {
@@ -593,20 +583,20 @@ Page({
   
   },
   /**
-   * 获取店铺数据
+   * 获取区域数据
    */
-  getShopList: function() {
+  getAreaList: function() {
     const pObj = this.data.productObj
-    const shopList = Object.keys(pObj)
+    const areaList = Object.keys(pObj)
     let newList = []
-    for(let item of shopList){
-      let shop ={}
-      shop.checked=false
-      shop.name = item
-      newList.push(shop)
+    for (let item of areaList){
+      let area ={}
+      area.checked=false
+      area.name = item
+      newList.push(area)
     }
     this.setData({
-      shopList:newList
+      areaList:newList
     })
 
 
@@ -739,8 +729,6 @@ Page({
    */
   getGoodsInfo: function() {
     const that = this;
-    let storeId = this.data.shop.id
-
     util.request(api.OffGoodsDetail, {
       goodsId: that.data.id
     }).then(function(res) {
@@ -756,7 +744,6 @@ Page({
           productObj: res.data.productList?res.data.productList:{},
           userHasCollect: res.data.userHasCollect,
           shareImage: res.data.shareImage,
-          // checkedSpecPrice: res.data.info.retailPrice,
           groupon: res.data.groupon,
           salesVolume: res.data.salesVolume,
           isExtension: res.data.isExtension
@@ -768,8 +755,8 @@ Page({
         //检测库存
         that.checkedSoldOut()
 
-        //获取有库存的店铺列表
-        that.getShopList()
+        //获取有库存的区域列表
+        that.getAreaList()
 
 
         //如果是通过分享的团购参加团购，则团购项目应该与分享的一致并且不可更改
@@ -812,20 +799,7 @@ Page({
       }
     });
   },
-  //处理规格面板显示多规格问题
-  dealValueList(specificationList, productList) {
-    let newValList = []
-    let valList = specificationList[0].valueList
-    productList.forEach(v => {
-      for (let i in valList) {
-        if (valList[i].value == v.specifications[0]) {
-          newValList.push(valList[i])
-          break;
-        }
-      }
-    })
-    specificationList[0].valueList = newValList;
-  },
+
   /**
    * 获取推荐商品
    */
@@ -873,22 +847,54 @@ Page({
       groupon: _grouponList,
     });
   },
+  /**
+   *区域选择
+   */
+  clickArea(e){
+    const areaName = e.target.dataset.areaname
+    const index = e.target.dataset.index
+    const areaList = this.data.areaList
+    let templist = this.data.productObj[areaName]
+    let shopList = []
+    for(let item of templist){
+      for(let key in item){
+        let shop = {}
+        shop.name = key
+        shop.checked =false
+        shopList.push(shop)
+      }
+    }
+    for(let item of areaList){
+      item.checked=false
+    }
+    areaList[index].checked = true
+    
+    this.setData({
+      shopList,
+      areaList,
+      areaName,
+      wareHouse:[]
+    })
+  },
 
   /**
    * 仓库选择
    */
   clickWareHouse: function(e) {
     // console.log(e)
-    const index =parseInt(e.target.dataset.index)
+    const index =e.target.dataset.index
     const shopname = e.target.dataset.shopname
     const pObj = this.data.productObj
+    const areaList =this.data.areaList
     const shoplist = this.data.shopList
     for(let shop of shoplist){
       shop.checked=false
     }
     shoplist[index].checked=true
 
-    const wareHouse = pObj[shopname]
+    const tempList = pObj[this.data.areaName]
+    let  wareHouse = tempList[index][shopname]
+    console.log("wareHouse: "+JSON.stringify(wareHouse))
     for(let item of wareHouse){
       item.checked=false
     }

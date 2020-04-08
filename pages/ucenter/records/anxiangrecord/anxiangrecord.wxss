@@ -21,3 +21,9 @@
   border:1rpx solid grey;
   border-radius: 20rpx;
 }
+.btn-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}

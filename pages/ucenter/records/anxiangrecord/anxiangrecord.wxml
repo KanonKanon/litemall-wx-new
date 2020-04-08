@@ -31,6 +31,10 @@
         <view wx:if="{{item.getTime}}">
           赎回时间：{{item.redeemdt}}
         </view>
+        <view class='btn-list'>
+          <button size="mini" bindtap="goToContract" data-item="{{item}}">电子合同</button>
+          <button size="mini" bindtap="goToInvoice" data-item="{{item}}">电子发票</button>
+        </view>
       </view>
 
     </van-collapse-item>

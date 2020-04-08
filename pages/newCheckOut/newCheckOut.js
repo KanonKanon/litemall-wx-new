@@ -8,9 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region:['广东省','佛山市','顺德区'],
+    region: ['广东省', '佛山市', '顺德区'],
     customItem: '全部',
-    getGoodType:'',
+    getGoodType: '',
     getGoodTypes: ['到店自提', '邮寄快递'],
     checkedAddress: {},
     getGoodDate: '',
@@ -24,7 +24,7 @@ Page({
     isSelectAddress: false,
     fastAddress: {},
     offlineAddressId: 0,
-  }, 
+  },
 
   checkIsSelectAddress() {
     let isSelectAddress = wx.getStorageSync('isSelectAddress')
@@ -60,8 +60,8 @@ Page({
       id: offlineAddressId
     }).then(func)
   },
-  
-  bindRegionChange: function (e) {
+
+  bindRegionChange: function(e) {
     this.setData({
       region: e.detail.value
     })
@@ -99,13 +99,13 @@ Page({
       return false;
     }
 
-   
+
     if (wx.getStorageSync("checkedAddress") != "") {
       let item = wx.getStorageSync("checkedAddress")
       that.setData({
-        addressId:item.id,
+        addressId: item.id,
       })
-      
+
     }
     var orderData = {
       deliveryTime: this.data.getGoodDate,
@@ -178,11 +178,11 @@ Page({
     })
   },
   //显示弹出层
-  showPopup2: function () {
+  showPopup2: function() {
     var that = this;
     wx.showActionSheet({
-      itemList:that.data.getGoodTypes,
-      success: function (e) {
+      itemList: that.data.getGoodTypes,
+      success: function(e) {
         console.log(e.tapIndex) //item项下的key或index
         that.setData({
           getGoodType: that.data.getGoodTypes[e.tapIndex]
@@ -222,27 +222,27 @@ Page({
    * 检测是否选择了店铺
    */
   checkShop() {
-    if (wx.getStorageSync("shop") != ""){
+    if (wx.getStorageSync("shop") != "") {
       let shop = wx.getStorageSync("shop");
       console.log(shop)
       let centerInfo = wx.getStorageSync("centerUserInfo");
       let customUserInfo = wx.getStorageSync('customMemberData')
       let userInfo = wx.getStorageSync('userInfo')
-      let userName = centerInfo?centerInfo.userName:customUserInfo.userName
-      let userPhone = centerInfo?centerInfo.userPhone:customUserInfo.userPhone
-      if(!userName && userInfo){
+      let userName = centerInfo ? centerInfo.userName : customUserInfo.userName
+      let userPhone = centerInfo ? centerInfo.userPhone : customUserInfo.userPhone
+      if (!userName && userInfo) {
         userName = userInfo.nickName
         userPhone = userInfo.userPhone
       }
-      let checkedAddress={
-        shopName:shop.shopName,
-        isDefault:true,
-        mobile:userPhone,
-        name:userName,
-        address:shop.addr
+      let checkedAddress = {
+        shopName: shop.shopName,
+        isDefault: true,
+        mobile: userPhone,
+        name: userName,
+        address: shop.addr
       }
       this.setData({
-        shop:shop,
+        shop: shop,
         checkedAddress,
       })
 
@@ -251,7 +251,7 @@ Page({
       let temp = wx.getStorageSync("checkedAddress")
       console.log(temp)
       this.setData({
-        checkedAddress:temp,
+        checkedAddress: temp,
         shop: {
           id: temp.id,
           name: temp.shopName,
@@ -261,7 +261,7 @@ Page({
       //客户选择了店铺，就要重置默认店铺
       wx.setStorageSync('shop', '')
     }
-    console.log("shop: "+this.data.shop)
+    console.log("shop: " + this.data.shop)
 
     //获取店铺列表
     if (this.data.shopList.length == 0 && JSON.stringify(this.data.shop) == "{}") {
@@ -391,9 +391,9 @@ Page({
    */
   onReady: function() {
     this.setData({
-      checkedProduct:this.data.checkedProduct
+      checkedProduct: this.data.checkedProduct
     })
-    
+
   },
   /**
    * 检查可选的提货方式
@@ -401,25 +401,22 @@ Page({
   checkGetGoodType() {
     let deliveryWay = wx.getStorageSync("deliveryWay")
     if (deliveryWay) {
-      if (deliveryWay === 0) {
-        this.setData({
-          getGoodTypes: ['到店自提', '邮寄快递'],
-        })
-      }
-      else if (deliveryWay === 1) {
+      if (deliveryWay === 1) {
         this.setData({
           getGoodTypes: ['到店自提'],
           getGoodType: '到店自提'
         })
-      }
-      else if (deliveryWay === 2) {
+      } else if (deliveryWay === 2) {
         this.setData({
           getGoodTypes: ['邮寄快递'],
           getGoodType: '邮寄快递'
         })
       }
+    } else {
+      this.setData({
+        getGoodTypes: ['到店自提', '邮寄快递'],
+      })
     }
-
   },
 
   /**
@@ -428,7 +425,7 @@ Page({
   onShow: function() {
     this.getFastAddress()
     this.checkGetGoodType()
-    
+
   },
 
   /**

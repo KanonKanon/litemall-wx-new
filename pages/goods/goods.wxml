@@ -249,14 +249,20 @@
     <!-- 规格列表 -->
     <view class="spec-con">
       <view class="spec-item">
-        <view class="name">店铺选择：</view>
+        <view class="name">选择地区：</view>
+        <view class="values">
+          <view class="value {{item.checked ? 'selected' : ''}}" bindtap="clickArea" wx:for="{{areaList}}" wx:key="index" data-index="{{index}}" data-areaname="{{item.name}}">{{item.name}}</view>
+        </view>
+      </view>
+      <view class="spec-item">
+        <view class="name">选择店铺：</view>
         <view class="values">
           <view class="value {{item.checked ? 'selected' : ''}}" bindtap="clickWareHouse" wx:for="{{shopList}}" wx:key="index" data-index="{{index}}" data-shopname="{{item.name}}">{{item.name}}</view>
         </view>
       </view>
 
       <view class="spec-item" wx:if="{{wareHouse.length}}">
-        <view class="name">规格选择：</view>
+        <view class="name">选择规格：</view>
         <view class="values">
           <view class="value {{item.checked ? 'selected' : ''}}" bindtap="clickSpec" wx:for="{{wareHouse}}" wx:key="index" data-index="{{index}}" data-serialnumber="{{serialnumber}}">{{item.grossweight}}克</view>
         </view>

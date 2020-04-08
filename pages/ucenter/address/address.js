@@ -22,6 +22,7 @@ Page({
   getAddressList() {
     let that = this;
     util.request(api.AddressList).then(function(res) {
+      console.log(res)
       if (res.errno === 0) {
         that.setData({
           addressList: res.data
@@ -37,13 +38,10 @@ Page({
     var prevPage = pages[pages.length - 2];
 
     if (prevPage.route == "pages/checkout/checkout" || prevPage.route == "pages/newCheckOut/newCheckOut") {
-      try {
-        wx.setStorageSync('offlineAddressId', event.currentTarget.dataset.addressId);
-      } catch (e) {
+     
+      wx.setStorageSync('offlineAddressId', event.currentTarget.dataset.addressid);
 
-      }
-
-      let addressId = event.currentTarget.dataset.addressId;
+      let addressId = event.currentTarget.dataset.addressid;
       if (addressId && addressId != 0) {
         wx.setStorageSync('isSelectAddress', true)
         wx.navigateBack();

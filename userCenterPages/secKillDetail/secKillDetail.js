@@ -359,8 +359,9 @@ Page({
           secKillInfo: res.data.maskGoods,
           issueList:res.data.issue,
         })
-        console.log(that.data.specificationList)
-        console.log(that.data.productList)
+        // console.log(that.data.specificationList)
+        // console.log(that.data.productList)
+        wx.setStorageSync('deliveryWay', res.data.info.deliveryWay)
 
         WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
 

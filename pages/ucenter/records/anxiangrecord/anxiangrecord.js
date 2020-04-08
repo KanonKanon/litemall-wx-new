@@ -8,17 +8,18 @@ Page({
    */
   data: {
     list: [
-      // {
-      //   id: 2233334444334343434,
-      //   goldnetweight: 100,
-      //   goldsellingprice: 40000,
-      //   safekeepingbegindt: "2020-03-01 12:12:00",
-      //   safekeepingenddt: "2021-02-29 12:12:00",
-      //   storename: "天恩分店",
-      //   redeemdt:'2021-04-02 10:23:12',
-      //   redeemflag:true,
-      //   automaticrenewalflag:true
-      // },
+      {
+        // id: "XGBG201709200008",
+        // id: "XGBG201709200007",
+        // goldnetweight: 100,
+        // goldsellingprice: 40000,
+        // safekeepingbegindt: "2020-03-01 12:12:00",
+        // safekeepingenddt: "2021-02-29 12:12:00",
+        // storename: "天恩分店",
+        // redeemdt:'2021-04-02 10:23:12',
+        // redeemflag:true,
+        // automaticrenewalflag:true
+      },
       
     ],
     dataQuery: {
@@ -37,6 +38,24 @@ Page({
       activeName: e.detail
     });
   },
+
+//跳转电子合同
+  goToContract(e){
+    console.log(e)
+    const info = JSON.stringify(e.target.dataset.item)
+    wx.navigateTo({
+      url: './electronicContract/electronicContract?info='+info,
+    })
+  },
+
+//跳转电子发票
+  goToInvoice(e){
+    const id = e.target.dataset.item.id
+    wx.navigateTo({
+      url: './electronicInvoice/electronicInvoice?id=' + id,
+    })
+  },
+
   getList() {
     const func = (res) => {
       console.log(res)
