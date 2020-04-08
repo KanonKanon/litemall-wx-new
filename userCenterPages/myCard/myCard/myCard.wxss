@@ -61,4 +61,24 @@ color:white;
   top: 330rpx;
   font-size: 40rpx;
 }
+.image-eye {
+  width: 50rpx;
+  height: 100rpx;
+  position: absolute;
+  right: 30rpx;
+  bottom: 0rpx;
+  display: flex;
+  align-items: center;
+}
+
+.image-eye image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.desc-wrap{
+  margin-bottom: 40rpx;
+  position: relative;
+  overflow: hidden;
+}
+
 

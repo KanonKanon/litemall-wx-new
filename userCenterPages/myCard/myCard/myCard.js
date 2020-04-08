@@ -1,13 +1,17 @@
 const app = getApp();
 const utils = require('../../../utils/util.js');
 const api = require("../../../config/api.js");
+var util = require('../../../utils/util.js');
+var user = require('../../../utils/user.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    canSeeNum: false,
+    isShowNum: false,
+    canUseEye: false,
+    timeCount: 60,
     wallet: {},
     centerUserInfo: {},
     listService: [{
@@ -41,6 +45,78 @@ Page({
       }
     ]
   },
+  onReady(){
+    this.pwdinput = this.selectComponent("#pwdinput")
+  },
+  //密码输入
+  pwdInput: function (e) {
+    this.setData({
+      paypwd: e.detail.detail.value
+    })
+
+  },
+  //支付密码输入后执行
+  pwdConfirm: function () {
+    this.pwdinput.hideInput();
+    var centerUserInfo = wx.getStorageSync("centerUserInfo")
+    var pwd = this.data.paypwd
+    var data = {
+      prepaidCard: centerUserInfo.propaidCard,
+      password: pwd
+    }
+    var that = this;
+    var func = (res) => {
+      if (res.errno == 0) {
+        user.getWallet(() => {
+          let wallet = wx.getStorageSync("wallet");
+          console.log(wallet)
+          that.setData({
+            wallet: wallet
+          })
+        })
+        this.setData({
+          canUseEye: true
+        })
+        var timer = setInterval(() => {
+          that.data.timeCount--;
+          if (that.data.timeCount == 0) {
+            clearInterval(timer)
+            wx.setStorageSync("isShowNum", false)
+            that.setData({
+              isShowNum: false,
+              canUseEye: false,
+              timeCount: 60
+            })
+          }
+        }, 1000)
+        that.showNum();
+      } else {
+        wx.showModal({
+          title: '信息提示',
+          content: res.errmsg,
+          showCancel: false
+        })
+      }
+    }
+    util.request(api.CardPass, data, "POST").then(func);
+  },
+
+  //显示与隐藏数字
+  showNum: function () {
+    var that = this;
+    if (this.data.canUseEye == false) {
+      this.pwdinput.showInput();
+      return
+    }
+    var isShow = this.data.isShowNum
+    isShow = !isShow;
+    wx.setStorageSync("isShowNum", isShow);
+    this.setData({
+      isShowNum: isShow,
+    })
+  },
+
+
   onPullDownRefresh: function() {
 
   },
@@ -51,7 +127,6 @@ Page({
       let isShowNum = wx.getStorageSync("isShowNum")
       let wallet = wx.getStorageSync("wallet");
       this.setData({
-        canSeeNum: isShowNum,
         wallet: wallet
       })
     }

@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "星光珠宝"
+  "navigationBarTitleText": "星光珠宝",
+  "usingComponents": {
+    "pwdinput": "/lib/pwdInput/pwdInput"
+  }
+
 }

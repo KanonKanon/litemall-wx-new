@@ -2,19 +2,21 @@
 <view class="top">
   <text>我的会员卡</text>
 </view>
-<view style="margin-bottom: 40rpx;">
+<view class="desc-wrap">
   <view class="background">
     <view>{{centerUserInfo.prepaidCard}}</view>
   </view>
-
   <view class="reward">
-    <view>预付积分：{{canSeeNum?wallet.prepayPoint/100:"****"}}分</view>
-    <view>消费积分：{{canSeeNum?wallet.consumePoint/100:"****"}}分</view>
+    <view>预付积分：{{isShowNum?wallet.prepayPoint/100:"****"}}分</view>
+    <view>消费积分：{{isShowNum?wallet.consumePoint/100:"****"}}分</view>
   </view>
   <view class="phone">
-    <view>持卡人：{{canSeeNum?centerUserInfo.userName:"****"}}</view>
-    <view>绑定手机：{{canSeeNum?centerUserInfo.userPhone:"****"}}</view>
+    <view>持卡人：{{isShowNum?centerUserInfo.userName:"****"}}</view>
+    <view>绑定手机：{{isShowNum?centerUserInfo.userPhone:"****"}}</view>
   </view>
+   <view bindtap='showNum' class="image-eye">
+        <image src="../../../static/images/{{isShowNum?'eye_open':'eye_close'}}.png"></image>
+   </view>
 </view>
 
 <view class="listView">
@@ -24,3 +26,6 @@
       </navigator>
   </block>
 </view>
+
+<pwdinput id="pwdinput" bind:bindinput="pwdInput" bind:confirm="pwdConfirm" />
+
