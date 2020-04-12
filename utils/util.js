@@ -91,20 +91,20 @@ function request(url, data = {}, method = "GET") {
             } catch (e) {
               // Do something when catch error
             }
-            // wx.showModal({
-            //   title: '未登录',
-            //   content: '登录信息过期了，请重新登录',
-            //   showCancel: true,
-            //   confirmText: '去登录',
-            //   cancelText: '不登录',
-            //   success: function (res) {
-            //     if (res.confirm) {
-            //       wx.navigateTo({
-            //         url: "/pages/auth/login/login"
-            //       });
-            //     }
-            //   }
-            // })
+            wx.showModal({
+              title: '未登录',
+              content: '登录信息过期了，请重新登录',
+              showCancel: true,
+              confirmText: '去登录',
+              cancelText: '不登录',
+              success: function (res) {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: "/pages/auth/login/login"
+                  });
+                }
+              }
+            })
            
           } else {
             resolve(res.data);

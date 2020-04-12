@@ -254,7 +254,7 @@
           <view class="value {{item.checked ? 'selected' : ''}}" bindtap="clickArea" wx:for="{{areaList}}" wx:key="index" data-index="{{index}}" data-areaname="{{item.name}}">{{item.name}}</view>
         </view>
       </view>
-      <view class="spec-item">
+      <view class="spec-item" wx:if="{{shopList.length}}">
         <view class="name">选择店铺：</view>
         <view class="values">
           <view class="value {{item.checked ? 'selected' : ''}}" bindtap="clickWareHouse" wx:for="{{shopList}}" wx:key="index" data-index="{{index}}" data-shopname="{{item.name}}">{{item.name}}</view>

@@ -23,8 +23,10 @@ module.exports = {
   OffCartDelete: WxApiRoot +'offCart/delete',//购物车商品删除 post {serialnumberList}
   OffCartCheckout: WxApiRoot +'offCart/checkout',//购物车下单 get {cartId,offlineAddressId,couponId,grouponRulesId}
   OffCartGoodscount: WxApiRoot +'offCart/goodscount',//购物车商品数量 get 无参
-  OffOrderSubbmit: WxApiRoot +'offOrder/submit',//提交订单 post {cartId,offlineAddressId,couponId,message,grouponRulesId,grouponLinkId,deliveryTime}
+  OffOrderSubmit: WxApiRoot +'offOrder/submit',//提交订单 post {cartId,offlineAddressId,couponId,message,grouponRulesId,grouponLinkId,deliveryTime}
 
+  OffMmaSkDetail: WxApiRoot +'offMmaSk/detail',//秒杀详情 get {skId}
+  OffMmaSkSubmit: WxApiRoot + 'offMmaSk/submit',//秒杀下单 post{skId,serialnumber,offlineAddressId,message,deliveryTime}
 
 
 

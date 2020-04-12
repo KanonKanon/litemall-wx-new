@@ -65,11 +65,10 @@
 .time-item {
   display: inline-block;
   width: 22px;
-  margin-right: 5px;
-  color: #fff;
+  color: #c4a867;
   font-size: 12px;
   text-align: center;
-  background-color: #1989fa;
+  background-color: white;
   border-radius: 2px;
 }
 
@@ -824,12 +823,16 @@
   padding-left: 10rpx;
   font-size: 30rpx;
 }
+.secKill-list{
+  margin-top:20rpx;
+}
 
 .sk-item {
   background: whitesmoke;
   border-radius: 10rpx;
   padding: 0 20rpx;
   margin-bottom: 20rpx;
+  position: relative;
 }
 
 .sk-item .goods-pic {
@@ -889,6 +892,8 @@
 .r-info .r-right .desc {
   display: flex;
   justify-content: flex-end;
+  overflow: hidden;
+  height: 60rpx;
 }
 
 .r-info .r-right .remain-time {
@@ -896,6 +901,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 }
 
 .r-info .r-right .desc {
@@ -927,7 +933,7 @@
 }
 
 .active-title {
-  height: 60rpx;
+  height: 80rpx;
   display: flex;
   align-items: center;
   padding: 0 30rpx;
@@ -943,8 +949,11 @@
   align-items: center;
   color: grey;
   padding: 0 30rpx;
-  height: 60rpx;
+  height: 80rpx;
   background: white;
+  position: absolute;
+  right: 20rpx;
+  bottom: 0rpx;
 }
 
 .logo {
@@ -965,6 +974,7 @@
   align-items: center;
   justify-content: center;
   color: white;
+  margin: 0 5rpx;
 }
 
 @media (max-height:630px) {

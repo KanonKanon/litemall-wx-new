@@ -69,7 +69,7 @@
         <view class="desc"></view>
         <view class="price">
           <view class="l-price">￥{{item.price}}.00</view>
-          <view class="count">X {{item.number}}</view>
+          <view class="count">X 1</view>
         </view>
       </view>
     </view>
@@ -89,14 +89,13 @@
     <view class="delivery">
       <view>配送方式</view>
       <view>
-        <!-- <view wx:if="{{!orderInfo.freightPrice}}">免运费</view> -->
         <view wx:if="{{orderInfo.offlineAddress}}">邮寄快递</view>
         <view wx:else>到店自提</view>
       </view>
     </view>
     <view class="line-whitesmoke"></view>
     <view class="msg">
-      <view class="left">买家留言:</view>
+      <view class="left">买家留言</view>
       <view class="right">{{orderInfo.message?orderInfo.message:'无'}}</view>
     </view>
   </view>

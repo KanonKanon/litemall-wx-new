@@ -82,9 +82,9 @@ Page({
     } else if (star == 2) {
       starText = '不太满意';
     } else if (star == 3) {
-      starText = '满意';
-    } else if (star == 4) {
       starText = '比较满意';
+    } else if (star == 4) {
+      starText = '满意';
     } else {
       starText = '十分满意'
     }

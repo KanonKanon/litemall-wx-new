@@ -26,7 +26,7 @@ Page({
     isHideCenter: true,
     shop: {},
     shopList: [],
-   
+
     indexList: {},
     circular: true, //轮播图无缝循环
     newGoods: [],
@@ -50,11 +50,11 @@ Page({
     isDistributor: false, //是否分销员
     offsetH: 260, //修正不同手机canvas的高度
     layerModel: false,
-    startTimeData:{},
-    endTimeData:{}
+    startTimeData: {},
+    endTimeData: {}
   },
 
- 
+
 
   changeModalCancel() {
     this.setData({
@@ -86,7 +86,7 @@ Page({
   /**
    * 计算剩余时间
    */
-  countLeftTime(endtime){
+  countLeftTime(endtime) {
     var that = this;
     var date = new Date();
     var now = date.getTime();
@@ -95,21 +95,21 @@ Page({
     var endDate = new Date(format); //设置开始时间
     var end = endDate.getTime();
     // console.log('end: '+end)
-    var leftTime =parseInt(end - now); //时间差    
-    console.log("leftTime: "+leftTime)
-    return leftTime           
+    var leftTime = parseInt(end - now); //时间差    
+    console.log("leftTime: " + leftTime)
+    return leftTime
   },
-  
+
   /**
    * 开始倒计时结束
    */
-  startTimeFinish(e){
-    console.log("startTimeFinish: "+JSON.stringify(e))
+  startTimeFinish(e) {
+    console.log("startTimeFinish: " + JSON.stringify(e))
     let index = e.target.dataset.index
     let item = this.data.detailList[index]
-    item.desc.canBuy=true
+    item.desc.canBuy = true
     this.setData({
-      detailList:this.data.detailList
+      detailList: this.data.detailList
     })
   },
 
@@ -119,7 +119,7 @@ Page({
   endTimeFinish(e) {
     let index = e.target.dataset.index
     let item = this.data.detailList[index]
-    item.desc.isfinish=true
+    item.desc.isfinish = true
     this.setData({
       detailList: this.data.detailList
     })
@@ -127,8 +127,8 @@ Page({
 
 
   /**
-  * 开始倒计时
-  */
+   * 开始倒计时
+   */
   onStartChange(e) {
     this.setData({
       startTimeData: e.detail
@@ -215,83 +215,57 @@ Page({
   },
 
   /**
-   * 获取秒杀商品列表
+   * 获取秒杀详情列表
    */
-  getSecKillList() {
-    var that = this;
-    // console.log(that.data.shop)
-    var query = {
-      storeId: that.data.shop.id
-    }
-    var func = (res) => {
-      // console.log(res)
-      if (res.errno == 0) {
-        if (res.data.length === 0) {
-          // console.log("in true")
-          that.setData({
-            detailList: []
-          })
-          return
-        } else {
-          // console.log("in false")
-          that.setData({
-            secKillList: res.data
-          })
-        }
-        var templist = []
-        this.data.secKillList.forEach(v => {
-          var data = {
-            storeId: that.data.shop.id,
-            skId: v.skId
-          }
-          console.log(data)
-          var func = (res) => {
-            console.log(res)
-            if (res.errno == 0) {
-              let startLeftTime = this.countLeftTime(res.data.maskGoods.startTime)
-              let endLeftTime = this.countLeftTime(res.data.maskGoods.endTime)
-              let finish=false
-              if(endLeftTime<=0){
-                finish=true
-              }
-              var desc = {
-                totalGoods: 0,
-                isfinish: finish,
-                canBuy: false,
-                day: '00',
-                hour: '00',
-                min: '00',
-                sec: '00',
-                startLeftTime: startLeftTime,
-                endLeftTime: endLeftTime
-              }
-              const plength = res.data.productList.length
-              const pList = res.data.productList
-              for (let i = 0; i < plength; i++) {
-                desc.totalGoods += pList[i].number
-              }
-              res.data['desc'] = desc;
-              templist.push(res.data)
-              that.setData({
-                detailList: templist
-              })
-
-              // setTimeout(() => {
-              //   that.allItemCountTime();
-              // }, 1000)
-
-            } else {
-              util.showError(res.errmsg)
-            }
-
-          }
-          util.request(api.MaSkDetail, data).then(func)
-        })
+  getSkDetailList() {
+    let that = this
+    var templist = []
+    this.data.secKillList.forEach(v => {
+      var data = {
+        skId: v.maskInfo.id
       }
+      console.log(data)
+      var func = (res) => {
+        console.log(res)
+        if (res.errno == 0) {
+          let startLeftTime = this.countLeftTime(res.data.maskGoods.startTime)
+          let endLeftTime = this.countLeftTime(res.data.maskGoods.endTime)
+          let finish = false
+          if (endLeftTime <= 0) {
+            finish = true
+          }
+          var desc = {
+            totalGoods: 0,
+            isfinish: finish,
+            canBuy: false,
+            day: '00',
+            hour: '00',
+            min: '00',
+            sec: '00',
+            startLeftTime: startLeftTime,
+            endLeftTime: endLeftTime
+          }
+          let pList = res.data.productList
+          for (let key of Object.keys(pList)) {
+            for (let item of pList[key]) {
+              for (let key in item) {
+                desc.totalGoods += item[key].length
+              }
+            }
+          }
 
-    }
-    util.request(api.MaSkList, query).then(func);
-
+          
+          res.data['desc'] = desc;
+          templist.push(res.data)
+          that.setData({
+            detailList: templist
+          })
+        } else {
+          util.showError(res.errmsg)
+        }
+      }
+      util.request(api.OffMmaSkDetail, data).then(func)
+    })
 
   },
 
@@ -763,9 +737,8 @@ Page({
 
   onPullDownRefresh() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    this.checkShop()
+    // this.checkShop()
     this.getIndexData();
-    this.getSecKillList();
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
   },
@@ -775,9 +748,10 @@ Page({
   getIndexData: function() {
     let that = this;
     util.request(api.IndexUrl).then(function(res) {
-      // console.log(res);
+      console.log(res);
       if (res.errno === 0) {
         that.setData({
+          secKillList: res.data.maskList ? res.data.maskList : [],
           indexList: res.data.indexList,
           newGoods: res.data.newGoodsList,
           hotGoods: res.data.hotGoodsList,
@@ -788,7 +762,10 @@ Page({
           groupons: res.data.grouponList,
           channel: res.data.channel,
           coupon: res.data.couponList
+          
         });
+
+        that.getSkDetailList()
       }
     });
     util.request(api.GoodsCount).then(function(res) {
@@ -860,7 +837,7 @@ Page({
         url: '../goods/goods?id=' + options.goodId
       });
     }
-    
+
     // // 页面初始化 options为页面跳转所带来的参数
     // if (options.scene) {
     //   //这个scene的值存在则证明首页的开启来源于朋友圈分享的图,同时可以通过获取到的goodId的值跳转导航到对应的详情页
@@ -928,11 +905,11 @@ Page({
         cancelText: '不登录',
         success: function(res) {
           if (res.confirm) {
-            if (wx.getStorageSync("isGoLogin")){
+            if (wx.getStorageSync("isGoLogin")) {
               wx.showModal({
                 title: '信息提示',
                 content: '网速有点慢，请不要重复点击！',
-                showCancel:false
+                showCancel: false
               })
               return
             }
@@ -962,10 +939,10 @@ Page({
     this.gotoCouponPage() //二维码跳转
 
     //如果是扫码进入就要3秒内禁止后面的代码执行
-    if(wx.getStorageSync("isScanCode")){
-      setTimeout(()=>{
+    if (wx.getStorageSync("isScanCode")) {
+      setTimeout(() => {
         wx.removeStorageSync('isScanCode')
-      },3000)
+      }, 3000)
       return
     }
 
@@ -977,7 +954,7 @@ Page({
       })
     }
     //检查是否选择了店铺
-    this.checkShop();
+    // this.checkShop();
     // 页面显示
     // this.htmlParse();
     setTimeout(() => {
@@ -991,14 +968,8 @@ Page({
     }, 1000)
 
     setTimeout(() => {
-      if (this.data.hasLogin) {
-        this.getSecKillList();
-      }
-    }, 2000)
-
-    setTimeout(()=>{
       this.getTempShopList()
-    },1000)
+    }, 1000)
 
   },
   /**
@@ -1025,7 +996,7 @@ Page({
             wx.setStorageSync("goodsId", params[i + 1])
           }
           if ([params[i] === "s"]) {
-            const storeId =Number(params[i + 1])
+            const storeId = Number(params[i + 1])
             let shoplist = app.globalData.tempShopList
 
             for (let shop of shoplist) {
@@ -1042,7 +1013,7 @@ Page({
         if (options.userId) { //直接对个人分享商品
           wx.setStorageSync("userId", options.userId)
         }
-       
+
 
       } catch (e) {
         console.log("explainWXCode: " + JSON.stringify(e))
@@ -1068,7 +1039,7 @@ Page({
 
   gotoGoodsPage() {
     let goodsId = wx.getStorageSync("goodsId")
-    console.log("goodsId: "+goodsId)
+    console.log("goodsId: " + goodsId)
     try {
       if (goodsId) {
         wx.navigateTo({
@@ -1132,7 +1103,7 @@ Page({
 
     if (wx.getStorageSync("checkedAddress") != "") {
       let temp = wx.getStorageSync("checkedAddress")
-      console.log("checkedAddress: " + JSON.stringify(temp))
+      // console.log("checkedAddress: " + JSON.stringify(temp))
       let tempshop = {
         id: temp.id,
         name: temp.shopName,
@@ -1146,9 +1117,9 @@ Page({
     }
 
     //获取店铺列表
-    if (!this.data.shopList.length && JSON.stringify(this.data.shop)==="{}") {
+    if (!this.data.shopList.length && JSON.stringify(this.data.shop) === "{}") {
       this.getShopList(() => {
-        app.globalData.tempShopLit=that.data.shopList
+        app.globalData.tempShopLit = that.data.shopList
       })
     }
   },

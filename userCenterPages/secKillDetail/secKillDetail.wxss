@@ -58,19 +58,21 @@
 .r-info .r-right .desc{
   display: flex;
   justify-content: flex-start;
-
+  overflow: hidden;
+  color: white;
+  height: 60rpx;
 }
 .r-info .r-right .remain-time{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 60rpx;
 }
-.r-info .r-right .desc{
-  color: white;
-}
+
 .remain-time{
   margin-top:10rpx;
+  overflow: hidden;
 }
 .remain-time .r-num{
  width: 40rpx;
@@ -91,10 +93,11 @@
 }
 
 .active-title{
-  height: 60rpx;
+  height: 80rpx;
   display: flex;
   align-items: center;
   padding: 0 30rpx;
+  position: relative;
 }
 .remain-count{
   display: flex;
@@ -103,7 +106,10 @@
   align-items: center;
   color: grey;
   padding: 0 30rpx;
-  height: 60rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 0rpx;
+  bottom:0rpx;
 }
 .main-desc{
   display: flex;
@@ -134,12 +140,12 @@
 .attr-pop {
   width: 100%;
   height: auto;
-  max-height: 780rpx;
+  max-height: 1000rpx;
   padding: 31.25rpx;
   background: #fff;
   position: fixed;
   z-index: 9;
-  bottom: 100rpx;
+  bottom: 0rpx;
 }
 
 .attr-pop .close {
@@ -159,7 +165,7 @@
 
 .attr-pop .img-info {
   width: 687.5rpx;
-  height: 137rpx;
+  height: 200rpx;
   margin-bottom: 20rpx;
   border-bottom: 1rpx solid #c4a867;
   position: relative;
@@ -170,9 +176,10 @@
   width: 177rpx;
   background: #f4f4f4;
   margin-right: 31.25rpx;
-  position: fixed;
+  position: absolute;
+  top: 0rpx;
   bottom: 400rpx;
-  z-index: 20;
+  z-index: 50;
   border-radius: 10rpx;
 }
 
@@ -208,7 +215,7 @@
 }
 
 .spec-con .name {
-  height: 32rpx;
+  height: 40rpx;
   margin-bottom: 22rpx;
   font-size: 29rpx;
   color: #333;
@@ -248,7 +255,10 @@
 .number-item {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+  position: absolute;
+  right: 0rpx;
+  bottom:20rpx;
 }
 
 .number-item .left {
@@ -258,13 +268,13 @@
 }
 
 .number-item .name {
-  height: 25rpx;
-  line-height: 25rpx;
+  height: 40rpx;
+  line-height: 40rpx;
 }
 
 .number-item .count {
-  height: 25rpx;
-  line-height: 25rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   color: gray;
 }
 
@@ -305,7 +315,7 @@
   flex-direction: row;
   position: fixed;
   z-index: 9;
-  bottom: 0;
+  bottom: 0rpx;
 }
 .btn-wrap .btn-left{
  width: 50%;
@@ -328,7 +338,7 @@
 
 .btn{
   position: fixed;
-  bottom:0;
+  bottom:20rpx;
   width: 100%;
 }
 .btn::after{
@@ -435,5 +445,131 @@
   padding-left: 16rpx;
   font-size: 26rpx;
   color: #787878;
+}
+
+/* .bottom-btn {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 750rpx;
+  height: 100rpx;
+  display: flex;
+  background: #fff;
+} */
+
+.bottom-btn .l {
+  float: left;
+  height: 100rpx;
+  width: 162rpx;
+  border: 1px solid #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-btn .l.l-collect {
+  border-right: none;
+  border-left: none;
+  text-align: center;
+  width: 90rpx;
+}
+
+.bottom-btn .l.l-kefu {
+  position: relative;
+  height: 54rpx;
+  width: 63rpx;
+}
+
+.bottom-btn .l.l-cart .box {
+  position: relative;
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.bottom-btn .l.l-cart .cart-count {
+  height: 28rpx;
+  width: 28rpx;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #c4a867;
+  text-align: center;
+  font-size: 18rpx;
+  color: #fff;
+  line-height: 28rpx;
+  border-radius: 50%;
+}
+
+.bottom-btn .l.l-cart .icon {
+  position: absolute;
+  top: 10rpx;
+  left: 0;
+}
+
+.bottom-btn .l.l-kefu .kefu-count {
+  height: 28rpx;
+  width: 28rpx;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* background: #b4282d; */
+  text-align: center;
+  font-size: 18rpx;
+  color: #fff;
+  line-height: 28rpx;
+  border-radius: 50%;
+}
+
+.bottom-btn .l.l-kefu .icon {
+  position: absolute;
+  top: 10rpx;
+  left: 0;
+}
+
+.bottom-btn .l .icon {
+  display: block;
+  height: 44rpx;
+  width: 44rpx;
+}
+
+.bottom-btn .c {
+  float: left;
+  background: #c4a867;
+  height: 100rpx;
+  line-height: 96rpx;
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  /* border-top: 2px solid #f4f4f4; *//* border-bottom: 2px solid #f4f4f4;  */
+}
+
+.bottom-btn .r {
+  border: 1px solid #f5efe3;
+  background: #f5efe3;
+  float: left;
+  height: 100rpx;
+  line-height: 96rpx;
+  flex: 1;
+  text-align: center;
+  color: #c8aa6e;
+}
+
+.l-btn{
+  width: 100%;
+  background:#c8aa6e;
+  color: white;
+}
+.o-btn{
+  width: 100vw;
+  background: red;
+  color: white;
+}
+.btn-con{
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
 }
 

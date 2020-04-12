@@ -78,7 +78,7 @@
   </view>
 
   <view class="order-total">
-    <view class="l">实付：￥{{checkedProduct.price}}</view>
+    <view class="l">实付：￥{{checkoutData.skPrice}}</view>
     <view class="r" bindtap="submitOrder">去付款</view>
   </view>
 </view>

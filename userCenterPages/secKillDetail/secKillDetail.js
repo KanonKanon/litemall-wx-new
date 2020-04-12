@@ -57,6 +57,9 @@ Page({
     isGroupon: false, //标识是否是一个参团购买
     soldout: false, //是否售空
     number: 1,
+    wareHouse:[],
+    areaList:[],
+    shopList:[]
   },
 
   /**
@@ -64,8 +67,13 @@ Page({
    */
   checkedSoldOut() {
     var total = 0;
-    this.data.productList.forEach((v) => {
-      total += v.number
+    let pList = this.data.productList
+    Object.values(pList).map(areaList => {
+      areaList.map(warehouse => {
+        Object.values(warehouse).map(item => {
+          total += 1
+        })
+      })
     })
 
     if (total > 0) {
@@ -284,9 +292,9 @@ Page({
           }, 1000)
           clearInterval(timer)
         });
-        that.checkedSoldOut();
       }, 1000)
-
+      that.checkedSoldOut()
+      that.getAreaList()
     }
     this.getSecKillInfo(func)
 
@@ -310,20 +318,105 @@ Page({
     })
    
   },
-
-  //处理规格面板显示多规格问题
-  dealValueList(specificationList, productList) {
-    let newValList = []
-    let valList = specificationList[0].valueList
-    productList.forEach(v => {
-      for (let i in valList) {
-        if (valList[i].value == v.specifications[0]) {
-          newValList.push(valList[i])
-          break;
-        }
-      }
+  /**
+   * 获取区域数据
+   */
+  getAreaList: function () {
+    const pObj = this.data.productList
+    const areaList = Object.keys(pObj)
+    let newList = []
+    for (let item of areaList) {
+      let area = {}
+      area.checked = false
+      area.name = item
+      newList.push(area)
+    }
+    this.setData({
+      areaList: newList
     })
-    specificationList[0].valueList = newValList;
+
+  },
+
+  /**
+  *区域选择
+  */
+  clickArea(e) {
+    const areaName = e.target.dataset.areaname
+    const index = e.target.dataset.index
+    const areaList = this.data.areaList
+    let templist = this.data.productList[areaName]
+    let shopList = []
+    for (let item of templist) {
+      for (let key in item) {
+        let shop = {}
+        shop.name = key
+        shop.checked = false
+        shopList.push(shop)
+      }
+    }
+    for (let item of areaList) {
+      item.checked = false
+    }
+    areaList[index].checked = true
+
+    this.setData({
+      shopList,
+      areaList,
+      areaName,
+      wareHouse: []
+    })
+  },
+
+  /**
+   * 仓库选择
+   */
+  clickWareHouse: function (e) {
+    // console.log(e)
+    const index = e.target.dataset.index
+    const shopname = e.target.dataset.shopname
+    const pObj = this.data.productList
+    const areaList = this.data.areaList
+    const shoplist = this.data.shopList
+    for (let shop of shoplist) {
+      shop.checked = false
+    }
+    shoplist[index].checked = true
+
+    const tempList = pObj[this.data.areaName]
+    let wareHouse = tempList[index][shopname]
+    console.log("wareHouse: " + JSON.stringify(wareHouse))
+    for (let item of wareHouse) {
+      item.checked = false
+    }
+    wareHouse[0].checked = true
+
+    this.setData({
+      wareHouse: wareHouse,
+      shopList: shoplist,
+      specNumber: 1,
+      checkedSpecPrice: Math.round(wareHouse[0].price),
+      serialnumber: wareHouse[0].serialnumber
+    })
+  },
+
+  /**
+   * 选择具体规格
+   */
+  clickSpec(e) {
+    console.log(e)
+    const index = parseInt(e.target.dataset.index)
+    let wareHouse = this.data.wareHouse
+    for (let item of wareHouse) {
+      item.checked = false
+    }
+    console.log(wareHouse)
+    wareHouse[index].checked = true
+    this.setData({
+      wareHouse: wareHouse,
+      specNumber: 1,
+      checkedSpecPrice: Math.round(wareHouse[index].price),
+      serialnumber: wareHouse[index].serialnumber
+    })
   },
 
   /**
@@ -332,35 +425,20 @@ Page({
   getSecKillInfo(finish = () => {}) {
     var that = this;
     var query = {
-      storeId: this.data.storeId,
       skId: this.data.skId
     }
     var func = (res) => {
       console.log(res)
       if (res.errno == 0) {
-        var avgPrice = 0;
-        var totalPrice = 0;
-        var totalCount = 0;
-        res.data.productList.forEach(v => {
-          totalPrice += v.price;
-          totalCount += v.number
-        })
-        avgPrice = totalPrice / res.data.productList.length
-        res.data.maskGoods['avgPrice'] = avgPrice
-        res.data.maskGoods['totalCount'] = totalCount
-        
-        //修复多规格问题
-        that.dealValueList(res.data.specificationList,res.data.productList)
-
         that.setData({
           goodsInfo: res.data.info,
-          specificationList: res.data.specificationList,
           productList: res.data.productList,
           secKillInfo: res.data.maskGoods,
           issueList:res.data.issue,
         })
-        // console.log(that.data.specificationList)
-        // console.log(that.data.productList)
+
+        that.checkedSoldOut()
+
         wx.setStorageSync('deliveryWay', res.data.info.deliveryWay)
 
         WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
@@ -368,7 +446,40 @@ Page({
         finish();
       }
     }
-    util.request(api.MaSkDetail, query).then(func);
+    util.request(api.OffMmaSkDetail, query).then(func);
+  },
+  /**
+   * 检测是否售完
+   */
+  checkedSoldOut() {
+    const that = this
+    let total = 0;
+    let pObj = that.data.productList
+    for (let key of Object.keys(pObj)) {
+      for (let item of pObj[key]) {
+        for (let key in item) {
+          total += item[key].length
+        }
+      }
+    }
+    console.log("total: " + total)
+    if (total) {
+      that.setData({
+        soldOut: false,
+        totalGoods: total,
+        specNumber: total,
+        checkedSpecPrice: that.data.goodsInfo.retailPrice
+      })
+    } else {
+      that.setData({
+        soldOut: true,
+        totalGoods: total,
+        specNumber: total,
+        checkedSpecPrice: that.data.goodsInfo.retailPrice
+      })
+    }
+    // console.log("soldOut: " + this.data.soldOut)
+    // console.log("totalGoods: " + this.data.totalGoods)
   },
   /**
    * 检测是否选择了店铺
@@ -631,48 +742,28 @@ Page({
     }
 
   },
-  //立即购买（先自动加入购物车）
+  //立即购买
   addFast: function() {
     var that = this;
-    if (this.data.openAttr == false) {
+    if (this.data.openAttr === false) {
       //打开规格选择窗口
       this.setData({
         openAttr: !this.data.openAttr
       });
     } else {
-
-      //提示选择完整规格
-      if (!this.isCheckedAllSpec()) {
-        wx.showToast({
-          image: '/static/images/icon_error.png',
-          title: '请选择完整规格'
-        });
-        return false;
+      if(!this.data.wareHouse.length){
+        util.showError("请选择规格！")
+        return false
       }
 
-      //根据选中的规格，判断是否有对应的sku信息
-      let checkedProductArray = this.getCheckedProductItem(this.getCheckedSpecKey());
-      if (!checkedProductArray || checkedProductArray.length <= 0) {
-        //找不到对应的product信息，提示没有库存
-        wx.showToast({
-          image: '/static/images/icon_error.png',
-          title: '没有库存'
-        });
-        return false;
+      let checkoutData = {
+        skPrice:this.data.secKillInfo.skPrice,
+        skId:this.data.secKillInfo.id,
+        serialnumber: this.data.serialnumber,
       }
-
-      let checkedProduct = checkedProductArray[0];
-      //验证库存
-      if (checkedProduct.number <= 0) {
-        wx.showToast({
-          image: '/static/images/icon_error.png',
-          title: '没有库存'
-        });
-        return false;
-      }
-
+      wx.setStorageSync("checkoutData", checkoutData)
       wx.navigateTo({
-        url: '/pages/newCheckOut/newCheckOut?number=' + this.data.number + "&checkedProduct=" + JSON.stringify(checkedProduct)
+        url: '/pages/newCheckOut/newCheckOut'
       })
 
 

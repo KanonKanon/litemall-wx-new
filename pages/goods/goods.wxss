@@ -828,6 +828,7 @@
   margin-bottom: 22rpx;
   font-size: 29rpx;
   color: #333;
+  overflow: hidden;
 }
 
 .spec-con .values {
@@ -870,13 +871,13 @@
   top:180rpx;
 }
 .number-item .name {
-  height: 25rpx;
-  line-height: 25rpx;
+  height: 40rpx;
+  line-height: 40rpx;
 }
 
 .number-item .count {
-  height: 25rpx;
-  line-height: 25rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   color: gray;
 }
 

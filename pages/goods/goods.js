@@ -77,7 +77,7 @@ Page({
         goodsId: this.data.goods.id,
         serialnumber: this.data.serialnumber
       }
-      console.log("cartFastAdd data:"+JSON.stringify(data))
+      // console.log("cartFastAdd data:"+JSON.stringify(data))
       //立即购买
       util.request(api.OffCartFastadd, data, "POST")
         .then(function(res) {
@@ -200,7 +200,7 @@ Page({
     const that = this
     let total = 0;
     let pObj = that.data.productObj
-    console.log(pObj)
+    // console.log(pObj)
     for (let key of Object.keys(pObj)) {
       for(let item of pObj[key]){
         for(let key in item){
@@ -266,7 +266,7 @@ Page({
   getBackgroundPic() {
     var that = this;
     var func = (res) => {
-      console.log("getBackgroundPic: "+JSON.stringify(res))
+      // console.log("getBackgroundPic: "+JSON.stringify(res))
       if (res.errno == 0) {
         that.setData({
           backgroundUrl: res.data
@@ -277,7 +277,7 @@ Page({
       path: 'pages/index/index',
       goodsId: this.data.id
     }
-    console.log("GetGoodsQR data: "+JSON.stringify(data))
+    // console.log("GetGoodsQR data: "+JSON.stringify(data))
     util.request(api.GetGoodsQR, data).then(func)
   },
   /**
@@ -414,7 +414,7 @@ Page({
   checkedDistributor() {
     if (this.data.hasLogin) {
       let distributorData = wx.getStorageSync('distributorData');
-      console.log(distributorData)
+      // console.log(distributorData)
       this.setData({
         isDistributor: distributorData.isDistributor
       })
@@ -550,11 +550,6 @@ Page({
   },
 
 
-
-
-
-
-
   /**
    * 检测是否选择了店铺
    */
@@ -598,9 +593,6 @@ Page({
     this.setData({
       areaList:newList
     })
-
-
-
   },
 
   imgLoad: function(e) {
@@ -625,7 +617,7 @@ Page({
     let that = this;
     let distributorData = wx.getStorageSync('distributorData')
     console.log('onshareAppMessage')
-    console.log(distributorData)
+    // console.log(distributorData)
     if (distributorData.isDistributor) {
       return {
         title: that.data.goods.name,
@@ -679,7 +671,7 @@ Page({
     wx.downloadFile({
       url: that.data.shareImage,
       success: function(res) {
-        console.log(res)
+        // console.log(res)
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
           success: function(res) {
@@ -732,7 +724,7 @@ Page({
     util.request(api.OffGoodsDetail, {
       goodsId: that.data.id
     }).then(function(res) {
-      console.log(res)
+      // console.log(res)
       if (res.errno === 0) {
         that.setData({
           goods: res.data.info,
@@ -894,7 +886,7 @@ Page({
 
     const tempList = pObj[this.data.areaName]
     let  wareHouse = tempList[index][shopname]
-    console.log("wareHouse: "+JSON.stringify(wareHouse))
+    // console.log("wareHouse: "+JSON.stringify(wareHouse))
     for(let item of wareHouse){
       item.checked=false
     }
@@ -913,13 +905,13 @@ Page({
    * 选择具体规格
    */
   clickSpec(e){
-    console.log(e)
+    // console.log(e)
     const index =parseInt(e.target.dataset.index)
     let wareHouse= this.data.wareHouse
     for(let item of wareHouse){
       item.checked=false
     }
-    console.log(wareHouse)
+    // console.log(wareHouse)
     wareHouse[index].checked=true
     this.setData({
       wareHouse:wareHouse,
@@ -1118,7 +1110,7 @@ Page({
           serialnumber:this.data.serialnumber
         }, "POST")
         .then(function(res) {
-          console.log(res)
+          // console.log(res)
           if (res.errno == 0) {
             // 如果storage中设置了cartId，则是立即购买，否则是购物车购买
             try {

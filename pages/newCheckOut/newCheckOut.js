@@ -46,6 +46,9 @@ Page({
       return
     }
     let offlineAddressId = wx.getStorageSync('offlineAddressId')
+    if(!offlineAddressId){
+      return
+    }
     let func = (res) => {
       if (res.errno === 0) {
         console.log(res.data)
@@ -99,24 +102,17 @@ Page({
       return false;
     }
 
+    let checkoutData = wx.getStorageSync("checkoutData")
 
-    if (wx.getStorageSync("checkedAddress") != "") {
-      let item = wx.getStorageSync("checkedAddress")
-      that.setData({
-        addressId: item.id,
-      })
-
-    }
     var orderData = {
+      skId:checkoutData.skId,
+      serialnumber: checkoutData.serialnumber,
       deliveryTime: this.data.getGoodDate,
-      addressId: this.data.shop.id,
       message: this.data.message,
-      skuId: this.data.checkedProduct.id,
-      num: this.data.number
     }
     console.log(orderData)
     wx.setStorageSync("orderData", orderData);
-    util.request(api.MaSkSubmit, orderData, 'POST').then(res => {
+    util.request(api.OffMmaSkSubmit, orderData, 'POST').then(res => {
       if (res.errno === 0) {
         // 下单成功，重置couponId
         try {
@@ -376,13 +372,11 @@ Page({
   onLoad: function(options) {
     this.getTimeList()
     this.checkShop()
-    if (options.number) {
-      this.data.number = options.number
-    }
-    if (options.checkedProduct) {
-      this.data.checkedProduct = JSON.parse(options.checkedProduct);
-      this.data.skuId = this.data.checkedProduct.id;
-      console.log(this.data.checkedProduct)
+    let checkoutData= wx.getStorageSync('checkoutData')
+    if (checkoutData){
+      this.setData({
+        checkoutData
+      })
     }
   },
 

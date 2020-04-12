@@ -310,7 +310,6 @@ Page({
   //获取checkout信息
   getCheckoutInfo: function() {
     let that = this;
-
     let data = {
       cartId: that.data.cartId,
       offlineAddressId: that.data.offlineAddressId,
@@ -319,7 +318,7 @@ Page({
     }
     // console.log('getCheckoutinfo data' + JSON.stringify(data))
     util.request(api.OffCartCheckout, data).then(function(res) {
-      // console.log(res)
+      console.log(res)
       if (res.errno === 0) {
         let centerInfo = wx.getStorageSync("centerUserInfo");
         let customUserInfo = wx.getStorageSync('customMemberData')
@@ -589,17 +588,16 @@ Page({
       grouponRulesId: parseInt(this.data.grouponRulesId),
       grouponLinkId: parseInt(this.data.grouponLinkId),
     }
-    // console.log("orderData" + JSON.stringify(orderData))
+    console.log("orderData" + JSON.stringify(orderData))
     wx.setStorageSync("orderData", orderData);
     try {
-      if (this.data.actualPrice == 0) {
-        util.request(api.ZeroPay, orderData, 'POST').then(res => {
+      if (this.data.actualPrice === 0) {
+        util.request(api.OffOrderSubmit, orderData, 'POST').then(res => {
           if (res.errno === 0) {
             // 下单成功，重置couponId
             wx.setStorageSync('couponId', 0);
-
             const orderId = res.data.orderId;
-            util.request(api.zeroPay, {
+            util.request(api.ZeroPay, {
               orderId: orderId,
             }, 'POST').then(function(res2) {
               if (res2.errno === 0) {
@@ -620,12 +618,12 @@ Page({
               }
             })
           } else {
-            util.showError("0元付款时： " + JSON.stringify(res))
+            util.showError("api.OffOrderSubmit： " + JSON.stringify(res))
           }
         })
       } else {
         let orderData = wx.getStorageSync("orderData")
-        util.request(api.OffOrderSubbmit, orderData, 'POST').then(res => {
+        util.request(api.OffOrderSubmit, orderData, 'POST').then(res => {
           if (res.errno === 0) {
             // 下单成功，重置couponId
             wx.setStorageSync('couponId', 0);

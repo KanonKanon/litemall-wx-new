@@ -22,19 +22,12 @@
             <view class="r-title">{{item.maskGoods.tag}}</view>
             <view class="r-info">
               <view class="r-left">
-                <view class="sec-price">￥{{item.productList[0].price}}</view>
+                <view class="sec-price">￥{{item.maskGoods.skPrice}}</view>
                 <view class="actual-price">￥{{item.info.retailPrice}}</view>
               </view>
               <view class="r-right" wx:if="{{!item.desc.canBuy}}">
                 <view class="desc">距秒杀开始还剩余:</view>
                 <view class="remain-time">
-                  <!-- <view class="r-num">{{item.desc.day}}</view>
-                  <view class="r-sign">天</view>
-                  <view class="r-num">{{item.desc.hour}}</view>
-                  <view class="r-sign">时</view>
-                  <view class="r-num">{{item.desc.min}}</view>
-                  <view class="r-sign">分</view>
-                  <view class="r-num">{{item.desc.sec}}</view> -->
                   <van-count-down use-slot time="{{ item.desc.startLeftTime }}" bind:change="onStartChange" bind:finish="startTimeFinish" data-index="{{index}}">
                     <text class="time-item">{{ startTimeData.days }}</text>
                     <text class="n-sign">天</text>
@@ -50,13 +43,6 @@
               <view class="r-right" wx:if="{{item.desc.canBuy}}">
                 <view class="desc">距秒杀结束还剩余:</view>
                 <view class="remain-time">
-                  <!-- <view class="r-num">{{item.desc.day}}</view>
-                  <view class="r-sign">天</view>
-                  <view class="r-num">{{item.desc.hour}}</view>
-                  <view class="r-sign">时</view>
-                  <view class="r-num">{{item.desc.min}}</view>
-                  <view class="r-sign">分</view>
-                  <view class="r-num">{{item.desc.sec}}</view> -->
                   <van-count-down use-slot time="{{ item.desc.endLeftTime }}" bind:change="onEndChange" bind:finish="endTimeFinish" data-index="{{index}}">
                     <text class="time-item">{{ endTimeData.days }}</text>
                     <text class="n-sign">天</text>
