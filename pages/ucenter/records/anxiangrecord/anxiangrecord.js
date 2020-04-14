@@ -74,7 +74,7 @@ Page({
 
       }
       else{
-        util.showError(res.errmsg)
+        console.log("getList: "+JSON.stringify(res))
       }
     }
     const userCenterInfo = wx.getStorageSync('centerUserInfo')
