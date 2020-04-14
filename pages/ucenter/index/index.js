@@ -311,12 +311,12 @@ Page({
    * 跳到安享金记录
    */
   goToAnxiangRecord() {
-    // wx.navigateTo({
-    //   url: '/pages/ucenter/records/anxiangrecord/anxiangrecord',
-    // }) 
     wx.navigateTo({
-      url: '/pages/ucenter/storeStar/storeStar',
-    })
+      url: '/pages/ucenter/records/anxiangrecord/anxiangrecord',
+    }) 
+    // wx.navigateTo({
+    //   url: '/pages/ucenter/storeStar/storeStar',
+    // })
 
   },
   /**
