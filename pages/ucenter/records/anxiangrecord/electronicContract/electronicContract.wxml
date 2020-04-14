@@ -1,0 +1,65 @@
+<!--pages/ucenter/records/anxiangrecord/electronicContract/electronicContract.wxml-->
+<view class="main-wrap">
+  <view class="logo">
+    <image src="/static/images/anxianglogo.png"></image>
+  </view>
+  <view class="title">
+    <text>安享积存金保管业务单托书</text>
+  </view>
+  <view class="r-num">
+    <text>编号：{{info.id}}</text>
+  </view>
+  <view class="info-line">
+    <text style="color:red;">*</text>
+    <text>寄存人：</text>
+    <text>{{userCenterInfo.userName}}</text>
+  </view>
+  <view class="info-line">
+    <text style="color:red;">*</text>
+    <text>手机号码：</text>
+    <text>{{userCenterInfo.userPhone}}</text>
+  </view>
+  <view class="info-line">
+    <text style="color:red;">*</text>
+    <text>随享卡号：</text>
+    <text>{{userCenterInfo.prepaidCard}}</text>
+  </view>
+  <view class="info-line">
+    <text style="color:red;">*</text>
+    <text>身份证号：</text>
+    <text>{{userCenterInfo.idCard}}</text>
+  </view>
+  <view class="content">
+    <text>本人自愿将在星光珠宝购入的实物“安享积存金”按以下约定，寄存于星光珠宝保管，并认可按约定规则执行。</text>
+  </view>
+  <view class="desc-title">
+    <text>安享积存金保管业务的明细内容：</text>
+  </view>
+  <view class="desc-content">
+    <view class="desc-line">
+      <text>所寄存“安享积存金”的重量：</text>
+      <text>{{info.goldnetweight}}克</text>
+    </view>
+    <view class="desc-line">
+      <text>约定的委托保管期限：</text>
+      <text>{{info.safekeepingbegindt}}至{{info.safekeepingenddt}}</text>
+    </view>
+    <view class="desc-line">
+      <text>上述约定项下的保管业务，我司已购买人保“保管责任险”。</text>
+    </view>
+    <view class="desc-line">
+      <text>保管期间对星光“随享汇”会员免收保管费用，期满后寄存奖励积分直接存入会员随享卡内。</text>
+    </view>
+    <view class="desc-line">
+      <text>客户可提前赎回，但需另支付我司安享金金条交易佣金及相当于安享积存金购入总价款1.8%的提前赎回手续费。</text>
+    </view>
+  </view>
+  <view class="desc-end">
+    <text>本人已审阅上述会员安享积存金保管项目约定及《安享积存金存管条款》,同意并接受条款。</text>
+  </view>
+  <view class="sign">
+    <text>寄存人签名确认：</text>
+    <text>{{userCenterInfo.userName}}</text>
+  </view>
+
+</view>

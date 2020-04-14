@@ -1,0 +1,3 @@
+<!--pages/storeStar/storeStar.wxml -->
+<view class="top"><text>安享积存金保管</text></view>
+<web-view src = "{{path}}"></web-view>

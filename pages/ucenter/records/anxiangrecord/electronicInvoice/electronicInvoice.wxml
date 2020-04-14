@@ -1,0 +1,7 @@
+<!--pages/ucenter/records/anxiangrecord/electronicInvoice/electronicInvoice.wxml-->
+<view class="main-wrap">
+  <image wx:if="{{url}}" src = "{{url}}"></image>
+  <view wx:if="{{no_pic}}" class="no-pic">
+    <text>订单的发票还没有上传！</text>
+  </view>
+</view>
