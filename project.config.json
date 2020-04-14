@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -23,7 +23,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.0",
-	"appid": "wxe5abc07a2d6f1c8a",
+	"appid": "wx3aff1497b650a466",
 	"projectname": "litemall-wx",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

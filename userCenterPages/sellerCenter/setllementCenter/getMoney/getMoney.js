@@ -52,31 +52,59 @@ Page({
       util.showError("请输入提现金额！")
       return
     }
+    let data = { timeStamp: "1586835661", package: "sendid=18b2e897ed0a89800fe544886300721946f5c1e002d…601fde97bef0d20ec6&mchid=10072459&spid=1225778602", paySign: "D5632CAF6E4F1BD79A1321D965DD07F4", signType: "MD5", nonceStr: "Y3lSqfV9c9lZcI07gHmoHQKeO9Nnn1EZ" }
+    wx.sendBizRedPacket({
+      timeStamp: data.timeStamp, // 支付签名时间戳，
+      nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
+      package: data.package, //扩展字段，由商户传入
+      signType: data.signType, // 签名方式，
+      paySign: data.paySign, // 支付签名
+      success: function (v) {
+        util.showError('操作成功')
+      },
+      fail: function (v) { },
+      complete: function (v) { }
+    })
     var that=this
-    var func=(res)=>{
-      console.log(res)
-      if(res.errno==0){
-        wx.showModal({
-          title: '信息提示',
-          content: '操作成功',
-          showCancel:false,
-          success(v){
-            if(v.confirm){
-              wx.navigateBack({
-                delta:1
-              })
-            }
-          }
-        })
-      }
-      else{
-        util.showError(res.errmsg)
-      }
-    }
-    var data={
-      value:this.data.money
-    }
-    util.request(api.DistributionBalanceTx,data,'POST').then(func)
+    // var func=(res)=>{
+    //   console.log(res)
+    //   if(res.errno==0){
+    //     let data = res.data
+    //     wx.sendBizRedPacket({
+    //       timeStamp: data.timeStamp, // 支付签名时间戳，
+    //       nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
+    //       package: data.package, //扩展字段，由商户传入
+    //       signType: data.signType, // 签名方式，
+    //       paySign: data.paySign, // 支付签名
+    //       success: function (v) {
+    //         util.showError('操作成功')
+    //       },
+    //       fail: function (v) { },
+    //       complete: function (v) { }
+    //     })
+    //     wx.showModal({
+    //       title: '信息提示',
+    //       content: '操作成功',
+    //       showCancel:false,
+    //       success(v){
+    //         if(v.confirm){
+    //           wx.navigateBack({
+    //             delta:1
+    //           })
+    //         }
+    //       }
+    //     })
+    //     let data = res.data
+       
+    //   }
+    //   else{
+    //     util.showError(res.errmsg)
+    //   }
+    // }
+    // var data={
+    //   value:this.data.money
+    // }
+    // util.request(api.DistributionBalanceTx,data,'POST').then(func)
   },
 
 

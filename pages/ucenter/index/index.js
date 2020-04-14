@@ -592,11 +592,13 @@ Page({
   },
   checkLogin() {
     var hasLogin = wx.getStorageSync('hasLogin')
-    if (hasLogin != '') {
-      this.data.hasLogin = hasLogin
+    if (hasLogin) {
       this.setData({
         hasLogin: hasLogin
       })
+    }
+    else{
+      this.goLogin()
     }
 
   },
@@ -720,8 +722,14 @@ Page({
     var hasLogin = wx.getStorageSync('hasLogin')
     if (hasLogin) {
       this.setData({
-        hasLogin: hasLogin
+        hasLogin: true
       })
+    }
+    else{
+      this.setData({
+        hasLogin: false
+      })
+      this.goLogin()
     }
   },
   //是否跳转登录界面

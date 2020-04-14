@@ -162,15 +162,16 @@ Page({
   },
   checkLogin() {
     var hasLogin = wx.getStorageSync('hasLogin')
-    if (hasLogin != '') {
-      this.data.hasLogin = hasLogin;
+    if (hasLogin) {
       this.setData({
-        hasLogin: hasLogin
+        hasLogin: true
       })
     } else {
+      this.setData({
+        hasLogin: false
+      })
       this.goLogin()
     }
-
   },
   goLogin() {
     if (!this.data.hasLogin) {
@@ -1004,7 +1005,6 @@ Page({
     }
     // 页面显示
     this.checkLogin()
-    
 
     //为了同步其它显示选择店铺问题
     this.checkShop();
@@ -1043,7 +1043,7 @@ Page({
 
   //添加或是取消收藏
   addCollectOrNot: function() {
-    this.goLogin()
+    this.checkLogin()
     if (!this.data.hasLogin) {
       return
     }
@@ -1079,8 +1079,7 @@ Page({
 
   //立即购买（先自动加入购物车）
   addFast: function() {
-    this.goLogin()
-    
+    this.checkLogin()
     if (!this.data.hasLogin) {
       return
     }
@@ -1137,7 +1136,7 @@ Page({
 
   //添加到购物车
   addToCart: function() {
-    this.goLogin()
+    this.checkLogin()
     if (!this.data.hasLogin) {
       return
     }

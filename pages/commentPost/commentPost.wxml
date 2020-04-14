@@ -6,7 +6,7 @@
       </view>
       <view class="info">
         <view class="t">
-          <text class="name">{{orderGoods.goodsName}} x{{orderGoods.number}}</text>
+          <text class="name">{{orderGoods.goodsName}} x1</text>
         </view>
         <view class="attr">{{orderGoods.goodsSpecificationValues}}</view>
       </view>

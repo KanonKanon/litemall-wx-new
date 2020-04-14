@@ -9,13 +9,13 @@
   <view class='item'>
     <view class='i-left'>本次提现</view>
     <view class='i-right'>
-      <input placeholder='银行卡单笔最高提现5万'  bindinput='moneyInput'></input>
+      <input placeholder='请输入提现金额'  bindinput='moneyInput'></input>
     </view>
   </view>
 
   <view class="line-s"></view>
 
-  <view class='item' catchtap="goToSelectAcount">
+  <!-- <view class='item' catchtap="goToSelectAcount">
     <view class='i-left'>提现账户</view>
     <view class='i-right'>
       <view wx:if="{{useWeiXinWallet}}">{{userInfo.nickName}}</view>
@@ -24,7 +24,7 @@
         <image src="/static/images/address_right.png"></image>
       </view>
     </view>
-  </view>
+  </view> -->
 
   <button type="primary" class="btn" catchtap='getMoney'>提现</button>
 

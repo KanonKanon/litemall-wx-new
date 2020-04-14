@@ -320,7 +320,6 @@
   overflow: hidden;
   background: #fff;
   color: #333;
-  margin-top: 20rpx;
 }
 
 .a-section .h {
@@ -400,6 +399,7 @@
   width: 750rpx;
   height: auto;
   overflow: hidden;
+  padding-top: 20rpx;
 }
 
 .a-coupon .b .item {
