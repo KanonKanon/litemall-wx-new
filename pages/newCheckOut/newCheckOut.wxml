@@ -16,13 +16,13 @@
   <view class="address-box" wx:if="{{getGoodType!==''}}">
     <view class="address-item" wx:if="{{getGoodType==='到店自提'}}">
       <view class="l">
-        <text class="name">{{checkedAddress.shopName}}</text>
-        <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>
+        <text class="name">{{shop.name}}</text>
+        <text class="default" wx:if="{{shop.isDefault}}">默认</text>
       </view>
       <view class="m">
-        <view class="mobile">{{checkedAddress.mobile}}</view>
-        <view class="mobile">{{checkedAddress.name}}</view>
-        <view class="address">{{checkedAddress.address}}</view>
+        <view class="mobile">{{checkUserInfo.userPhone}}</view>
+        <view class="mobile">{{checkUserInfo.userName}}</view>
+        <view class="address">{{shop.addr}}</view>
       </view>
       <!-- <view class="r">
         <image src="/static/images/address_right.png"></image>

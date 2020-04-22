@@ -381,6 +381,7 @@ Page({
       shop.checked = false
     }
     shoplist[index].checked = true
+    wx.setStorageSync("shopName", shopname)
 
     const tempList = pObj[this.data.areaName]
     let wareHouse = tempList[index][shopname]

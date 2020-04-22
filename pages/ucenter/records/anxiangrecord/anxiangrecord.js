@@ -8,7 +8,7 @@ Page({
    */
   data: {
     list: [
-      {
+     // {
         // id: "XGBG201709200008",
         // id: "XGBG201709200007",
         // goldnetweight: 100,
@@ -19,7 +19,7 @@ Page({
         // redeemdt:'2021-04-02 10:23:12',
         // redeemflag:true,
         // automaticrenewalflag:true
-      },
+    //  },
       
     ],
     dataQuery: {

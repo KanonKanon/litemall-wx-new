@@ -24,6 +24,7 @@ Page({
     isSelectAddress: false,
     fastAddress: {},
     offlineAddressId: 0,
+    checkUserInfo:{}
   },
 
   checkIsSelectAddress() {
@@ -218,51 +219,11 @@ Page({
    * 检测是否选择了店铺
    */
   checkShop() {
-    if (wx.getStorageSync("shop") != "") {
-      let shop = wx.getStorageSync("shop");
-      console.log(shop)
-      let centerInfo = wx.getStorageSync("centerUserInfo");
-      let customUserInfo = wx.getStorageSync('customMemberData')
-      let userInfo = wx.getStorageSync('userInfo')
-      let userName = centerInfo ? centerInfo.userName : customUserInfo.userName
-      let userPhone = centerInfo ? centerInfo.userPhone : customUserInfo.userPhone
-      if (!userName && userInfo) {
-        userName = userInfo.nickName
-        userPhone = userInfo.userPhone
-      }
-      let checkedAddress = {
-        shopName: shop.shopName,
-        isDefault: true,
-        mobile: userPhone,
-        name: userName,
-        address: shop.addr
-      }
-      this.setData({
-        shop: shop,
-        checkedAddress,
-      })
-
-    }
-    if (wx.getStorageSync("checkedAddress") != "") {
-      let temp = wx.getStorageSync("checkedAddress")
-      console.log(temp)
-      this.setData({
-        checkedAddress: temp,
-        shop: {
-          id: temp.id,
-          name: temp.shopName,
-          addr: temp.address
-        }
-      })
-      //客户选择了店铺，就要重置默认店铺
-      wx.setStorageSync('shop', '')
-    }
-    console.log("shop: " + this.data.shop)
-
     //获取店铺列表
     if (this.data.shopList.length == 0 && JSON.stringify(this.data.shop) == "{}") {
       this.getShopList()
     }
+    
   },
 
   //跳转选择快递地址
@@ -344,9 +305,9 @@ Page({
                       citys.push(v.city);
                     }
                   })
+                  
                   that.setData({
                     shopList: res2.data,
-                    shop: res2.data[0]
                   })
                 } else {
                   wx.showModal({
@@ -364,6 +325,51 @@ Page({
     })
 
 
+  },
+  /**
+   * 
+   */
+  getUserInfo(){
+    let centerUserInfo = wx.getStorageSync("centerUserInfo")
+    let customUserInfo = wx.getStorageSync("customMemberData")
+    let wxUserInfo = wx.getStorageSync("userInfo")
+    let checkUserInfo={}
+    if(centerUserInfo){
+      checkUserInfo = centerUserInfo
+    }
+    else{
+      if(customUserInfo){
+        checkUserInfo = customUserInfo
+      }
+      else{
+        checkUserInfo = {
+          userName:wxUserInfo.nickName,
+          userPhone:wxUserInfo.userPhone
+        }
+      }
+    }
+    if(checkUserInfo){
+      this.setData({
+        checkUserInfo
+      })
+    }
+
+  },
+
+  //获取店铺数据
+  getShopData(){
+    let shopList = this.data.shopList.length ? this.data.shopList : app.globalData.tempShopList
+    let shopname = wx.getStorageSync("shopName")
+    let shop = {}
+    shopList.map(s=>{
+      if(s.name===shopname){
+        shop = s
+      }
+    })
+    shop.isDefault = true
+    this.setData({
+      shop:shop
+    })
   },
 
   /**
@@ -417,6 +423,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.getUserInfo()
+    this.getShopData()
     this.getFastAddress()
     this.checkGetGoodType()
 

@@ -630,7 +630,7 @@ Page({
 
             const orderId = res.data.orderId;
             wx.setStorageSync("orderId", orderId)
-            wx.navigateTo({
+            wx.redirectTo({
               url: '../../userCenterPages/selectPay/selectPay',
             })
           } else {

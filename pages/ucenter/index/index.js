@@ -40,7 +40,10 @@ Page({
     canUseEye: false,
     timeCount: 60,
     centerUserInfo: {},
-    thirdSession: ''
+    thirdSession: '',
+    oldExtraData: {
+      foo: 'bar'
+    }
   },
 
   /**
@@ -158,19 +161,35 @@ Page({
   },
 
   /**
-   * 获取跳转积分商城使用的ThirdSession
-   */
+    * 获取跳转积分商城使用的ThirdSession
+    */
   getThirdSession() {
     util.request(api.ThirdSession).then((res) => {
       if (res.errno === 0) {
+        let extraData = {
+          thirdSession: res.data,
+          serviceUrl: api.WxApiRoot
+        }
+        // console.log("extraData: "+JSON.stringify(extraData))
         this.setData({
-          thirdSession: res.data
+          extraData: extraData
         })
       } else {
         util.showError('getThirdSession: ' + JSON.stringify(res))
       }
     })
-
+  },
+  /**
+   *跳转成功 
+   */
+  goToShopSuccess() {
+    console.log("跳转积分商城成功")
+  },
+  /**
+   * 跳转失败
+   */
+  goToShopFail(res) {
+    console.log("跳转积分商城失败：" + JSON.stringify(res))
   },
   /**
    * 跳转积分商城
@@ -206,6 +225,18 @@ Page({
     })
   
 
+  },
+  /**
+   *跳转成功 
+   */
+  goToOldSuccess() {
+    console.log("跳转旧版会员中心成功")
+  },
+  /**
+   * 跳转失败
+   */
+  goToOldFail(res) {
+    console.log("跳转旧版会员中心失败：" + JSON.stringify(res))
   },
   /**
    * 跳转有赞的会员中心
@@ -589,6 +620,7 @@ Page({
   onReady: function() {
     this.popup = this.selectComponent("#pop");
     this.pwdinput = this.selectComponent("#pwdinput")
+    this.getThirdSession()
   },
   checkLogin() {
     var hasLogin = wx.getStorageSync('hasLogin')

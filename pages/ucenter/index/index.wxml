@@ -62,10 +62,14 @@
       <image class='user_column_item_image bigger-image' src='/static/images/memberCard.svg'></image>
       <view class='user_column_item_text'>成为会员</view>
     </view> -->
-    <view class='user_column_item' bindtap='rewardShoop' hidden="{{!isStarShineMember}}">
+    <!-- <view class='user_column_item' bindtap='rewardShoop' hidden="{{!isStarShineMember}}">
       <image class='user_column_item_image bigger-image' src='/static/images/fenshop.png'></image>
       <view class='user_column_item_text'>积分商城</view>
-    </view>
+    </view> -->
+     <navigator class="user_column_item" target="miniProgram" app-id = "wx01d48d1fa2fdae40" path="pages/valid/valid" extra-data="{{extraData}}" bindsuccess="goToShopSuccess" bindfail="goToShopFail" hidden="{{!isStarShineMember}}">
+      <image class='user_column_item_image bigger-image' src='/static/images/fenshop.png'></image>
+      <view class='user_column_item_text'>积分商城</view>
+    </navigator>
   </view>
 
   <view class='separate'></view>
@@ -192,10 +196,14 @@
       <image class='user_column_item_image bigger-image' src='/static/images/fenxiaoyuan.png'></image>
       <view class='user_column_item_text'>成为分销员</view>
     </view>
-    <view class='user_column_item' bindtap='goToOld' wx:if="{{isStarShineMember}}">
+    <!-- <view class='user_column_item' bindtap='goToOld' wx:if="{{isStarShineMember}}">
       <image class='user_column_item_image bigger-image' src='/static/images/oldcenter.png'></image>
       <view class='user_column_item_text'>旧版会员中心</view>
-    </view>
+    </view> -->
+     <navigator class="user_column_item" target="miniProgram" app-id = "wx4ce7f496ab8b6c84" path="pages/usercenter/dashboard/index" extra-data="{{oldExtraData}}" bindsuccess="goToOldSuccess" bindfail="goToOldFail" hidden="{{!isStarShineMember}}">
+       <image class='user_column_item_image bigger-image' src='/static/images/oldcenter.png'></image>
+      <view class='user_column_item_text'>旧版会员中心</view>
+    </navigator>
   </view>
   <view class='separate'></view>
 
