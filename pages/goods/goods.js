@@ -71,13 +71,15 @@ Page({
       
       //验证团购是否有效
       let checkedGroupon = this.getCheckedGrouponValue();
-
       
+      let serialnumber = wx.getStorageSync("sn")
+      console.log("sn :" + serialnumber)
       const data = {
         goodsId: this.data.goods.id,
-        serialnumber: this.data.serialnumber
+        serialnumber: serialnumber
       }
-      // console.log("cartFastAdd data:"+JSON.stringify(data))
+      
+      console.log("cartFastAdd data:"+JSON.stringify(data))
       //立即购买
       util.request(api.OffCartFastadd, data, "POST")
         .then(function(res) {
@@ -91,13 +93,13 @@ Page({
                 url: '/pages/checkout/checkout'
               })
             } catch (e) {
-              console.log("cartFastAdd requert: " + JSON.stringify(e))
+              console.log("offCartFastAdd requert: " + JSON.stringify(e))
             }
 
           } else {
            wx.showModal({
              title: '信息提示',
-             content: JSON.stringify(res),
+             content:"OffCartFastadd :" + JSON.stringify(res),
              showCancel:false
            })
           }

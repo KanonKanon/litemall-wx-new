@@ -32,7 +32,7 @@
       </view>
       <view style="border-bottom: 1px solid red; padding-bottom:8rpx;">
         <text wx:if="{{date==calendarSignData[date]}}" style="color:white;font-size:22rpx;  border-radius: 50%;background-color: red">已签到</text>
-        <text wx:else="" style="color:blue;">{{date}}</text>
+        <text wx:else style="color:blue;">{{date}}</text>
       </view>
       <view wx:for="{{monthDaySize-date}}" wx:key="index">{{item+date+1}}</view>
     </view>

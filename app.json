@@ -87,7 +87,8 @@
     "pages/ucenter/records/anxiangrecord/anxiangrecord",
     "pages/ucenter/records/youxianrecord/youxianrecord",
     "pages/ucenter/records/xiaoshoudanrecord/xiaoshoudanrecord",
-    "userCenterPages/newClient/newClient"
+    "userCenterPages/newClient/newClient",
+    "zhibo/list/list"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
@@ -110,7 +111,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/newCategory/newCategory",
+        "pagePath": "pages/catalog/catalog",
         "iconPath": "static/images/category.png",
         "selectedIconPath": "static/images/category@selected.png",
         "text": "分类"
@@ -146,5 +147,11 @@
     "wxe5abc07a2d6f1c8a",
     "wx01d48d1fa2fdae40",
     "wx4ce7f496ab8b6c84"
-  ]
+  ],
+  "plugins": {
+    "live-player-plugin": {
+      "version": "1.0.7",
+      "provider": "wx2b03c6e691cd7370"
+    }
+  }
 }

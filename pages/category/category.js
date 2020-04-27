@@ -29,10 +29,7 @@ Page({
         });
       }
     });
-
-
     this.getCategoryInfo();
-
   },
   getCategoryInfo: function() {
     let that = this;
@@ -41,15 +38,15 @@ Page({
       })
       .then(function(res) {
 
-        if (res.errno == 0) {
+        if (res.errno === 0) {
           that.setData({
             navList: res.data.brotherCategory,
             currentCategory: res.data.currentCategory
           });
 
-          wx.setNavigationBarTitle({
-            title: res.data.parentCategory.name
-          })
+          // wx.setNavigationBarTitle({
+          //   title: res.data.parentCategory.name
+          // })
 
           // 当id是L1分类id时，这里需要重新设置成L1分类的一个子分类的id
           if (res.data.parentCategory.id == that.data.id) {
@@ -76,6 +73,7 @@ Page({
 
         } else {
           //显示错误信息
+          console.log(res.errmsg)
         }
 
       });
@@ -92,7 +90,6 @@ Page({
   },
   getGoodsList: function() {
     var that = this;
-
     util.request(api.GoodsList, {
         categoryId: that.data.id,
         page: that.data.page,

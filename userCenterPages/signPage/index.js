@@ -98,8 +98,8 @@ Page({
     console.log("date=" + date)
     var day = mydate.getDay();
     console.log(day)
-    var nbsp = 7 - ((date - day) % 7) + 1;
-    if(nbsp===7){nbsp=0}
+    var nbsp = 7 - ((date - day) % 7) + 1; //所有日期向右移一位。
+    // if(nbsp===7){nbsp=0}
     console.log("nbsp" + nbsp);
     var monthDaySize;
     if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
@@ -146,6 +146,7 @@ Page({
 
   //下拉刷新
   onPullDownRefresh:function() {
+    this.init()
     wx.stopPullDownRefresh();
   }
 

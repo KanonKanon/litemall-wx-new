@@ -1,0 +1,4 @@
+/* zhibo/list/list.wxss */
+page{
+  background-color: #9D9BCA;
+}

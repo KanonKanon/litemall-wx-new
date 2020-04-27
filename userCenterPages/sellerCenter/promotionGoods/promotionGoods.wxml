@@ -1,7 +1,9 @@
 <!--userCenterPages/sellerCenter/promotionGoods/promotionGoods.wxml-->
 <wxs module="fix" src="../../../utils/Fixed.wxs"></wxs>
 <view class="main-wrap">
-  <van-search value="{{ value }}" placeholder="商品搜索：请输入商品关键字" show-action bind:search="onSearch" bind:cancel="onCancel" />
+  <van-search value="{{ value }}" placeholder="商品搜索：请输入商品关键字" show-action bind:change="onSearch" bind:cancel="onCancel" use-action-slot> 
+  <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
 
   <!-- <view class='line-b'></view> -->
 
@@ -15,7 +17,7 @@
   <view class='line-b'></view>
 
   <view class="goods-list">
-    <view class="g-item" wx:for="{{goodsList}}" wx:key="{{index}}" catchtap="goToDetail" data-item="{{item}}">
+    <view class="g-item" wx:for="{{goodsList}}" wx:key="index" catchtap="goToDetail" data-item="{{item}}">
       <view class="g-left">
         <image src="{{item.picUrl}}"></image>
       </view>

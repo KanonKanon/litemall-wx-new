@@ -1,0 +1,4 @@
+<!--zhibo/list/list.wxml-->
+<view>
+<navigator url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id=1">直播1 </navigator>
+</view>

@@ -12,7 +12,7 @@
   </view>
   <view class="desc-wrap">
     <view class="desc">{{couponData.name}}</view>
-    <view class="discount">减免{{couponData.discount}}元优惠券</view>
+    <view class="discount">{{couponData.desc}}</view>
     <view class="min">满{{couponData.min}}元</view>
   </view>
 

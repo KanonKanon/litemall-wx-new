@@ -13,6 +13,11 @@ var WxApiRoot = 'https://test.bingold.cn/wx/';
 
 module.exports = {
   WxApiRoot: WxApiRoot,
+
+  //直播相关接口
+  LiveGetInfo:WxApiRoot+'live/getInfo', //直播室列表
+
+  //打通进销存接口
   CloudCardOpen: WxApiRoot +'offlineUc/cloudCardOpen',//随享卡开卡
   OfflineUcOrc: WxApiRoot +'offlineUc/orc',//身份证OCR
   OffGoodsDetail: WxApiRoot +'offGoods/detail',//商品详情 get {goodsId}

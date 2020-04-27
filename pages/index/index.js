@@ -246,6 +246,7 @@ Page({
             endLeftTime: endLeftTime
           }
           let pList = res.data.productList
+          if(!pList){return}
           for (let key of Object.keys(pList)) {
             for (let item of pList[key]) {
               for (let key in item) {
@@ -254,14 +255,14 @@ Page({
             }
           }
 
-          
+
           res.data['desc'] = desc;
           templist.push(res.data)
           that.setData({
             detailList: templist
           })
         } else {
-          util.showError(res.errmsg)
+          util.showError(JSON.stringify(res))
         }
       }
       util.request(api.OffMmaSkDetail, data).then(func)
@@ -762,7 +763,7 @@ Page({
           groupons: res.data.grouponList,
           channel: res.data.channel,
           coupon: res.data.couponList
-          
+
         });
 
         that.getSkDetailList()
@@ -991,25 +992,14 @@ Page({
           if (params[i] === "couponId") {
             wx.setStorageSync("couponId", params[i + 1])
           }
-          if (params[i] === "userId") {
+          if (params[i] === "userId" || params[i] === "u") { //分销员手机号
             wx.setStorageSync("userId", params[i + 1])
           }
-          if (params[i] === "goodsId") {
+          if (params[i] === "goodsId" || params[i] === "g") { //商品ID
             wx.setStorageSync("goodsId", params[i + 1])
           }
-          if ([params[i] === "s"]) {
-            const storeId = Number(params[i + 1])
-            let shoplist = app.globalData.tempShopList
-
-            for (let shop of shoplist) {
-              if (shop.id === storeId) {
-                wx.removeStorageSync('checkedAddress')
-                wx.setStorageSync('shop', shop)
-                this.setData({
-                  shop: shop
-                })
-              }
-            }
+          if (params[i] === "s") { //条码号
+            wx.setStorageSync("sn", params[i + 1])
           }
         }
         if (options.userId) { //直接对个人分享商品

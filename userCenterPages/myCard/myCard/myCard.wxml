@@ -11,8 +11,8 @@
     <view>消费积分：{{isShowNum?wallet.consumePoint/100:"****"}}分</view>
   </view>
   <view class="phone">
-    <view>持卡人：{{isShowNum?centerUserInfo.userName:"****"}}</view>
-    <view>绑定手机：{{isShowNum?centerUserInfo.userPhone:"****"}}</view>
+    <view>持卡人：{{centerUserInfo.userName}}</view>
+    <view>绑定手机：{{centerUserInfo.userPhone}}</view>
   </view>
    <view bindtap='showNum' class="image-eye">
         <image src="../../../static/images/{{isShowNum?'eye_open':'eye_close'}}.png"></image>

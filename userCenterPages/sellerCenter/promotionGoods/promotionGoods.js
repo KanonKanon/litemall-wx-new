@@ -9,8 +9,7 @@ Page({
    */
   data: {
     labelIndex: 1,
-    goodsList: [
-    ]
+    goodsList: []
   },
 
   /**
@@ -22,7 +21,8 @@ Page({
       console.log(res)
       if (res.errno == 0) {
         that.setData({
-          goodsList: res.data
+          goodsList: res.data,
+          tempList: res.data
         })
       }
     }
@@ -50,14 +50,14 @@ Page({
 
   },
 
-/**
- * 跳转商品详情页
- */
-  goToDetail(e){
+  /**
+   * 跳转商品详情页
+   */
+  goToDetail(e) {
     console.log(e);
-    var item=e.currentTarget.dataset.item;
+    var item = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: '../../../pages/goods/goods?id='+item.goodsId,
+      url: '../../../pages/goods/goods?id=' + item.goodsId,
     })
 
   },
@@ -89,6 +89,18 @@ Page({
    * 搜索事件
    */
   onSearch: function(e) {
+    let tempList = this.data.tempList
+    let key = e.detail
+    let finishList=[]
+    console.log(e.detail)
+    tempList.map(v=>{
+      if(v.name.indexOf(key)>-1){
+        finishList.push(v)
+      }
+    })
+    this.setData({
+      goodsList:finishList
+    })
 
   },
   /**

@@ -22,7 +22,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.0",
+	"libVersion": "2.10.4",
 	"appid": "wx3aff1497b650a466",
 	"projectname": "litemall-wx",
 	"simulatorType": "wechat",
@@ -486,6 +486,12 @@
 					"name": "随享卡申请",
 					"pathName": "userCenterPages/newClient/newClient",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "直播间列表",
+					"pathName": "zhibo/list/list",
 					"scene": null
 				}
 			]
