@@ -26,19 +26,19 @@
       <view wx:for="{{nbsp}}" wx:key="index">\n</view>
 
       <!--开心循环日期-->
-      <view wx:for="{{date-1}}" style="color:gainsboro;" wx:key="index">
-        <text wx:if="{{item+1==calendarSignData[item+1]}}" style="color:red;font-size:22rpx;">已签到</text>
-        <text wx:else="">{{item+1}}</text>
+      <view wx:for="{{date-1}}" style="color:gainsboro;overflow:hidden;" wx:key="index">
+        <text wx:if="{{item+1==calendarSignData[item+1]}}" style="color:white;font-size:22rpx;  border-radius: 50%;background-color: red">{{item+1}}</text>
+        <text wx:else>{{item+1}}</text>
       </view>
-      <view style="border-bottom: 1px solid red; padding-bottom:8rpx;">
-        <text wx:if="{{date==calendarSignData[date]}}" style="color:white;font-size:22rpx;  border-radius: 50%;background-color: red">已签到</text>
+      <view style="padding-bottom:8rpx;overflow:hidden;">
+        <text wx:if="{{date==calendarSignData[date]}}" style="color:white;font-size:22rpx;  border-radius: 50%;background-color: red">{{date}}</text>
         <text wx:else style="color:blue;">{{date}}</text>
       </view>
       <view wx:for="{{monthDaySize-date}}" wx:key="index">{{item+date+1}}</view>
     </view>
     <view class="calendarSign">
       <button wx:if="{{date!=calendarSignData[date]}}" type="primary" bindtap="calendarSign">签到</button>
-      <button wx:else="">今日已签到</button>
+      <button wx:else>今日已签到</button>
     </view>
   </view>
 </view>

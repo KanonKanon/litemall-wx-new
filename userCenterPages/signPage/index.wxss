@@ -45,9 +45,12 @@
 }
 .week{
   width: 100%;
+  /* display: flex; */
 }
 .week view{
   width: 14.2%;
+  /* flex:1; */
+  /* width: 80rpx; */
   height: 80rpx;
   line-height: 80rpx;
   display: inline-block;
