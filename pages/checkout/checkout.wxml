@@ -80,13 +80,15 @@
   <view class="time-box" wx:if="{{getGoodType==='到店自提'}}">
     <van-cell>
       <view slot="title">
-        <view wx:if="{{getGoodDate==''}}" bindtap='showPopup'>
-          请选择提货时间
-          <view class="time-tips">提货日期只可以选择在付款后的7天内</view>
-        </view>
-        <view wx:else bindtap="showPopup">
-          提货日期：{{getGoodDate}}
-        </view>
+          <picker bindchange="bindTimePickerChange" value="{{timeIndex}}" range="{{timeList}}">
+          <view wx:if="{{getGoodDate}}" class="picker">
+            提货时间:{{getGoodDate}}
+          </view>
+          <view wx:else class="picker">
+            <view>请选择提货时间</view> 
+            <view wx:if="{{!isAdSale}}" class="time-tips">提货日期只可以选择在付款后的7天内</view>
+          </view>
+        </picker>
       </view>
     </van-cell>
     <view class="time-icon">

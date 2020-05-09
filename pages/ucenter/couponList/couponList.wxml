@@ -1,3 +1,4 @@
+<wxs module="fix" src="../../../utils/Fixed.wxs" />
 <view class="container">
 
   <view class="h">
@@ -25,17 +26,17 @@
     <view class="help" wx:if="{{status == 0}}">使用说明</view>
 
     <scroll-view class="coupon-list" scroll-y="true" scroll-top="{{scrollTop}}">
-
       <view class="item {{ status == 0 ? 'active' : ''}}" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
         <view class="tag">{{item.tag}}</view>
         <view class="content">
           <view class="left">
-            <view class="discount">{{item.discount}}元</view>
-            <view class="min"> 满{{item.min}}元使用</view>
+            <view class="discount">{{fix.toFix(item.discount,0)}}元</view>
+            <view class="min" wx:if="{{item.min>0}}"> 满{{fix.toFix(item.min,0)}}元使用</view>
+            <view class="min" wx:else>无门槛</view>
           </view>
           <view class="right">
             <view class="name">{{item.name}}</view>
-            <view class="time"> 有效期：{{item.startTime}} - {{item.endTime}}</view>
+            <view class="time"> 有效期：{{fix.formatTime(item.startTime)}} ~ {{fix.formatTime( item.endTime)}}</view>
           </view>
         </view>
         <view class="condition">
@@ -43,7 +44,6 @@
           <image src="{{item.pic}}" class="icon"></image>
         </view>
       </view>
-
       <view class="page" wx:if="{{showPage}}">
         <view class="prev {{ page <= 1 ? 'disabled' : ''}}" bindtap="prevPage">上一页</view>
         <view class="next {{ (count / size) < page ? 'disabled' : ''}}" bindtap="nextPage">下一页</view>

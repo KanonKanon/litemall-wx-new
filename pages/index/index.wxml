@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <!-- 新页面 -->
+<wxs module="fix" src="../../utils/Fixed.wxs" />
 <view class="new-container">
   <!-- 广告 -->
   <view class="banner-container">
@@ -15,10 +16,10 @@
   <!-- 秒杀活动 -->
   <view class="secKill-list">
     <view class="sk-item" wx:for="{{detailList}}" wx:key="index" data-item="{{item}}" catchtap="goToSkDetail">
-      <view wx:if="{{!item.desc.isfinish}}">
+      <view wx:if="{{!item.desc.isfinish}}" style="width:100%">
         <view class="goods-pic">
           <image src="{{item.info.picUrl}}" style="width:100%;height:{{skHeightList[index]}}rpx;" bindload="allPicLoad" data-index="{{index}}"></image>
-          <view class="red-label">
+          <view class="red-label" >
             <view class="r-title">{{item.maskGoods.tag}}</view>
             <view class="r-info">
               <view class="r-left">
@@ -76,28 +77,21 @@
 
   <!-- 优惠券 -->
   <view class="a-section a-coupon" wx:if="{{coupon.length > 0}}">
-    <!-- <view class="h">
-      <view class="title">
-        <view>
-          <navigator url="/pages/coupon/coupon">
-            <text class="txt">优惠券</text>
-          </navigator>
-        </view>
-      </view>
-    </view> -->
     <view wx:if="{{coupon.length>0}}" class="b">
       <view class="item" wx:for="{{coupon}}" wx:for-index="{{index}}" wx:for-item="item" wx:key="index" bindtap="getCoupon" data-index="{{item.id}}">
         <view class="tag">{{item.tag}}</view>
+        
         <view class="content">
           <view class="left">
-            <view class="discount">{{item.discount}}元</view>
-            <view class="min"> 满{{item.min}}元使用</view>
+            <view class="discount">{{fix.toFix(item.discount,0)}}元</view>
+            <view class="min" wx:if="{{item.min>0}}"> 满{{fix.toFix(item.min,0)}}元使用</view>
+            <view class="min">无门槛</view>
           </view>
           <view class="right">
             <view class="name">{{item.name}}</view>
             <view class="desc">{{item.desc}}</view>
             <view class="time" wx:if="{{item.days != 0}}">有效期：{{item.days}}天</view>
-            <view class="time" wx:else> 有效期：{{item.startTime}} - {{item.endTime}}</view>
+            <view class="time" wx:else> 有效期：{{fix.formatTime(item.startTime)}} ~ {{fix.formatTime(item.endTime)}}</view>
           </view>
         </view>
       </view>

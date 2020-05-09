@@ -45,6 +45,18 @@ Page({
       foo: 'bar'
     }
   },
+  /**
+   *跳转直播间列表 
+   */
+  goToZhiBo(){
+   this.goLogin()
+    if (!this.data.hasLogin) {
+      return
+    }
+    wx.navigateTo({
+      url: '/zhibo/list/list',
+    })
+  },
 
   /**
    * 检测是否绑定手机 绑定了返回true  否则返回false

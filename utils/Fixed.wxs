@@ -23,17 +23,19 @@ var filters = {
     }
   },
 
-  toFix: function(value) {
-    return value.toFixed(2) //此处2为保留两位小数
+  toFix: function(value,n) {
+    return Math.round(value,n) //此处n为保留小数位数
   },
 
-  //把"2019-04-08 12:12:54" 转成 “2019-04-08”  date:为输入时间字符串“"2019-04-08 12:12:54"”
+  //把"2019-04-08 12:12:54" 转成 “2019/04/08”  date:为输入时间字符串“"2019-04-08 12:12:54"”
   formatTime: function(date) {
-    var date = getDate(date); //返回当前时间对象
+    var exp =getRegExp('-', 'g');
+    var newdate = date.replace(exp,'/')
+    var date = getDate(newdate); //返回当前时间对象
     var year = date.getFullYear()
     var month = date.getMonth() + 1
     var day = date.getDate()
-    return [year, month, day].join('-')
+    return [year, month, day].join('/')
   },
 
   //转化为对于现在的相对时间 time:"2019-5-1 11:12:10" 
@@ -73,7 +75,9 @@ var filters = {
   timestampToTime: function (value) {
     //不能使用 new Date()
     // value = value.replace(".000+0000", "Z");
-    var time = getDate(value);
+    var exp = getRegExp('-', 'g');
+    var newdate = value.replace(exp, '/')
+    var time = getDate(newdate);
     var year = time.getFullYear();
     var month = time.getMonth() + 1;
     var date = time.getDate();
@@ -85,7 +89,11 @@ var filters = {
     hour = hour < 10 ? "0" + hour : hour;
     minute = minute < 10 ? "0" + minute : minute;
     second = second < 10 ? "0" + second : second;
-    return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+    return [year,month,date,hour,minute,second].join("/");
+  },
+
+  cutList:function(list,start,end){
+    return list.slice(start,end)
   }
 
 }
@@ -97,5 +105,6 @@ module.exports = {
   substr: filters.substr,
   showDistance: filters.showDistance,
   endwith: filters.endwith,
-  timestampToTime: filters.timestampToTime
+  timestampToTime: filters.timestampToTime,
+  cutList: filters.cutList
 }

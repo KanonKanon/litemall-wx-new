@@ -33,7 +33,9 @@ Page({
     isSelectAddress: false,
     fastAddress: {},
     offlineAddressId: 0,
-    hasLogin: false
+    hasLogin: false,
+    isAdSale:false
+
   },
 
   checkLogin() {
@@ -364,6 +366,8 @@ Page({
           grouponRulesId: res.data.grouponRulesId
         });
 
+        console.log(this.data.checkedGoodsList)
+
         that.checkGetGoodType();
         that.getFastAddress()
 
@@ -408,10 +412,36 @@ Page({
     })
   },
 
-  getTimeList: function() {
+  bindPickerChange: function (e) {
+    this.setData({
+      getGoodDate: this.data.timeList[parseInt(e.detail.value)]
+    })
+  },
+
+  //选择时间 
+  bindTimePickerChange(e) {
+    console.log(e)
+    let time = this.data.timeList[e.detail.value]
+    this.setData({
+      getGoodDate: time
+    })
+  },
+
+  getTimeList: function () {
+    let isAdSale = wx.getStorageSync('isAdSale')
+    let data = {}
+    if (isAdSale) {
+      data = {
+        goodsId: this.data.checkedGoodsList[0].goodsId
+      }
+      this.setData({
+        isAdSale: true
+      })
+    }
+    console.log("isAdSale data:" + JSON.stringify(data))
     var that = this;
     try {
-      var func = function(res) {
+      var func = function (res) {
         if (res.errno == 0) {
           that.setData({
             timeList: res.data
@@ -424,7 +454,7 @@ Page({
           })
         }
       }
-      util.request(api.DeliveryList).then(func);
+      util.request(api.DeliveryList, data).then(func);
 
     } catch (err) {
       util.showError("getTimeList: " + JSON.stringify(err))

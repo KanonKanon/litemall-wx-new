@@ -6,6 +6,7 @@ var user = require('../../utils/user.js');
 
 Page({
   data: {
+    isAdSale:false, //是否预售商品
     isDistributor: false,
     isExtension: false,
     isDrawed: false,
@@ -63,6 +64,38 @@ Page({
   touchStart() {},
   touchMove() {},
   touchEnd() {},
+
+  /**
+   * 检查是否预售商品
+   */
+  checkAdSale(){
+    const data = {
+      goodsId:this.data.id
+    }
+    util.request(api.CartIsAdvanceSale,data).then(res=>{
+      console.log(res)
+      if(res.errno===0){
+        if(res.data){
+          this.setData({
+            isAdSale: true,
+            adSaleInfo:res.data
+          })
+          wx.setStorageSync('isAdSale', true)
+        }
+        else{
+          this.setData({
+            isAdSale:false
+          })
+        }
+       
+        
+      }
+      else{
+       
+        util.showError('checkAdSale: '+JSON.stringify(res))
+      }
+    })
+  },
 
   autoBuy() {
     let that = this
@@ -970,6 +1003,7 @@ Page({
         id: parseInt(options.id)
       });
       this.getGoodsInfo();
+      this.checkAdSale()
     }
 
     if (options.grouponId) {
@@ -1142,6 +1176,12 @@ Page({
     if (!this.data.hasLogin) {
       return
     }
+    if(this.isAdSale){
+      util.showError('这是预售商品，不能添加购物车')
+      return
+    }
+
+
     var that = this;
     if (this.data.soldOut) {
       wx.showToast({

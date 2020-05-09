@@ -2,3 +2,89 @@
 page{
   background-color: #9D9BCA;
 }
+
+.room-item{
+  display: flex;
+  flex-direction: row;
+  height:250rpx;
+  background: white;
+  margin: 20rpx 20rpx 0 20rpx;
+  border-radius: 10rpx;
+}
+
+.left{
+  width: 250rpx;
+  height: 250rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.left image{
+  width: 250rpx;
+  height: 250rpx;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.status{
+  position: absolute;
+  top: 10rpx;
+  left:10rpx;
+}
+.status .red-dot{
+  width: 20rpx;
+  height: 20rpx;
+  background: red;
+  border-radius: 10rpx;
+  display: inline-block;
+}
+.status .sta{
+  color: red;
+  margin-left:10rpx; 
+}
+
+
+.right{
+  height: 250rpx;
+  padding: 20rpx 20rpx;
+  position: relative;
+  overflow: hidden;
+}
+.right .name{
+  color:#080808;
+  font-size: 40rpx;
+}
+.right .anchor_name{
+  color:#898989;
+  font-size: 30rpx;
+}
+
+.goods-list{
+  margin-top:40rpx;
+  height:80rpx;
+  display: flex;
+  
+}
+.good-item{
+  margin-right: 10rpx;
+  overflow: hidden;
+}
+
+.good-item image{
+  width:80rpx;
+  height: 80rpx;
+}
+.good-count{
+  width: 80rpx;
+  height: 80rpx;
+  background: #FCF0F4;
+}
+.good-count view{
+  text-align: center;
+  height:40rpx;
+  line-height: 40rpx;
+  font-size: 20rpx;
+  color: #C88CA5;
+}
+
+
+

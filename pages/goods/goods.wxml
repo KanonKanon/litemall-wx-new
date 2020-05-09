@@ -65,6 +65,9 @@
         </view>
         <view class="counterPrice">专柜参考价：￥{{goods.counterPrice}}.00
         </view>
+        <view class="ad-sale" wx:if="{{isAdSale}}">
+          预售
+        </view>
       </view>
     </view>
   </view>

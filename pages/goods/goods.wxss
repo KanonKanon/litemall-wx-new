@@ -85,6 +85,7 @@
   overflow: hidden;
   background: #fff;
   padding: 0;
+  position: relative;
 }
 
 .goods-info .wrap {
@@ -1454,6 +1455,22 @@
   width: 250rpx;
   height: 80rpx;
 }
+
+/* 预售标签 */
+.ad-sale{
+  position: absolute;
+  top:0rpx;
+  right:30rpx;
+  background: red;
+  color: white;
+  width: 100rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
 
 @media (max-height:700px){
   .t-wrap {

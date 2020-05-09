@@ -1,3 +1,4 @@
+
 <view class="container">
   <view class="profile-info" bindtap="goLogin">
     <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
@@ -204,6 +205,17 @@
        <image class='user_column_item_image bigger-image' src='/static/images/oldcenter.png'></image>
       <view class='user_column_item_text'>旧版会员中心</view>
     </navigator>
+  </view>
+  <view class='separate'></view>
+
+   <view class='user_row'>
+    <view class='user_row_left'>引流功能</view>
+  </view>
+  <view class='user_column'>
+    <view class='user_column_item' bindtap='goToZhiBo'>
+      <image class='user_column_item_image bigger-image' src='/static/images/zhibo.svg'></image>
+      <view class='user_column_item_text'>直播间</view>
+    </view>   
   </view>
   <view class='separate'></view>
 

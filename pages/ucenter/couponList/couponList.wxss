@@ -27,6 +27,7 @@ page {
   width: 50%;
   padding: 0 15rpx;
   text-align: center;
+  overflow: hidden;
 }
 
 .container .h .item .txt {
@@ -37,11 +38,13 @@ page {
   color: #333;
   font-size: 30rpx;
   width: 170rpx;
+  overflow: hidden;
 }
 
 .container .h .item.active .txt {
   color: #ab2b2b;
   border-bottom: 4rpx solid #ab2b2b;
+  overflow: hidden;
 }
 
 .container .b {
@@ -138,6 +141,7 @@ page {
 
 .container .b .item.active {
   background: linear-gradient(to right, #cfa568, #e3bf79);
+  /* background:url() no-repeat center; */
 }
 
 .container .b .tag {
@@ -182,13 +186,15 @@ page {
 .container .b .name {
   font-size: 40rpx;
   color: #fff;
-  margin-bottom: 14rpx;
+  margin-bottom: 10rpx;
 }
 
 .container .b .time {
   font-size: 24rpx;
   color: #fff;
   line-height: 30rpx;
+  margin-bottom: 10rpx;
+
 }
 
 .container .b .condition {

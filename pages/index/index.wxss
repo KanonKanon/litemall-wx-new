@@ -69,7 +69,7 @@
   font-size: 12px;
   text-align: center;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 /* 以下为分销员中心样式 */
@@ -455,12 +455,13 @@
 .a-coupon .b .name {
   font-size: 35rpx;
   color: #fff;
-  margin-bottom: 14rpx;
+  margin-bottom: 10rpx;
 }
 
 .a-coupon .b .desc {
   font-size: 24rpx;
   color: #fff;
+  margin-bottom: 10rpx;
 }
 
 .a-coupon .b .time {
@@ -838,11 +839,13 @@
 .sk-item .goods-pic {
   position: relative;
   background: white;
+  width: 100%;
 }
 
 .sk-item .red-label {
   position: absolute;
   bottom: 0;
+  width:100%;
 }
 
 .sk-item .red-label .r-title {
@@ -863,7 +866,7 @@
   background: #c4a867;
   padding: 10rpx 20rpx;
   height: 100rpx;
-  width: 710rpx;
+  width: 100%;
 }
 
 .r-info .r-left {

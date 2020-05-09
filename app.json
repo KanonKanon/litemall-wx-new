@@ -59,7 +59,6 @@
     "userCenterPages/bindCard/bindCard",
     "userCenterPages/selectAddress/selectAddress",
     "userCenterPages/selectPay/selectPay",
-    "lib/textPage/textPage",
     "userCenterPages/bindPhone/bindPhone",
     "pages/newCategory/newCategory",
     "userCenterPages/sellerCenter/sellerCenter",
@@ -92,7 +91,7 @@
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTitleText": "星光珠宝星商城",
+    "navigationBarTitleText": "星光珠宝微商城",
     "enablePullDownRefresh": true,
     "navigationBarTextStyle": "black",
     "backgroundColor": "#FFFFFF",
@@ -111,7 +110,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/catalog/catalog",
+        "pagePath": "pages/newCategory/newCategory",
         "iconPath": "static/images/category.png",
         "selectedIconPath": "static/images/category@selected.png",
         "text": "分类"

@@ -17,6 +17,9 @@ module.exports = {
   //直播相关接口
   LiveGetInfo:WxApiRoot+'live/getInfo', //直播室列表
 
+  //预售功能接口
+  CartIsAdvanceSale: WxApiRoot +'cart/isAdvanceSale', //判断是否预售商品 get {goodsId}
+
   //打通进销存接口
   CloudCardOpen: WxApiRoot +'offlineUc/cloudCardOpen',//随享卡开卡
   OfflineUcOrc: WxApiRoot +'offlineUc/orc',//身份证OCR
@@ -81,7 +84,7 @@ module.exports = {
   CardPay: WxApiRoot + "order/cardPay", //预付卡支付
   ZeroPay: WxApiRoot + "order/zeroPay", //零元支付
   //提货时间列表
-  DeliveryList: WxApiRoot + "cart/deliveryList",
+  DeliveryList: WxApiRoot + "cart/deliveryList", // get {goodsId} 当商品为预售商品时要传goodsId
   //店铺模块接口
   StoreList: WxApiRoot + "store/list", //获取所有店铺地址
   //星享金接口
