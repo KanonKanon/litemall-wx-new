@@ -212,10 +212,28 @@
 </view>
 
 <view class='search-bar'>
-  <van-search value="{{ searchKey }}" placeholder="请输入关键词" bind:change="inputSearchKey" bind:clear="clearKey" bind:focus="inputFocus" use-action-slot clearable> 
+  <van-search value="{{ searchKey }}" placeholder="请输入关键词" bind:change="inputSearchKey" bind:clear="clearKey" bind:focus="inputFocus" use-action-slot clearable>
     <view slot="action" bind:tap="searchGood">搜索</view>
   </van-search>
 </view>
+<view class="shop-wrap" wx:if="{{isAdSale}}">
+  <view class="shop-list">
+    <view class="title">预售商品请选择分店</view>
+    <view class="line--2"></view>
+    <view class="content">
+      <view style="padding:10rpx">选择区域：</view>
+      <view class="shop-item {{areaKey===index?'shop-item-ativate':''}}" wx:for="{{areaObj}}" wx:key="index" data-key="{{index}}" data-item="{{item}}" bindtap="tapArea">{{index}}</view>
+
+      <view style="padding:10rpx" wx:if="{{shopList.length}}">选择店铺：</view>
+      <view class="shop-item {{shopIndex===item.id?'shop-item-ativate':''}}" wx:for="{{shopList}}" wx:key="id" data-id="{{item.id}}" data-item="{{item}}" bindtap="tapShop">{{item.name}}</view>
+    </view>
+    <view class="footer">
+      <view class="cancel-btn" bindtap="cancelShop">取消</view>
+      <view class="confirm-btn" bindtap="confirmShop">确定</view>
+    </view>
+  </view>
+</view>
+
 
 <view class="logo">
   <view>

@@ -760,7 +760,7 @@ Page({
     util.request(api.OffGoodsDetail, {
       goodsId: that.data.id
     }).then(function(res) {
-      // console.log(res)
+      console.log(res)
       if (res.errno === 0) {
         that.setData({
           goods: res.data.info,

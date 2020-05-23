@@ -97,6 +97,9 @@ Page({
     })
     .catch(res=>{
       console.log("liveGetInfo: "+JSON.stringify(res))
+      this.setData({
+        zhiBoList:[]
+      })
     })
   },
 

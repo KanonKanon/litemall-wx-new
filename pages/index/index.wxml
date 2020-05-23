@@ -85,7 +85,7 @@
           <view class="left">
             <view class="discount">{{fix.toFix(item.discount,0)}}元</view>
             <view class="min" wx:if="{{item.min>0}}"> 满{{fix.toFix(item.min,0)}}元使用</view>
-            <view class="min">无门槛</view>
+            <!-- <view class="min">无门槛</view> -->
           </view>
           <view class="right">
             <view class="name">{{item.name}}</view>

@@ -319,6 +319,7 @@ Page({
       grouponRulesId: that.data.grouponRulesId
     }
     // console.log('getCheckoutinfo data' + JSON.stringify(data))
+
     util.request(api.OffCartCheckout, data).then(function(res) {
       console.log(res)
       if (res.errno === 0) {

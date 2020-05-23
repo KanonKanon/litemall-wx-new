@@ -5,14 +5,16 @@
 // var WxApiRoot = 'https://192.168.4.5/wx/';
 // 云平台部署时使用
 // var WxApiRoot = 'http://123.57.38.203:8888/wx/';
-var WxApiRoot = 'https://test.bingold.cn/wx/';
+// var WxApiRoot = 'https://test.bingold.cn/wx/';
 // 云平台上线时使用
-// var WxApiRoot = 'https://litemall.bingold.cn/wx/';
+var WxApiRoot = 'https://litemall.bingold.cn/wx/';
 
 // https://litemall.bingold.cn/wx/catalog/list
 
 module.exports = {
   WxApiRoot: WxApiRoot,
+  
+  StoreAllList: WxApiRoot +'store/allList',//带区域的店铺列表
 
   //直播相关接口
   LiveGetInfo:WxApiRoot+'live/getInfo', //直播室列表

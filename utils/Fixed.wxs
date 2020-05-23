@@ -93,6 +93,9 @@ var filters = {
   },
 
   cutList:function(list,start,end){
+    if(list.length<3){
+      return list
+    }
     return list.slice(start,end)
   }
 

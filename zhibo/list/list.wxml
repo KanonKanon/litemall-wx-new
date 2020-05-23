@@ -1,26 +1,32 @@
 <!--zhibo/list/list.wxml-->
 <wxs src='../../utils/Fixed.wxs' module="fix" />
-<view>
-<navigator wx:for="{{zhiBoList}}" wx:key="index" class="room-item" url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{item.roomid}}">
-  <view class="left">
-    <image src="{{item.cover_img}}"></image>
-    <view class="status">
-      <text class='red-dot'></text> 
-      <text class="sta">{{status[item.live_status]}}</text>
-    </view>
-  </view>
-  <view class='right'>
-    <view class="name">{{item.name}}</view>
-    <view class="anchor_name">{{item.anchor_name}}</view>
-    <view class='goods-list' wx:if="{{item.goods}}">
-      <view wx:for="{{fix.cutList(item.goods,0,3)}}" wx:for-item="good" wx:for-index = "goodIndex" wx:key="goodIndex" class="good-item">
-        <image src="{{good.cover_img}}"></image>
-      </view>
-      <view class="good-count">
-        <view>{{item.goods.length}}件</view>
-        <view>直播购</view>
+<view wx:if="{{zhiBoList.length}}">
+  <navigator wx:for="{{zhiBoList}}" wx:key="index" class="room-item" url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{item.roomid}}">
+    <view class="left">
+      <image src="{{item.cover_img}}"></image>
+      <view class="status">
+        <text class='red-dot'></text>
+        <text class="sta">{{status[item.live_status]}}</text>
       </view>
     </view>
+    <view class='right'>
+      <view class="name">{{item.name}}</view>
+      <view class="anchor_name">{{item.anchor_name}}</view>
+      <view class='goods-list' wx:if="{{item.goods}}">
+        <view wx:for="{{fix.cutList(item.goods,0,3)}}" wx:for-item="good" wx:for-index="goodIndex" wx:key="goodIndex" class="good-item">
+          <image src="{{good.cover_img}}"></image>
+        </view>
+        <view class="good-count">
+          <view>{{item.goods.length}}件</view>
+          <view>直播购</view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+<view wx:if="{{!zhiBoList.length}}" class="no-data">
+  <view>
+    <image src="../../static/images/zhibo_d.png" style="width:300rpx;height:300rpx"></image>
   </view>
- </navigator>
+  <view style="color:white;margin-top:30rpx;font-size:40rpx">还没有开播啦!</view>
 </view>

@@ -19,10 +19,17 @@ Page({
       delta: 1
     })
   },
+  /**
+   * 
+   */
+  removeDuplicate(list){
+    return list.filter((x,i)=>list.indexOf(x)===i)
+  },
 
   //初始化时加载已经签到的日期
   init: function() {
-    this.onReset();
+    this.clearData()
+    this.drawCalendar()
     //请求已经签到的日期
     var url = api.SignList;
     var that = this;
@@ -30,6 +37,7 @@ Page({
       if (res.errno == 0) {
         console.log(res)
         if (res.data.date.length == 0) return;
+        res.data.date = that.removeDuplicate(res.data.date)
         res.data.date.forEach(function(v) {
           calendarSignData[v] = v;
         })
@@ -52,8 +60,13 @@ Page({
     //签到请求
     var that = this;
     if (that.data.canTapSign == false) return;
-    that.data.calendarSign = false;
+    that.setData({
+      canTapSign:false
+    })
     var func = function(res) {
+      that.setData({
+        canTapSign:true
+      })
       if (res.errno == 0) {
         calendarSignData[date] = date;
         console.log(calendarSignData);
@@ -71,11 +84,10 @@ Page({
           calendarSignData: calendarSignData,
           calendarSignDay: calendarSignDay
         })
-        that.data.canTapSign = true;
-        that.onPullDownRefresh();
         if (wx.getStorageSync('isStarShineMember')){
           user.getWallet();
         }
+        that.onPullDownRefresh();
 
       } else {
         console.log(res)
@@ -90,7 +102,7 @@ Page({
 
   },
   //初始化
-  onLoad: function() {
+  drawCalendar: function() {
     var mydate = new Date();
     var year = mydate.getFullYear();
     var month = mydate.getMonth() + 1;
@@ -139,9 +151,13 @@ Page({
     this.init();
   },
 
-  onReset: function() {
-    wx.setStorageSync("calendarSignData", "");
-    wx.setStorageSync("calendarSignDay", "");
+  clearData: function() {
+    wx.removeStorageSync("calendarSignData")
+    wx.removeStorageSync("calendarSignDay")
+    this.setData({
+      calendarSignData: {},
+      calendarSignDay: 0
+    })
   },
 
   //下拉刷新

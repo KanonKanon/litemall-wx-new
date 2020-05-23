@@ -13,13 +13,14 @@
   <view class="desc-wrap">
     <view class="desc">{{couponData.name}}</view>
     <view class="discount">{{couponData.desc}}</view>
-    <view class="min">满{{couponData.min}}元</view>
+    <view class="min" wx:if="{{couponData.min>0}}">满{{couponData.min}}元</view>
   </view>
 
   <view wx:if="{{couponData.timeType===0}}" class="days-wrap">有效期:领券当日起{{couponData.days}}天内可用</view>
   <view wx:if="{{couponData.timeType===1}}" class="days-wrap">有效期:{{Fix.formatTime(couponData.startTime)}} 至 {{Fix.formatTime(couponData.endTime)}}</view>
 
   <view class="btn-wrap">
-    <button class="btn" type="warn" bindtap="getCoupon">立即领取</button>
+    <view wx:if="{{couponData.type===2}}" class="code-txt">兑换码：{{couponData.code}}</view>
+    <button wx:else class="btn" type="warn" bindtap="getCoupon">立即领取</button>
   </view>
 </view>

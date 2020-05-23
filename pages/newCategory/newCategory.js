@@ -1,18 +1,22 @@
 // pages/newCategory/newCategory.js
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
-
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    detailList:[],
-    secKillList:[],
-    scroll_x:true,
-    shop:{},
-    shopList:[],
+    areaObj:{},
+    areaKey:'',
+    shopIndex: 0,
+    isAdSale: false,
+    detailList: [],
+    secKillList: [],
+    scroll_x: true,
+    shop: {},
+    shopList: [],
     categoryList: [], //分类列表
     navList: [],
     goodsList: [],
@@ -39,30 +43,94 @@ Page({
     isGroupon: false, //标识是否是一个参团购买
     soldout: false, //是否售空
     number: 1,
-    hasLogin:false,
-    searchKey:''
+    hasLogin: false,
+    searchKey: ''
   },
 
-  inputFocus(){
+  //获取带区域的店铺列表
+  getAllShopList(){
+    const that=this
+    util.request(api.StoreAllList).then(res=>{
+      if(res.errno===0){
+        that.setData({
+          areaObj:res.data
+        })
+      }
+    })
+  },
+
+  inputFocus() {
     wx.navigateTo({
       url: '/pages/search/search',
     })
   },
+  /**
+   * 选择区域
+   */
+  tapArea(e){
+    const {key,item} = e.currentTarget.dataset
+    this.setData({
+      areaKey:key,
+      shopList:item
+    })
+  },
+  /**
+   * 选择店铺
+   */
+  tapShop(e) {
+    console.log(e)
+    const {
+      id,
+      item
+    } = e.currentTarget.dataset
+    this.setData({
+      shopIndex: id,
+      shop:item
+    })
+    wx.setStorageSync("shop", item)
 
-  
+  },
+
+  cancelShop() {
+    this.setData({
+      isAdSale: false,
+      shopIndex:0,
+      shop:{},
+      areaKey:'',
+      shopList:[]
+    })
+    wx.removeStorageSync("shop")
+
+  },
+
+  confirmShop() {
+    if (!this.data.shopIndex) {
+      util.showError('请选择分店！')
+      return
+    }
+    this.setData({
+      isAdSale: false
+    })
+    const id = this.data.goodsId
+    wx.navigateTo({
+      url: '../prePayGoods/goods?id=' + id,
+    })
+  },
+
+
 
   /**
-  * 选择店铺
-  */
-  selectShop: function () {
+   * 选择店铺
+   */
+  selectShop: function() {
     wx.navigateTo({
       url: '/userCenterPages/selectAddress/selectAddress',
     })
   },
- 
+
   /**
-    * 跳转秒杀详情
-    */
+   * 跳转秒杀详情
+   */
   goToSkDetail(e) {
     let item = e.currentTarget.dataset.item;
     wx.navigateTo({
@@ -73,7 +141,7 @@ Page({
   /**
    * 倒计时
    */
-  countTime(endtime, item, finish = () => { }) {
+  countTime(endtime, item, finish = () => {}) {
     var that = this;
     var date = new Date();
     var now = date.getTime();
@@ -154,8 +222,8 @@ Page({
   },
 
   /**
-  * 获取秒杀商品列表
-  */
+   * 获取秒杀商品列表
+   */
   getSecKillList() {
     var that = this;
     var query = {
@@ -217,16 +285,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-   
+    this.getAllShopList()
     this.getCatalog()
-    
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    
+
   },
   checkLogin() {
     var hasLogin = wx.getStorageSync('hasLogin')
@@ -234,8 +302,7 @@ Page({
       this.setData({
         hasLogin: true
       })
-    }
-    else{
+    } else {
       this.setData({
         hasLogin: false
       })
@@ -250,20 +317,20 @@ Page({
         content: '没有登录，部分功能会受到限制哦！',
         showCancel: true,
         confirmText: '去登录',
-        cancelText:'不登录',
-        success: function (res) {
-          if(res.confirm){
+        cancelText: '不登录',
+        success: function(res) {
+          if (res.confirm) {
             wx.navigateTo({
               url: "/pages/auth/login/login"
             });
           }
         }
-        
+
       })
 
     }
   },
- 
+
 
   /**
    * 生命周期函数--监听页面显示
@@ -274,20 +341,20 @@ Page({
       this.getCatalogListGoods();
     }
     this.checkShop()
-    if(this.data.hasLogin){
+    if (this.data.hasLogin) {
       this.getSecKillList();
     }
-    
+
   },
 
   /**
- * 检测是否选择了店铺
- */
+   * 检测是否选择了店铺
+   */
   checkShop() {
-    if(wx.getStorageSync('shop')!=""){
+    if (wx.getStorageSync('shop') != "") {
       let shop = wx.getStorageSync('shop')
       this.setData({
-        shop:shop
+        shop: shop
       })
     }
     if (wx.getStorageSync("checkedAddress") != "") {
@@ -302,15 +369,15 @@ Page({
       //客户选择了店铺，就要重置默认店铺
       wx.setStorageSync('shop', "")
     }
-    //获取店铺列表
-    if (this.data.shopList.length == 0 && JSON.stringify(this.data.shop) == "{}") {
-      this.getShopList()
-    }
+    // //获取店铺列表
+    // if (this.data.shopList.length == 0 && JSON.stringify(this.data.shop) == "{}") {
+    //   this.getShopList()
+    // }
   },
   /**
    * 获取所有店铺的列表
    */
-  getShopList: function () {
+  getShopList: function() {
     var that = this;
     // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.userLocation" 这个 scope
     wx.getSetting({
@@ -340,7 +407,7 @@ Page({
                           citys.push(v.city);
                         }
                       })
-                      let templist=util.insertSort(res2.data)
+                      let templist = util.insertSort(res2.data)
                       that.setData({
                         shopList: templist,
                         shop: templist[0]
@@ -405,23 +472,67 @@ Page({
 
   },
 
+  /**
+   * 检查是否预售商品
+   */
+  checkAdSale(id) {
+    const data = {
+      goodsId: id
+    }
+    this.setData({
+      goodsId:id
+    })
+    util.request(api.CartIsAdvanceSale, data).then(res => {
+      console.log(res)
+      if (res.errno === 0) {
+        if (res.data) {
+          this.setData({
+            isAdSale: true,
+            adSaleInfo: res.data,
+            shopIndex:0,
+            shopList:[],
+            areaKey:''
+          })
+          wx.setStorageSync('isAdSale', true)
+          // wx.navigateTo({
+          //   url: '../prePayGoods/goods?id='+id,
+          // })
+        } else {
+          this.setData({
+            isAdSale: false
+          })
+          wx.setStorageSync('isAdSale', false)
+          wx.navigateTo({
+            url: '../goods/goods?id=' + id,
+          })
+        }
+      } else {
+        util.showError('checkAdSale: ' + JSON.stringify(res))
+      }
+    })
+  },
 
+
+
+  /**
+   * 跳转
+   */
   jumpTo: function(e) {
     console.log(e)
-    var that=this
-    var item=e.currentTarget.dataset.item;
+    var that = this
+    var item = e.currentTarget.dataset.item;
     var id = e.currentTarget.dataset.id;
-    if(item.skId){
+    if (item.skId) {
       wx.navigateTo({
-        url: '../../userCenterPages/secKillDetail/secKillDetail?storeId='+that.data.shop.id+'&skId='+item.skId
+        url: '../../userCenterPages/secKillDetail/secKillDetail?storeId=' + that.data.shop.id + '&skId=' + item.skId
       })
+    } else {
+      that.checkAdSale(id)
+      // wx.navigateTo({
+      //   url: '../goods/goods?id=' + id,
+      // })
     }
-    else{
-      wx.navigateTo({
-        url: '../goods/goods?id=' + id,
-      })
-    }
-   
+
   },
   cutNumber: function() {
     this.setData({
@@ -469,13 +580,13 @@ Page({
     var that = this;
     util.request(api.GoodsDetail, {
       id: that.data.id,
-      storeId:that.data.shop.id
+      storeId: that.data.shop.id
     }).then(function(res) {
       console.log(res)
       if (res.errno === 0) {
         //处理多个规格问题
         that.dealValueList(res.data.specificationList, res.data.productList)
-        
+
         let _specificationList = res.data.specificationList
         // 如果仅仅存在一种货品，那么商品页面初始化时默认checked
         if (_specificationList.length == 1) {
@@ -497,7 +608,7 @@ Page({
           checkedSpecPrice: res.data.info.retailPrice,
           groupon: res.data.groupon,
           salesVolume: res.data.salesVolume,
-         
+
         });
         console.log(that.data.openAttr)
         that.setData({
@@ -862,20 +973,20 @@ Page({
     });
   },
 
-/**
- * 输入搜索关键字
- */
-  inputSearchKey(e){
+  /**
+   * 输入搜索关键字
+   */
+  inputSearchKey(e) {
     this.setData({
-      searchKey:e.detail
+      searchKey: e.detail
     })
   },
   /**
    * 清空搜索关键字
    */
-  clearKey(){
+  clearKey() {
     this.setData({
-      searchKey:''
+      searchKey: ''
     })
   },
 
@@ -885,19 +996,19 @@ Page({
   searchGood(e) {
     const key = this.data.searchKey
     let id = ''
-    for(let item of this.data.catalogListGoods){
-      for(let good of item.goodsVoList){
-        if(good.name.indexOf(key)>-1){
+    for (let item of this.data.catalogListGoods) {
+      for (let good of item.goodsVoList) {
+        if (good.name.indexOf(key) > -1) {
           id = good.id
           break
         }
       }
-      if(id){
+      if (id) {
         break
       }
     }
-    id = "id"+id 
-    console.log("id: "+id)
+    id = "id" + id
+    console.log("id: " + id)
     this.setData({
       catalogId: id
     })
@@ -1011,13 +1122,13 @@ Page({
       if (res.errno == 0) {
         //改变顺序 会员福利提前
         const templist = res.data
-        const last = res.data[res.data.length-1]
+        const last = res.data[res.data.length - 1]
         templist.unshift(last)
-        templist.splice(templist.length-1,1)
+        templist.splice(templist.length - 1, 1)
         that.setData({
           catalogListGoods: templist
         })
-        
+
         // that.setData({
         //   catalogListGoods: res.data
         // })

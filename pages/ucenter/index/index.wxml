@@ -208,7 +208,7 @@
   </view>
   <view class='separate'></view>
 
-   <view class='user_row'>
+   <!-- <view class='user_row'>
     <view class='user_row_left'>引流功能</view>
   </view>
   <view class='user_column'>
@@ -217,7 +217,7 @@
       <view class='user_column_item_text'>直播间</view>
     </view>   
   </view>
-  <view class='separate'></view>
+  <view class='separate'></view> -->
 
   <view class="logout" wx:if="{{hasLogin}}" bindtap="exitLogin">退出登录</view>
 </view>

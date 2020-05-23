@@ -450,6 +450,7 @@
 
 .a-coupon .b .content .right {
   width: 400rpx;
+  margin-bottom: 20rpx;
 }
 
 .a-coupon .b .name {
